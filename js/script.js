@@ -97,6 +97,8 @@ const i18n = {
   "profile-kicker": "Profil", "profile-h2": "Tentang Saya",
   "profile-p1": "Hai, saya Feliza!",
   "profile-p2": "Saya mahasiswa Informatika semester 4 di Universitas Jabal Ghafur. Saya suka mengeksplorasi teknologi, mempelajari hal baru, dan mengubah ide-ide acak menjadi sesuatu yang nyata.",
+  "profile-p3": "Saya sangat tertarik pada pengembangan web, pemrograman, pemecahan masalah, dan sisi kreatif dari teknologi. Saya suka membangun proyek bukan cuma agar berfungsi, tapi juga untuk memahami cara kerjanya di balik layar dan bagaimana bisa dibuat lebih baik. Belakangan ini saya mulai menjelajahi lebih banyak bidang komputasi sambil mengerjakan proyek sendiri dan perlahan menemukan bagian teknologi mana yang paling saya sukai.",
+  "profile-p5": "Saya masih terus belajar dan mencari arah untuk mengembangkan kemampuan saya, tapi saya tahu saya ingin terus berkarya, berkembang, dan menantang diri sendiri. Di luar coding, biasanya saya belajar hal baru, dengerin playlist favorit, atau merencanakan proyek kecil berikutnya. Halaman ini adalah rumah kecil untuk semua itu — jangan sungkan untuk lihat-lihat!",
   "profile-p4": "Saya juga sedang mengembangkan hal di luar coding: kemampuan bahasa Inggris saya. Saya ingin lebih baik dalam mendengar, berbicara, dan mengungkapkan pikiran secara alami. Bagi saya, belajar bahasa Inggris bukan cuma soal grammar atau kosakata — tapi soal bisa berkomunikasi dengan percaya diri, mengakses lebih banyak ilmu, dan terhubung dengan orang di luar lingkungan saya.",
   "contact-kicker": "Kontak", "contact-h2": "Mari Terhubung!",
   "contact-lead": "Punya pertanyaan, ide proyek, atau cuma mau say hi? Hubungi saya di sini:",
