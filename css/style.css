@@ -78,7 +78,7 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   overscroll-behavior-x: none;
-  touch-action: pan-y; /* kunci: hanya bisa scroll vertikal, tidak bisa digeser ke samping */
+  touch-action: pan-y; /* kunci: hanya bisa scroll vertikal */
 }
 
 /* Fokus keyboard yang jelas / visible keyboard focus */
