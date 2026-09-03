@@ -428,6 +428,7 @@ main {
 .contact-icon--pink   { background: var(--pink); color: #C43F72; }
 .contact-icon--purple { background: var(--purple); color: #6C46C9; }
 .contact-icon--mint   { background: var(--mint); color: #1D9A79; }
+.contact-icon--slate { background: #E4E1EC; color: #4A3F55; }
 .contact-text { display: flex; flex-direction: column; gap: 2px; }
 .contact-text strong { font-weight: 700; }
 .contact-text span { color: var(--ink-soft); font-size: 0.92rem; }
