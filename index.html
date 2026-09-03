@@ -18,7 +18,7 @@
   <!-- ===================================================
        SKIP LINK (aksesibilitas / accessibility)
   ==================================================== -->
-  <a class="skip-link" href="#home">Skip to content</a>
+  <a class="skip-link" href="#home"><span data-i18n="skip">Skip to content</span></a>
 
   <!-- ===================================================
        HEADER / STICKY NAV
@@ -27,13 +27,14 @@
     <div class="nav-inner">
       <nav class="primary-nav" id="primaryNav" aria-label="Navigasi utama">
         <ul>
-          <li><a href="#home" data-nav="home"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg><span>Home</span></a></li>
-          <li><a href="#profile" data-nav="profile"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4.5 5-6 8-6s6.5 1.5 8 6"/></svg><span>Profile</span></a></li>
-          <li><a href="#contact" data-nav="contact"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg><span>Contact</span></a></li>
-          <li><a href="#education" data-nav="education"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9.5 12 5l10 4.5-10 4.5-10-4.5Z"/><path d="M6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/><path d="M22 9.5V16"/></svg><span>Education</span></a></li>
-          <li><a href="#skills" data-nav="skills"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L12 16.9 6.4 20l1.4-6.2-4.8-4.3 6.4-.6L12 3Z"/></svg><span>Skills</span></a></li>
-          <li><a href="#hobbies" data-nav="hobbies"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5S3.5 15.4 3.5 9.7A4.7 4.7 0 0 1 12 6.8a4.7 4.7 0 0 1 8.5 2.9c0 5.7-8.5 10.8-8.5 10.8Z"/></svg><span>Hobbies</span></a></li>
-          <li><a href="#projects" data-nav="projects"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8Z"/></svg><span>Projects</span></a></li>
+          <li><button id="langToggle" class="lang-toggle" type="button" aria-label="Switch language / Ganti bahasa">EN</button></li>
+          <li><a href="#home" data-nav="home"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg><span data-i18n="nav-home">Home</span></a></li>
+          <li><a href="#profile" data-nav="profile"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4.5 5-6 8-6s6.5 1.5 8 6"/></svg><span data-i18n="nav-profile">Profile</span></a></li>
+          <li><a href="#contact" data-nav="contact"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg><span data-i18n="nav-contact">Contact</span></a></li>
+          <li><a href="#education" data-nav="education"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9.5 12 5l10 4.5-10 4.5-10-4.5Z"/><path d="M6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/><path d="M22 9.5V16"/></svg><span data-i18n="nav-education">Education</span></a></li>
+          <li><a href="#skills" data-nav="skills"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L12 16.9 6.4 20l1.4-6.2-4.8-4.3 6.4-.6L12 3Z"/></svg><span data-i18n="nav-skills">Skills</span></a></li>
+          <li><a href="#hobbies" data-nav="hobbies"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5S3.5 15.4 3.5 9.7A4.7 4.7 0 0 1 12 6.8a4.7 4.7 0 0 1 8.5 2.9c0 5.7-8.5 10.8-8.5 10.8Z"/></svg><span data-i18n="nav-hobbies">Hobbies</span></a></li>
+          <li><a href="#projects" data-nav="projects"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8Z"/></svg><span data-i18n="nav-projects">Projects</span></a></li>
         </ul>
       </nav>
     </div>
@@ -54,7 +55,7 @@
           <div class="polaroid-photo">
           <img src="assets/kdj.jfif" alt="Feliza Aziva photo">
           </div>
-          <span class="polaroid-caption">My photo</span>
+          <span class="polaroid-caption" data-i18n="home-caption">My photo</span>
         </div>
 
         <div class="home-text">
@@ -62,7 +63,7 @@
           <p class="home-subtitle">Teknik Informatika</p>
           <p class="home-subtitle">Universitas Jabal Ghafur (UNIGHA)</p>
           <a href="#profile" class="btn btn-primary">
-            View Profile
+            <span data-i18n="home-cta">View Profile</span>
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
           </a>
         </div>
@@ -76,21 +77,21 @@
       <div class="blob blob--3" aria-hidden="true"></div>
 
       <div class="section-inner">
-        <p class="section-kicker">Profile</p>
-        <h2>About Me</h2>
+        <p class="section-kicker" data-i18n="profile-kicker">Profile</p>
+        <h2 data-i18n="profile-h2">About Me</h2>
 
         <div class="card card--text">
           <p>
-            Hi, I'm Feliza!
+            <span data-i18n="profile-p1">Hi, I'm Feliza!</span>
           </p>
           <p>
-            I'm a 4th semester Informatics student in the Jabal Ghafur University. I enjoy exploring technology, learning new things, and turning random ideas into something real.
+            <span data-i18n="profile-p2">I'm a 4th semester Informatics student in the Jabal Ghafur University. I enjoy exploring technology, learning new things, and turning random ideas into something real.</span>
           </p>
           <p>
             I’m particularly interested in web development, programming, problem-solving, and the creative side of technology. I enjoy building projects not only to make something that works, but also to understand how things work behind the scenes and how they can be made better. Lately, I’ve been exploring more areas of computing while working on projects of my own and gradually figuring out which parts of technology I enjoy the most.
           </p>
           <p>
-           I’m also currently working on something that goes beyond coding: improving my English. I’m especially interested in becoming better at listening, speaking, and expressing my thoughts naturally. For me, learning English is not just about grammar or vocabulary — it’s about being able to communicate confidently, access more knowledge, and connect with people beyond my own environment. 
+           <span data-i18n="profile-p4">I’m also currently working on something that goes beyond coding: improving my English. I’m especially interested in becoming better at listening, speaking, and expressing my thoughts naturally. For me, learning English is not just about grammar or vocabulary — it’s about being able to communicate confidently, access more knowledge, and connect with people beyond my own environment.</span>
           </p>
           <p>
             I’m still learning and still discovering where I want to take my skills, but I know that I want to keep creating, improving, and challenging myself.
@@ -104,10 +105,10 @@
       <div class="section-nav">
         <a href="#home" class="btn btn-ghost btn-back">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
-          Back
+          <span data-i18n="back">Back</span>
         </a>
         <a href="#contact" class="btn btn-ghost btn-next">
-          Next
+          <span data-i18n="next">Next</span>
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
         </a>
       </div>
@@ -120,9 +121,9 @@
       <div class="blob blob--4" aria-hidden="true"></div>
 
       <div class="section-inner">
-        <p class="section-kicker">Contact</p>
-        <h2>Let's Connect!</h2>
-        <p class="section-lead">Got a question, a project idea, or just want to say hi? Reach me here:</p>
+        <p class="section-kicker" data-i18n="contact-kicker">Contact</p>
+        <h2 data-i18n="contact-h2">Let's Connect!</h2>
+        <p class="section-lead" data-i18n="contact-lead">Got a question, a project idea, or just want to say hi? Reach me here:</p>
 
         <ul class="contact-list">
           <li>
@@ -175,10 +176,10 @@
       <div class="section-nav">
         <a href="#profile" class="btn btn-ghost btn-back">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
-          Back
+          <span data-i18n="back">Back</span>
         </a>
         <a href="#education" class="btn btn-ghost btn-next">
-          Next
+          <span data-i18n="next">Next</span>
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
         </a>
       </div>
@@ -191,15 +192,15 @@
       <div class="blob blob--5" aria-hidden="true"></div>
 
       <div class="section-inner">
-        <p class="section-kicker">Education</p>
-        <h2>My Studying Journey</h2>
+        <p class="section-kicker" data-i18n="edu-kicker">Education</p>
+        <h2 data-i18n="edu-h2">My Studying Journey</h2>
 
         <div class="edu-grid">
           <div class="edu-card edu-card--pink">
             <span class="edu-icon">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 8l10 5 8-4v6"/><path d="M6 10.5V15c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/></svg>
             </span>
-            <p class="edu-level">Elementary School</p>
+            <p class="edu-level" data-i18n="edu-elementary">Elementary School</p>
             <!-- GANTI DI SINI: nama SD dan tahun lulus -->
             <!-- REPLACE HERE: elementary school name and graduation year -->
             <p class="edu-name">SDN 028289</p> <p>Kec. Binjai Utara, Kota Binjai, Sumatera Utara.</p>
@@ -210,7 +211,7 @@
             <span class="edu-icon">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 8l10 5 8-4v6"/><path d="M6 10.5V15c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/></svg>
             </span>
-            <p class="edu-level">Junior High School</p>
+            <p class="edu-level" data-i18n="edu-junior">Junior High School</p>
             <!-- GANTI DI SINI: nama SMP dan tahun lulus -->
             <!-- REPLACE HERE: junior high school name and graduation year -->
             <p class="edu-name">SMPN 1 Binjai & SMP MMT MERCUBUANA</p><p>Kec. Way Kenanga, Kab. Tulang Bawang Barat, Lampung.</p>
@@ -221,7 +222,7 @@
             <span class="edu-icon">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 8l10 5 8-4v6"/><path d="M6 10.5V15c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/></svg>
             </span>
-            <p class="edu-level">Vocational High School</p>
+            <p class="edu-level" data-i18n="edu-vocational">Vocational High School</p>
             <p class="edu-name">SMK Tri Bhakti Lampung & SMKS PRAYATNA 2 MEDAN — Teknik Komputer dan Jaringan (TKJ)</p><p>Kec. Medan Tembung, Kota Medan, Sumatera Utara.</p>
             <p class="edu-year">2020 – 2023</p>
           </div>
@@ -230,9 +231,9 @@
             <span class="edu-icon">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9.5 12 5l10 4.5-10 4.5-10-4.5Z"/><path d="M6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/><path d="M22 9.5V16"/></svg>
             </span>
-            <p class="edu-level">University</p>
+            <p class="edu-level" data-i18n="edu-university">University</p>
             <p class="edu-name">Universitas Jabal Ghafur (UNIGHA) — S1 Teknik Informatika</p><p>Gle Gapui, Peutoe, Sigli, Kab. Pidie, Aceh.</p>
-            <p class="edu-year">Semester 4 · Ongoing</p>
+            <p class="edu-year" data-i18n="edu-ongoing">Semester 4 · Ongoing</p>
           </div>
         </div>
       </div>
@@ -240,10 +241,10 @@
       <div class="section-nav">
         <a href="#contact" class="btn btn-ghost btn-back">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
-          Back
+          <span data-i18n="back">Back</span>
         </a>
         <a href="#skills" class="btn btn-ghost btn-next">
-          Next
+          <span data-i18n="next">Next</span>
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
         </a>
       </div>
@@ -256,41 +257,41 @@
       <div class="blob blob--6" aria-hidden="true"></div>
 
       <div class="section-inner">
-        <p class="section-kicker">Skills</p>
-        <h2>What I Bring</h2>
+        <p class="section-kicker" data-i18n="skills-kicker">Skills</p>
+        <h2 data-i18n="skills-h2">What I Bring</h2>
 
         <!-- GANTI DI SINI: sesuaikan daftar skill dengan kemampuanmu -->
         <!-- REPLACE HERE: adjust this skill list to match your own skills -->
         <div class="skills-grid">
           <div class="skill-card skill-card--pink">
             <span class="skill-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 6-6 6 6 6"/><path d="m16 6 6 6-6 6"/></svg></span>
-            <h3>Web Development</h3>
-            <p>Basic knowledge of HTML, CSS, and JavaScript for building simple, responsive, and interactive web pages.</p>
+            <h3 data-i18n="skill1-t">Web Development</h3>
+            <p data-i18n="skill1-d">Basic knowledge of HTML, CSS, and JavaScript for building simple, responsive, and interactive web pages.</p>
           </div>
           <div class="skill-card skill-card--purple">
             <span class="skill-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14.5 14.5 0 0 1 0 18 14.5 14.5 0 0 1 0-18Z"/></svg></span>
-            <h3>Communication</h3>
-            <p>Basic English communication skills, with the ability to understand technical information and communicate ideas clearly in written and spoken English.</p>
+            <h3 data-i18n="skill2-t">Communication</h3>
+            <p data-i18n="skill2-d">Basic English communication skills, with the ability to understand technical information and communicate ideas clearly in written and spoken English.</p>
           </div>
           <div class="skill-card skill-card--blue">
             <span class="skill-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Z"/><path d="M14 3v6h6"/><path d="M9 13h6"/><path d="M9 17h6"/></svg></span>
-            <h3>Microsoft Office / Google Workspace</h3>
-            <p>Basic proficiency in Microsoft Office and Google Workspace for creating documents, presentations, spreadsheets, and managing files.</p>
+            <h3 data-i18n="skill3-t">Microsoft Office / Google Workspace</h3>
+            <p data-i18n="skill3-d">Basic proficiency in Microsoft Office and Google Workspace for creating documents, presentations, spreadsheets, and managing files.</p>
           </div>
           <div class="skill-card skill-card--mint">
             <span class="skill-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></span>
-            <h3>Git / Version Control</h3>
-            <p>Basic understanding of Git and GitHub for managing project files and tracking changes.</p>
+            <h3 data-i18n="skill4-t">Git / Version Control</h3>
+            <p data-i18n="skill4-d">Basic understanding of Git and GitHub for managing project files and tracking changes.</p>
           </div>
           <div class="skill-card skill-card--green">
             <span class="skill-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.6.6 1 1.4 1 2.5h6c0-1.1.4-1.9 1-2.5A6 6 0 0 0 12 3Z"/></svg></span>
-            <h3>Problem Solving</h3>
-            <p>Able to analyze problems, think logically, and find practical solutions to challenges.</p>
+            <h3 data-i18n="skill5-t">Problem Solving</h3>
+            <p data-i18n="skill5-d">Able to analyze problems, think logically, and find practical solutions to challenges.</p>
           </div>
           <div class="skill-card skill-card--yellow">
             <span class="skill-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span>
-            <h3>Adaptability</h3>
-            <p>Willing and able to learn new tools, technologies, and approaches when facing new challenges.</p>
+            <h3 data-i18n="skill6-t">Adaptability</h3>
+            <p data-i18n="skill6-d">Willing and able to learn new tools, technologies, and approaches when facing new challenges.</p>
           </div>
         </div>
       </div>
@@ -298,10 +299,10 @@
       <div class="section-nav">
         <a href="#education" class="btn btn-ghost btn-back">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
-          Back
+          <span data-i18n="back">Back</span>
         </a>
         <a href="#hobbies" class="btn btn-ghost btn-next">
-          Next
+          <span data-i18n="next">Next</span>
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
         </a>
       </div>
@@ -314,27 +315,27 @@
       <div class="blob blob--7" aria-hidden="true"></div>
 
       <div class="section-inner">
-        <p class="section-kicker">Hobbies</p>
-        <h2>My Interests</h2>
+        <p class="section-kicker" data-i18n="hobbies-kicker">Hobbies</p>
+        <h2 data-i18n="hobbies-h2">My Interests</h2>
 
         <!-- GANTI DI SINI: sesuaikan daftar hobi dengan minatmu -->
         <!-- REPLACE HERE: adjust this hobby list to match your own interests -->
         <div class="hobbies-grid">
           <div class="hobby-card hobby-card--pink">
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6a5 5 0 0 0-5-2H3v14h4a5 5 0 0 1 5 2 5 5 0 0 1 5-2h4V4h-4a5 5 0 0 0-5 2Z"/><path d="M12 6v14"/></svg>
-            <p>Reading</p>
+            <p data-i18n="hobby1">Reading</p>
           </div>
           <div class="hobby-card hobby-card--blue">
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-            <p>Music</p>
+            <p data-i18n="hobby2">Music</p>
           </div>
           <div class="hobby-card hobby-card--mint">
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 6-6 6 6 6"/><path d="m16 6 6 6-6 6"/></svg>
-            <p>Coding Projects</p>
+            <p data-i18n="hobby3">Coding Projects</p>
           </div>
           <div class="hobby-card hobby-card--yellow">
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14.5 14.5 0 0 1 0 18 14.5 14.5 0 0 1 0-18Z"/></svg>
-            <p>English Literature</p>
+            <p data-i18n="hobby4">English Literature</p>
           </div>
         </div>
       </div>
@@ -342,10 +343,10 @@
       <div class="section-nav">
         <a href="#skills" class="btn btn-ghost btn-back">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
-          Back
+          <span data-i18n="back">Back</span>
         </a>
         <a href="#projects" class="btn btn-ghost btn-next">
-          Next
+          <span data-i18n="next">Next</span>
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
         </a>
       </div>
@@ -358,9 +359,9 @@
       <div class="blob blob--8" aria-hidden="true"></div>
 
       <div class="section-inner">
-        <p class="section-kicker">Projects</p>
-        <h2>Things I've Built</h2>
-        <p class="section-lead">Here's a peek at something I've built — more coming soon!</p>
+        <p class="section-kicker" data-i18n="projects-kicker">Projects</p>
+        <h2 data-i18n="projects-h2">Things I've Built</h2>
+        <p class="section-lead" data-i18n="projects-lead">Here's a peek at something I've built — more coming soon!</p>
 
         <!-- GANTI DI SINI: ganti tiap .project-card placeholder dengan proyek asli (gambar, judul, deskripsi, link) -->
         <!-- REPLACE HERE: swap each placeholder .project-card with a real project (image, title, description, link) -->
@@ -370,14 +371,14 @@
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5S3.5 15.4 3.5 9.7A4.7 4.7 0 0 1 12 6.8a4.7 4.7 0 0 1 8.5 2.9c0 5.7-8.5 10.8-8.5 10.8Z"/></svg>
             </span>
             <p class="project-title">Birthday Surprise Site</p>
-            <p class="project-desc">A cute, interactive birthday website template — photo gallery, love letter, reason list, and confetti!</p>
+            <p class="project-desc" data-i18n="proj1-d">A cute, interactive birthday website template — photo gallery, love letter, reason list, and confetti!</p>
             <div class="project-card-links">
               <a class="project-link" href="https://felisaans.github.io/cute-birthday-website/" target="_blank" rel="noopener noreferrer">
-                View project
+                <span data-i18n="view-project">View project</span>
                 <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
               </a>
               <a class="github-link" href="https://github.com/felisaans/cute-birthday-website" target="_blank" rel="noopener noreferrer">
-                Visit on GitHub
+                <span data-i18n="visit-github">Visit on GitHub</span>
                 <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
               </a>
             </div>
@@ -388,14 +389,14 @@
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5S3.5 15.4 3.5 9.7A4.7 4.7 0 0 1 12 6.8a4.7 4.7 0 0 1 8.5 2.9c0 5.7-8.5 10.8-8.5 10.8Z"/></svg>
             </span>
             <p class="project-title">Moment & Co.🌹</p>
-            <p class="project-desc">Custom acrylic greeting board rental website — users can select a design, customize the wording with a live preview, and instantly book their rental via WhatsApp.</p>
+            <p class="project-desc" data-i18n="proj2-d">Custom acrylic greeting board rental website — users can select a design, customize the wording with a live preview, and instantly book their rental via WhatsApp.</p>
             <div class="project-card-links">
               <a class="project-link" href="https://felisaans.github.io/Moment-and-Co./" target="_blank" rel="noopener noreferrer">
-                View project
+                <span data-i18n="view-project">View project</span>
                 <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
               </a>
               <a class="github-link" href="https://github.com/felisaans/Moment-and-Co." target="_blank" rel="noopener noreferrer">
-                Visit on GitHub
+                <span data-i18n="visit-github">Visit on GitHub</span>
                 <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
               </a>
             </div>
@@ -404,19 +405,19 @@
             <span class="project-icon">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
             </span>
-            <p>Project coming soon</p>
+            <p data-i18n="proj-soon">Project coming soon</p>
           </div>
           <div class="project-card project-card--yellow">
             <span class="project-icon">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
             </span>
-            <p>Project coming soon</p>
+            <p data-i18n="proj-soon">Project coming soon</p>
           </div>
           <div class="project-card project-card--green">
             <span class="project-icon">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
             </span>
-            <p>Project coming soon</p>
+            <p data-i18n="proj-soon">Project coming soon</p>
           </div>
         </div>
       </div>
@@ -424,7 +425,7 @@
       <div class="section-nav section-nav--single">
         <a href="#hobbies" class="btn btn-ghost btn-back">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
-          Back
+          <span data-i18n="back">Back</span>
         </a>
       </div>
     </section>
@@ -436,8 +437,8 @@
   ==================================================== -->
   <footer class="site-footer">
     <div class="footer-inner">
-      <p class="footer-name">Feliza's Portfolio.</p>
-      <p class="footer-copy">© <span id="year"></span> Personal Portfolio.</p>
+      <p class="footer-name" data-i18n="footer-name">Feliza's Portfolio.</p>
+      <p class="footer-copy">© <span id="year"></span> <span data-i18n="footer-copy">Personal Portfolio.</span></p>
       <div class="footer-socials">
         <a href="mailto:felisaans@gmail.com" aria-label="Email">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>

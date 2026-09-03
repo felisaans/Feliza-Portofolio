@@ -749,3 +749,24 @@ main {
   .section-inner { max-width: 960px; }
   .section-nav { max-width: 960px; }
 }
+
+/* EN/ID language switch button */
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  padding: 0 12px;
+  margin-right: 4px;
+  border: none;
+  border-radius: 999px;
+  background: var(--pink, #ffd6e8);
+  color: var(--ink, #1f1f1f);
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.lang-toggle:hover { background: var(--purple-deep, #7c5cff); color: #fff; transform: translateY(-1px); }
