@@ -1,5 +1,4 @@
 // =========================================================
-// script.js
 // Navigasi antar section seperti "halaman" (bukan scroll panjang):
 // klik nav / Next / Back akan mengganti section yang tampil.
 // Section navigation like separate "pages":
