@@ -572,17 +572,6 @@ main {
 .skill-card:nth-child(6n+5) { --tilt: -1.5deg; --pin-color: var(--green-deep); }
 .skill-card:nth-child(6n+6) { --tilt: 1deg;   --pin-color: var(--yellow-deep); }
 
-/* faint notebook-paper lines behind the skills section */
-.section--skills .section-inner {
-  background-image: repeating-linear-gradient(
-    to bottom,
-    transparent 0px,
-    transparent 27px,
-    var(--line) 28px
-  );
-  background-position: 0 60px;
-}
-
 /* =========================================================
    6. HOBBIES
 ========================================================= */
