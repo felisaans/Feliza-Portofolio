@@ -770,3 +770,26 @@ main {
   transition: background 0.15s ease, transform 0.15s ease;
 }
 .lang-toggle:hover { background: var(--purple-deep, #7c5cff); color: #fff; transform: translateY(-1px); }
+
+/* Education timeline */
+.edu-timeline { display: flex; flex-direction: column; gap: 32px; }
+.edu-step { position: relative; display: flex; flex-direction: row; align-items: flex-start; gap: 14px; }
+.edu-step-dot {
+  flex-shrink: 0; width: 14px; height: 14px; margin-top: 6px;
+  border-radius: 50%; background: #fff; border: 3px solid var(--purple-deep);
+  position: relative; z-index: 2;
+}
+.edu-step .edu-card { flex: 1; }
+.edu-step:not(:last-child)::after {
+  content: ''; position: absolute; left: 6px; top: 13px;
+  width: 3px; height: calc(100% + 32px);
+  background: var(--purple-deep); opacity: 0.35; z-index: 1;
+}
+
+@media (min-width: 860px) {
+  .edu-timeline { flex-direction: row; gap: 0; }
+  .edu-step { flex: 1; flex-direction: column; align-items: center; gap: 0; padding: 0 10px; }
+  .edu-step-dot { margin-top: 0; margin-bottom: 16px; }
+  .edu-step .edu-card { width: 100%; }
+  .edu-step:not(:last-child)::after { left: 50%; top: 7px; width: 100%; height: 3px; }
+}
