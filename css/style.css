@@ -291,7 +291,7 @@ main {
 .section--education { background: var(--cream); }
 .section--skills    { background: linear-gradient(180deg, var(--cream) 0%, var(--mint) 100%); }
 .section--hobbies   { background: var(--cream); }
-.section--projects  { background: linear-gradient(180deg, var(--cream) 0%, var(--yellow) 100%); }
+.section--projects  { background: linear-gradient(180deg, var(--cream) 0%, var(--pink) 100%); }
 
 /* Blob dekoratif / decorative blobs */
 .blob {
