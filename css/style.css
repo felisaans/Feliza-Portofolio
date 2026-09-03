@@ -521,6 +521,68 @@ main {
 .skill-card--green  { background: var(--green); }
 .skill-card--yellow { background: var(--yellow); }
 
+
+/* =========================================================
+   SKILLS — post-it note style
+========================================================= */
+.skill-card {
+  position: relative;
+  border-radius: 6px 6px 10px 10px;
+  padding-top: 30px;
+  box-shadow: 0 12px 20px -10px rgba(74, 63, 85, 0.35), 0 2px 6px rgba(74, 63, 85, 0.12);
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.skill-card:hover {
+  transform: rotate(0deg) translateY(-6px) scale(1.02);
+  box-shadow: 0 18px 26px -10px rgba(74, 63, 85, 0.4), 0 4px 8px rgba(74, 63, 85, 0.15);
+}
+/* pin head */
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff, var(--pin-color, var(--purple-deep)) 55%, rgba(0,0,0,0.25) 100%);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+/* pin needle shadow into the paper */
+.skill-card::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 9px;
+  background: rgba(0, 0, 0, 0.18);
+  border-radius: 2px;
+  z-index: 1;
+}
+/* alternating tilt + pin colors, matching each card's own pastel tone */
+.skill-card:nth-child(6n+1) { --tilt: -2deg; --pin-color: var(--pink-deep); }
+.skill-card:nth-child(6n+2) { --tilt: 1.5deg; --pin-color: var(--purple-deep); }
+.skill-card:nth-child(6n+3) { --tilt: -1deg;  --pin-color: var(--blue-deep); }
+.skill-card:nth-child(6n+4) { --tilt: 2deg;   --pin-color: var(--mint-deep); }
+.skill-card:nth-child(6n+5) { --tilt: -1.5deg; --pin-color: var(--green-deep); }
+.skill-card:nth-child(6n+6) { --tilt: 1deg;   --pin-color: var(--yellow-deep); }
+
+/* faint notebook-paper lines behind the skills section */
+.section--skills .section-inner {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 27px,
+    var(--line) 28px
+  );
+  background-position: 0 60px;
+}
+
 /* =========================================================
    6. HOBBIES
 ========================================================= */
