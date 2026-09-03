@@ -94,6 +94,8 @@ const i18n = {
   "nav-education": "Pendidikan", "nav-skills": "Keahlian", "nav-hobbies": "Hobi", "nav-projects": "Proyek",
   "skip": "Lewati ke konten",
   "home-cta": "Lihat Profil", "home-caption": "Foto saya",
+  "home-major": "Program Studi Teknik Informatika",
+  "home-univ": "Universitas Jabal Ghafur (UNIGHA)",
   "profile-kicker": "Profil", "profile-h2": "Tentang Saya",
   "profile-p1": "Hai, saya Feliza!",
   "profile-p2": "Saya mahasiswa Informatika semester 4 di Universitas Jabal Ghafur. Saya suka mengeksplorasi teknologi, mempelajari hal baru, dan mengubah ide-ide acak menjadi sesuatu yang nyata.",
