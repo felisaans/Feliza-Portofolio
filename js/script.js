@@ -2,7 +2,7 @@
 // script.js
 // Navigasi antar section seperti "halaman" (bukan scroll panjang):
 // klik nav / Next / Back akan mengganti section yang tampil.
-// Section navigation like separate "pages" (not one long scroll):
+// Section navigation like separate "pages":
 // clicking nav / Next / Back swaps which section is visible.
 // =========================================================
 
