@@ -873,7 +873,7 @@ main {
 }
 .project-card {
   position: relative;
-  margin-top: 20px;
+  margin-top: 13px;
   border-radius: 6px 22px 22px 22px;
   padding: 40px 20px;
   text-align: center;
@@ -881,7 +881,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   color: var(--ink-soft);
   font-weight: 600;
   transition: transform 0.2s ease, border-color 0.2s ease;
@@ -963,7 +963,7 @@ main {
 }
 .project-link:hover,
 .project-link:focus-visible {
-  background: var(--purple-deep);
+  background: var(--pink-deep);
   color: var(--white);
   transform: translateY(-2px);
 }
