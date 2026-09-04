@@ -930,7 +930,7 @@ main {
 }
 .project-title { font-weight: 700; font-size: 1.02rem; color: var(--ink); }
 .project-desc {
-  color: var(--ink-soft);
+  color: var(--ink);
   font-weight: 500;
   font-size: 0.9rem;
   line-height: 1.5;
