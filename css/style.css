@@ -920,7 +920,6 @@ main {
 .project-card--filled {
   border-style: solid;
   border-color: transparent;
-  box-shadow: var(--shadow-soft);
   color: var(--ink);
   text-align: left;
   align-items: flex-start;
