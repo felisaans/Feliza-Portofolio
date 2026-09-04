@@ -57,14 +57,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     history.replaceState(null, '', '#' + id);
 
-    // Halaman baru selalu mulai dari atas (di bawah navbar)
-    // Every "page" switch starts scrolled to the top (below the navbar)
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-
     if (focus) {
       target.setAttribute('tabindex', '-1');
       target.focus({ preventScroll: true });
     }
+
+    // Halaman baru selalu mulai dari atas (di bawah navbar).
+    // Dijalankan lewat double requestAnimationFrame supaya scroll di-reset
+    // SETELAH browser selesai layout ulang & fokus elemen baru — beberapa
+    // browser (terutama Safari mobile) suka menggeser scroll sendiri saat
+    // fokus berpindah walau preventScroll:true sudah dipakai.
+    // Every "page" switch starts scrolled to the top (below the navbar).
+    // Run via a double requestAnimationFrame so the reset happens AFTER
+    // the browser finishes re-layout & focusing the new element — some
+    // browsers (Safari on mobile especially) nudge the scroll position on
+    // focus even with preventScroll:true.
+    const resetScroll = () => window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    requestAnimationFrame(() => requestAnimationFrame(resetScroll));
   }
 
   // Cegat semua link internal (#id) supaya ganti section, bukan scroll browser
@@ -123,11 +132,12 @@ const i18n = {
   "skill6-d": "Mau dan mampu mempelajari alat, teknologi, dan pendekatan baru saat menghadapi tantangan baru.",
   "hobbies-kicker": "Hobi", "hobbies-h2": "Minat Saya",
   "hobby1": "Membaca", "hobby2": "Musik", "hobby3": "Proyek Coding", "hobby4": "Sastra Inggris",
+  "hobby5": "Bermain Game", "hobby6": "Menulis Jurnal",
   "projects-kicker": "Proyek", "projects-h2": "Hal yang Telah Saya Buat",
   "projects-lead": "Ini sekilas dari sesuatu yang telah saya buat — lebih banyak lagi akan datang!",
   "proj1-d": "Template website ulang tahun yang lucu dan interaktif — galeri foto, surat cinta, daftar alasan, dan confetti!",
   "proj2-d": "Website rental papan ucapan akrilik custom — pengguna bisa memilih desain, mengubah tulisan dengan live preview, dan langsung booking lewat WhatsApp.",
-  "view-project": "Lihat proyek", "visit-github": "Kunjungi di GitHub",
+  "view-project": "Demo Live", "visit-github": "Repositori GitHub",
   "proj-soon": "Proyek segera hadir",
   "footer-name": "Portofolio Feliza.", "footer-copy": "Portofolio Pribadi."
 };

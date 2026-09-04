@@ -243,13 +243,75 @@ main {
 }
 .section.is-active {
   display: flex;
-  animation: sectionIn 0.4s ease;
+  animation: sectionPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-@keyframes sectionIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
+@keyframes sectionPop {
+  0%   { opacity: 0; transform: scale(0.82) translateY(18px); }
+  60%  { opacity: 1; transform: scale(1.035) translateY(-3px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
 }
+
+/* =========================================================
+   POP-IN — cute bouncy entrance for every container/card/icon
+   Each .pop-in element (or safe direct target) starts hidden
+   and pops into place once its section becomes the active
+   "page". They're wrapped in their own element rather than
+   animated directly on cards that already have their own
+   :hover transform (skill/edu/project cards, the polaroid's
+   float), so hovering still works normally once settled.
+========================================================= */
+.pop-in { opacity: 0; }
+
+@keyframes popIn {
+  0%   { opacity: 0; transform: scale(0.5); }
+  55%  { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.section.is-active .pop-in,
+.section.is-active .app-icon.pop-in,
+.section.is-active .edu-step.pop-in,
+.section.is-active .phone-mock.pop-in {
+  animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Home: photo pops first, text block right after */
+.section--home.is-active .home-inner > .pop-in:nth-child(1) { animation-delay: 0.05s; }
+.section--home.is-active .home-inner > .pop-in:nth-child(2) { animation-delay: 0.22s; }
+
+/* Profile: the clipboard */
+.section--profile.is-active .clipboard.pop-in { animation-delay: 0.08s; }
+
+/* Education: one timeline step at a time */
+.section--education.is-active .edu-grid > .edu-step.pop-in:nth-child(1) { animation-delay: 0.05s; }
+.section--education.is-active .edu-grid > .edu-step.pop-in:nth-child(2) { animation-delay: 0.16s; }
+.section--education.is-active .edu-grid > .edu-step.pop-in:nth-child(3) { animation-delay: 0.27s; }
+.section--education.is-active .edu-grid > .edu-step.pop-in:nth-child(4) { animation-delay: 0.38s; }
+
+/* Skills: post-it notes popping in one by one */
+.section--skills.is-active .skills-grid > .pop-in:nth-child(1) { animation-delay: 0.05s; }
+.section--skills.is-active .skills-grid > .pop-in:nth-child(2) { animation-delay: 0.12s; }
+.section--skills.is-active .skills-grid > .pop-in:nth-child(3) { animation-delay: 0.19s; }
+.section--skills.is-active .skills-grid > .pop-in:nth-child(4) { animation-delay: 0.26s; }
+.section--skills.is-active .skills-grid > .pop-in:nth-child(5) { animation-delay: 0.33s; }
+.section--skills.is-active .skills-grid > .pop-in:nth-child(6) { animation-delay: 0.4s; }
+
+/* Hobbies: phone first, then each app icon */
+.section--hobbies.is-active .phone-mock.pop-in { animation-delay: 0.05s; }
+.section--hobbies.is-active .app-grid > .app-icon.pop-in:nth-child(1) { animation-delay: 0.25s; }
+.section--hobbies.is-active .app-grid > .app-icon.pop-in:nth-child(2) { animation-delay: 0.33s; }
+.section--hobbies.is-active .app-grid > .app-icon.pop-in:nth-child(3) { animation-delay: 0.41s; }
+.section--hobbies.is-active .app-grid > .app-icon.pop-in:nth-child(4) { animation-delay: 0.49s; }
+.section--hobbies.is-active .app-grid > .app-icon.pop-in:nth-child(5) { animation-delay: 0.57s; }
+.section--hobbies.is-active .app-grid > .app-icon.pop-in:nth-child(6) { animation-delay: 0.65s; }
+
+/* Projects: each folder pops in turn */
+.section--projects.is-active .projects-grid > .pop-in:nth-child(1) { animation-delay: 0.05s; }
+.section--projects.is-active .projects-grid > .pop-in:nth-child(2) { animation-delay: 0.14s; }
+.section--projects.is-active .projects-grid > .pop-in:nth-child(3) { animation-delay: 0.23s; }
+.section--projects.is-active .projects-grid > .pop-in:nth-child(4) { animation-delay: 0.32s; }
+.section--projects.is-active .projects-grid > .pop-in:nth-child(5) { animation-delay: 0.41s; }
 
 .section-inner {
   position: relative;
@@ -394,29 +456,134 @@ main {
   gap: 14px;
 }
 
+/* --- Clipboard mockup wrapping the About Me card --- */
+.clipboard {
+  position: relative;
+  max-width: 560px;
+  margin: 34px auto 0;
+  padding: 30px 16px 18px;
+  background: linear-gradient(180deg, var(--pink) 0%, var(--pink-deep) 130%);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-soft);
+  transform: rotate(-1deg);
+}
+.clipboard-clip {
+  position: absolute;
+  top: -17px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92px;
+  height: 32px;
+  background: linear-gradient(180deg, #F1EDF5 0%, #C9BFD6 55%, #948AA3 100%);
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(74, 63, 85, 0.25);
+}
+.clipboard-clip::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--cream);
+  transform: translate(-50%, -50%);
+  box-shadow: inset 0 2px 3px rgba(74, 63, 85, 0.3);
+}
+.clipboard-clip::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -9px;
+  width: 56px;
+  height: 13px;
+  background: #D8CEE1;
+  border-radius: 4px;
+  transform: translateX(-50%);
+  box-shadow: 0 3px 6px rgba(74, 63, 85, 0.2);
+}
+.clipboard-paper.card--text {
+  position: relative;
+  margin-top: 0;
+  border-radius: 8px 8px 4px 4px;
+  transform: rotate(0.5deg);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 34px), calc(100% - 34px) 100%, 0 100%);
+}
+.clipboard-paper.card--text::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 34px;
+  height: 34px;
+  background: linear-gradient(135deg, var(--cream) 50%, rgba(74, 63, 85, 0.14) 51%);
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  border-radius: 0 0 4px 0;
+}
+@media (max-width: 380px) {
+  .clipboard-clip { width: 78px; height: 28px; }
+}
+
 /* =========================================================
    3. CONTACT
 ========================================================= */
 .contact-list {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 18px;
   margin-top: 28px;
 }
+.contact-list li { display: flex; opacity: 0; }
+.contact-list li:nth-child(odd)  { justify-content: flex-start; }
+.contact-list li:nth-child(even) { justify-content: flex-end; }
+
 .contact-card {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
+  max-width: 88%;
   background: var(--white);
-  padding: 16px 18px;
-  border-radius: var(--r-md);
+  padding: 14px 18px;
+  border-radius: 22px;
   box-shadow: var(--shadow-soft);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .contact-card:hover {
-  transform: translateY(-4px) rotate(-0.4deg);
+  transform: translateY(-4px) scale(1.02);
   box-shadow: 0 18px 34px -14px rgba(122, 92, 143, 0.4);
 }
+/* Speech-bubble tail, colored to match each bubble's own background */
+.contact-card::after {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  width: 16px;
+  height: 14px;
+  background-color: inherit;
+}
+.contact-list li:nth-child(odd) .contact-card {
+  border-bottom-left-radius: 6px;
+}
+.contact-list li:nth-child(odd) .contact-card::after {
+  left: -6px;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+.contact-list li:nth-child(even) .contact-card {
+  flex-direction: row-reverse;
+  border-bottom-right-radius: 6px;
+}
+.contact-list li:nth-child(even) .contact-card::after {
+  right: -6px;
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+}
+.contact-list li:nth-child(even) .contact-text { align-items: flex-end; text-align: right; }
+
+.contact-card--pink,
+.contact-card--purple,
+.contact-card--mint,
+.contact-card--slate  { background: var(--cream); }
+
 .contact-icon {
   width: 46px;
   height: 46px;
@@ -424,14 +591,35 @@ main {
   display: grid;
   place-items: center;
   flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.7);
 }
-.contact-icon--pink   { background: var(--pink); color: #C43F72; }
-.contact-icon--purple { background: var(--purple); color: #6C46C9; }
-.contact-icon--mint   { background: var(--mint); color: #1D9A79; }
-.contact-icon--slate { background: #E4E1EC; color: #4A3F55; }
+.contact-icon--pink   { color: #C43F72; }
+.contact-icon--purple { color: #6C46C9; }
+.contact-icon--mint   { color: #1D9A79; }
+.contact-icon--slate  { color: #4A3F55; }
 .contact-text { display: flex; flex-direction: column; gap: 2px; }
 .contact-text strong { font-weight: 700; }
 .contact-text span { color: var(--ink-soft); font-size: 0.92rem; }
+
+/* Bubbles pop in from alternating sides once the Contact "page" is active */
+@keyframes bubbleInLeft {
+  from { opacity: 0; transform: translateX(-42px) scale(0.75); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes bubbleInRight {
+  from { opacity: 0; transform: translateX(42px) scale(0.75); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+.section--contact.is-active .contact-list li:nth-child(odd) {
+  animation: bubbleInLeft 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+.section--contact.is-active .contact-list li:nth-child(even) {
+  animation: bubbleInRight 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+.section--contact.is-active .contact-list li:nth-child(1) { animation-delay: 0.05s; }
+.section--contact.is-active .contact-list li:nth-child(2) { animation-delay: 0.15s; }
+.section--contact.is-active .contact-list li:nth-child(3) { animation-delay: 0.25s; }
+.section--contact.is-active .contact-list li:nth-child(4) { animation-delay: 0.35s; }
 
 /* =========================================================
    4. EDUCATION
@@ -449,10 +637,10 @@ main {
   transition: transform 0.2s ease;
 }
 .edu-card:hover { transform: translateY(-4px); }
-.edu-card--pink   { background: var(--pink); }
-.edu-card--blue   { background: var(--blue); }
-.edu-card--mint   { background: var(--mint); }
-.edu-card--yellow { background: var(--yellow); }
+.edu-card--pink   { background: rgba(255, 211, 226, 0.6); }
+.edu-card--blue   { background: rgba(210, 231, 255, 0.6); }
+.edu-card--mint   { background: rgba(207, 251, 238, 0.6); }
+.edu-card--yellow { background: rgba(254, 237, 173, 0.6); }
 
 .edu-icon {
   display: inline-grid;
@@ -565,40 +753,113 @@ main {
   z-index: 1;
 }
 /* alternating tilt + pin colors, matching each card's own pastel tone */
-.skill-card:nth-child(6n+1) { --tilt: -2deg; --pin-color: var(--pink-deep); }
-.skill-card:nth-child(6n+2) { --tilt: 1.5deg; --pin-color: var(--purple-deep); }
-.skill-card:nth-child(6n+3) { --tilt: -1deg;  --pin-color: var(--blue-deep); }
-.skill-card:nth-child(6n+4) { --tilt: 2deg;   --pin-color: var(--mint-deep); }
-.skill-card:nth-child(6n+5) { --tilt: -1.5deg; --pin-color: var(--green-deep); }
-.skill-card:nth-child(6n+6) { --tilt: 1deg;   --pin-color: var(--yellow-deep); }
+/* Dihitung dari posisi .pop-in di dalam .skills-grid (bukan .skill-card
+   itu sendiri) — karena tiap .skill-card dibungkus .pop-in-nya masing-masing,
+   jadi :nth-child harus dicek di elemen pembungkusnya. */
+/* Counted from each .pop-in's position inside .skills-grid (not the
+   .skill-card itself) — since every .skill-card is wrapped in its own
+   .pop-in, :nth-child has to be checked on that wrapper instead. */
+.skills-grid > .pop-in:nth-child(6n+1) .skill-card { --tilt: -2deg; --pin-color: var(--pink-deep); }
+.skills-grid > .pop-in:nth-child(6n+2) .skill-card { --tilt: 1.5deg; --pin-color: var(--purple-deep); }
+.skills-grid > .pop-in:nth-child(6n+3) .skill-card { --tilt: -1deg;  --pin-color: var(--blue-deep); }
+.skills-grid > .pop-in:nth-child(6n+4) .skill-card { --tilt: 2deg;   --pin-color: var(--mint-deep); }
+.skills-grid > .pop-in:nth-child(6n+5) .skill-card { --tilt: -1.5deg; --pin-color: var(--green-deep); }
+.skills-grid > .pop-in:nth-child(6n+6) .skill-card { --tilt: 1deg;   --pin-color: var(--yellow-deep); }
 
 /* =========================================================
    6. HOBBIES
 ========================================================= */
-.hobbies-grid {
+.phone-mock {
+  position: relative;
+  width: 100%;
+  max-width: 280px;
+  margin: 36px auto 0;
+  padding: 34px 14px 46px;
+  background: linear-gradient(180deg, var(--pink) 0%, var(--pink-deep) 130%);
+  border-radius: 44px;
+  box-shadow: var(--shadow-soft);
+}
+.phone-topbar {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.phone-cam { width: 8px; height: 8px; border-radius: 50%; background: rgba(74, 63, 85, 0.35); }
+.phone-speaker { width: 44px; height: 5px; border-radius: 4px; background: rgba(74, 63, 85, 0.28); }
+.phone-screen {
+  background: var(--white);
+  border-radius: 28px;
+  min-height: 250px;
+  padding: 26px 16px;
+  display: flex;
+  align-items: center;
+  box-shadow: inset 0 2px 6px rgba(74, 63, 85, 0.08);
+}
+.phone-home {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 3px solid rgba(74, 63, 85, 0.28);
+}
+.phone-heart {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  box-shadow: var(--shadow-soft);
+  z-index: 1;
+}
+.phone-heart .icon { width: 16px; height: 16px; }
+.phone-heart--mint   { background: var(--mint);   color: var(--mint-deep);   top: 20%;  left: -14px; }
+.phone-heart--purple { background: var(--purple); color: var(--purple-deep); top: 54%;  right: -14px; }
+.phone-heart--green  { background: var(--green);  color: var(--green-deep); bottom: 10%; left: -14px; }
+
+.app-grid {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
-  margin-top: 28px;
+  gap: 22px 14px;
 }
-.hobby-card {
-  border-radius: var(--r-md);
-  padding: 26px 16px;
-  text-align: center;
-  box-shadow: var(--shadow-soft);
+.app-icon {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  font-weight: 600;
+  gap: 8px;
+  text-align: center;
+}
+.app-icon span { font-size: 0.72rem; font-weight: 700; color: var(--ink); line-height: 1.25; }
+.app-icon-tile {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  box-shadow: var(--shadow-soft);
   transition: transform 0.2s ease;
 }
-.hobby-card:hover { transform: translateY(-4px) rotate(-1deg); }
-.hobby-card .icon { width: 30px; height: 30px; }
-.hobby-card--pink   { background: var(--pink); }
-.hobby-card--blue   { background: var(--blue); }
-.hobby-card--mint   { background: var(--mint); }
-.hobby-card--yellow { background: var(--yellow); }
+.app-icon:hover .app-icon-tile,
+.app-icon:focus-visible .app-icon-tile { transform: translateY(-4px) scale(1.06); }
+.app-icon-tile .icon { width: 26px; height: 26px; color: var(--ink); }
+.app-icon-tile--pink   { background: var(--pink); }
+.app-icon-tile--blue   { background: var(--blue); }
+.app-icon-tile--mint   { background: var(--mint); }
+.app-icon-tile--yellow { background: var(--yellow); }
+.app-icon-tile--purple { background: var(--purple); }
+.app-icon-tile--green  { background: var(--green); }
+
+@media (min-width: 480px) {
+  .phone-mock { max-width: 300px; }
+}
 
 /* =========================================================
    7. PROJECTS
@@ -610,7 +871,9 @@ main {
   margin-top: 28px;
 }
 .project-card {
-  border-radius: var(--r-md);
+  position: relative;
+  margin-top: 20px;
+  border-radius: 6px 22px 22px 22px;
   padding: 40px 20px;
   text-align: center;
   border: 2px dashed rgba(74, 63, 85, 0.25);
@@ -622,6 +885,20 @@ main {
   font-weight: 600;
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: -14px;
+  left: 0;
+  width: 48%;
+  min-width: 92px;
+  max-width: 160px;
+  height: 20px;
+  background-color: inherit;
+  border: inherit;
+  border-bottom: none;
+  border-radius: 14px 14px 0 0;
+}
 .project-card:hover { transform: translateY(-4px); border-color: var(--purple-deep); }
 .project-icon {
   width: 46px;
@@ -631,11 +908,11 @@ main {
   place-items: center;
   background: var(--white);
 }
-.project-card--pink   { background: rgba(255, 212, 227, 0.704); }
-.project-card--purple { background: rgba(230, 208, 255, 0.774); }
-.project-card--mint   { background: rgba(207, 251, 244, 0.773); }
-.project-card--green   { background: rgba(207, 251, 214, 0.716); }
-.project-card--yellow   { background: rgba(251, 250, 207, 0.775); }
+.project-card--pink   { background: rgba(255, 212, 227, 0.4); }
+.project-card--purple { background: rgba(230, 208, 255, 0.42); }
+.project-card--mint   { background: rgba(207, 251, 244, 0.42); }
+.project-card--green   { background: rgba(207, 251, 214, 0.4); }
+.project-card--yellow   { background: rgba(251, 250, 207, 0.42); }
 
 /* Kartu proyek asli (bukan placeholder "coming soon") */
 /* A real, filled-in project card (not a "coming soon" placeholder) */
@@ -760,7 +1037,6 @@ main {
 @media (min-width: 640px) {
   .edu-grid { grid-template-columns: repeat(2, 1fr); }
   .skills-grid { grid-template-columns: repeat(2, 1fr); }
-  .hobbies-grid { grid-template-columns: repeat(4, 1fr); }
   .projects-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
