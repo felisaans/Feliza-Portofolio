@@ -4,6 +4,7 @@
 // Section navigation like separate "pages":
 // clicking nav / Next / Back swaps which section is visible.
 // =========================================================
+
 document.addEventListener('DOMContentLoaded', () => {
   const sections = Array.from(document.querySelectorAll('main .section[id]'));
   const navLinks = document.querySelectorAll('.primary-nav a[data-nav]');
