@@ -909,11 +909,11 @@ main {
   place-items: center;
   background: var(--white);
 }
-.project-card--pink    { background: #D9B9C5; }
-.project-card--purple  { background: #C3BADB; }
-.project-card--mint    { background: #B3D1C8; }
-.project-card--green   { background: #BFCFB3; }
-.project-card--yellow  { background: #D6CA9D; }
+.project-card--pink    { background: var(--pink); }
+.project-card--purple  { background: var(--purple); }
+.project-card--mint    { background: var(--mint); }
+.project-card--green   { background: var(--green); }
+.project-card--yellow  { background: var(--yellow); }
 
 /* Kartu proyek asli (bukan placeholder "coming soon") */
 /* A real, filled-in project card (not a "coming soon" placeholder) */
