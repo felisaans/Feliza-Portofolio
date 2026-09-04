@@ -881,7 +881,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   color: var(--ink-soft);
   font-weight: 600;
   transition: transform 0.2s ease, border-color 0.2s ease;
@@ -957,9 +957,9 @@ main {
   cursor: pointer;
 }
 .project-link {
-  color: var(--purple-deep);
+  color: var(--pink-deep);
   background: var(--white);
-  border-color: var(--purple-deep);
+  border-color: var(--pink-deep);
 }
 .project-link:hover,
 .project-link:focus-visible {
