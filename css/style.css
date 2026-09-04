@@ -347,7 +347,6 @@ main {
 .section-nav--single { justify-content: center; }
 .section--projects .section-nav--single { justify-content: flex-start; }
 
-/* Warna pastel tiap section / pastel background per section */
 .section--home     { background: var(--cream); }
 .section--profile   { background: linear-gradient(180deg, var(--purple) 0%, var(--cream) 100%); }
 .section--contact   { background: linear-gradient(180deg, var(--blue) 0%, var(--cream) 100%); }
