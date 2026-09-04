@@ -593,10 +593,11 @@ main {
   flex-shrink: 0;
   background: rgba(255, 255, 255, 0.7);
 }
-.contact-icon--pink   { color: #C43F72; }
-.contact-icon--purple { color: #6C46C9; }
-.contact-icon--mint   { color: #1D9A79; }
-.contact-icon--slate  { color: #4A3F55; }
+.contact-icon--pink   { color: #C43F72; background: var(--pink); }
+.contact-icon--purple { color: #6C46C9; background: var(--purple); }
+.contact-icon--mint   { color: #1D9A79; background: var(--mint); }
+.contact-icon--green  { color: #22A45D; background: var(--green); }
+.contact-icon--slate  { color: #4A3F55; background: #E4E1EC; }
 .contact-text { display: flex; flex-direction: column; gap: 2px; }
 .contact-text strong { font-weight: 700; }
 .contact-text span { color: var(--ink-soft); font-size: 0.92rem; }
@@ -908,11 +909,11 @@ main {
   place-items: center;
   background: var(--white);
 }
-.project-card--pink   { background: rgba(255, 212, 227, 0.4); }
-.project-card--purple { background: rgba(230, 208, 255, 0.42); }
-.project-card--mint   { background: rgba(207, 251, 244, 0.42); }
-.project-card--green   { background: rgba(207, 251, 214, 0.4); }
-.project-card--yellow   { background: rgba(251, 250, 207, 0.42); }
+.project-card--pink    { background: #D9B9C5; }
+.project-card--purple  { background: #C3BADB; }
+.project-card--mint    { background: #B3D1C8; }
+.project-card--green   { background: #BFCFB3; }
+.project-card--yellow  { background: #D6CA9D; }
 
 /* Kartu proyek asli (bukan placeholder "coming soon") */
 /* A real, filled-in project card (not a "coming soon" placeholder) */
