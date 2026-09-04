@@ -324,7 +324,7 @@ main {
 
 .section-kicker {
   font-weight: 700;
-  color: var(--purple-deep);
+  color: var(--ink);
   margin-bottom: 6px;
   letter-spacing: 0.02em;
 }
@@ -351,9 +351,9 @@ main {
 .section--profile   { background: linear-gradient(180deg, var(--purple) 0%, var(--cream) 100%); }
 .section--contact   { background: linear-gradient(180deg, var(--blue) 0%, var(--cream) 100%); }
 .section--education { background: var(--cream); }
-.section--skills    { background: linear-gradient(180deg, var(--cream) 0%, var(--mint) 100%); }
+.section--skills    { background: var(--cream); }
 .section--hobbies   { background: var(--cream); }
-.section--projects  { background: linear-gradient(180deg, var(--cream) 0%, var(--pink) 100%); }
+.section--projects  { background: var(--cream); }
 
 /* Blob dekoratif / decorative blobs */
 .blob {
@@ -371,7 +371,7 @@ main {
 .blob--5 { width: 220px; height: 220px; top: -50px; right: -80px; background: var(--mint); }
 .blob--6 { width: 180px; height: 180px; bottom: -30px; left: -60px; background: var(--pink); }
 .blob--7 { width: 200px; height: 200px; top: -30px; right: -60px; background: var(--blue); }
-.blob--8 { width: 220px; height: 220px; bottom: -50px; left: -70px; background: var(--green); }
+.blob--8 { width: 220px; height: 220px; bottom: -50px; left: -70px; background: var(--purple); }
 
 /* =========================================================
    1. HOME
@@ -829,7 +829,7 @@ main {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 22px 14px;
+  gap: 30px 18px;
 }
 .app-icon {
   display: flex;
@@ -875,7 +875,7 @@ main {
   position: relative;
   margin-top: 13px;
   border-radius: 6px 22px 22px 22px;
-  padding: 40px 20px;
+  padding: 20px 20px;
   text-align: center;
   border: 2px dashed rgba(74, 63, 85, 0.25);
   display: flex;
