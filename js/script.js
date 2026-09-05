@@ -137,6 +137,7 @@ const i18n = {
   "projects-lead": "Ini sekilas dari sesuatu yang telah saya buat — lebih banyak lagi akan datang!",
   "proj1-d": "Template website ulang tahun yang lucu dan interaktif — galeri foto, surat cinta, daftar alasan, dan confetti!",
   "proj2-d": "Website rental papan ucapan akrilik custom — pengguna bisa memilih desain, mengubah tulisan dengan live preview, dan langsung booking lewat WhatsApp.",
+  "proj3-d": "Proyek Rekayasa Perangkat Lunak untuk kuliah — aplikasi web yang mengajarkan bahasa Inggris seputar teknologi sehari-hari untuk siswa SMA Indonesia lewat simulator tech interaktif, bukan daftar kosakata biasa.",
   "view-project": "Demo Live", "visit-github": "Repositori GitHub",
   "proj-soon": "Proyek segera hadir",
   "footer-name": "Portofolio Feliza.", "footer-copy": "Portofolio Pribadi."
