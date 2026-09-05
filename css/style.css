@@ -910,6 +910,7 @@ main {
   background: var(--white);
 }
 .project-card--pink    { background: var(--pink); }
+.project-card--yellow  { background: var(--blue); }
 .project-card--purple  { background: var(--purple); }
 .project-card--mint    { background: var(--mint); }
 .project-card--green   { background: var(--green); }
