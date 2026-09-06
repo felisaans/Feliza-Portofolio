@@ -829,7 +829,7 @@ main {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 18px 18px;
+  gap: 30px 18px;
    padding-bottom: 160px;   /* ← baris baru */
 }
 .app-icon {
