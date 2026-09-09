@@ -136,7 +136,7 @@ const i18n = {
   "projects-kicker": "Proyek", "projects-h2": "Hal yang Telah Saya Buat",
   "projects-lead": "Ini sekilas dari sesuatu yang telah saya buat — lebih banyak lagi akan datang!",
   "proj1-d": "Template website ulang tahun yang lucu dan interaktif — galeri foto, surat cinta, daftar alasan, dan confetti!",
-  "proj2-d": "Website rental papan ucapan akrilik custom — pengguna bisa memilih desain, mengubah tulisan dengan live preview, dan langsung booking lewat WhatsApp.",
+  "proj2-d": "Website rental papan ucapan akrilik custom — pelanggan bisa memilih desain, mengubah tulisan dengan live preview, dan langsung booking lewat WhatsApp.",
   "proj3-d": "Sistem informasi pengajuan magang berbasis web untuk mahasiswa dan admin kampus, dari pengajuan sampai verifikasi dokumen, dengan Google Sheets sebagai database.",
   "view-project": "Demo Live", "visit-github": "Repositori",
   "proj-soon": "Proyek segera hadir",
