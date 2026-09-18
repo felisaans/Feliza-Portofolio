@@ -7,17 +7,25 @@
 :root {
   /* --- Pastel Palette --- */
   --pink:    #FFD3E2;
-  --pink-deep: #FF9FC0;
+  --pink-deep: #fea5c4;
   --purple:  #E2D6FF;
-  --purple-deep: #B79CFF;
+  --purple-deep: #9f88de;
   --blue:    #D2E7FF;
-  --blue-deep: #8FBFFF;
+  --blue-deep: #87b1e9;
   --mint:    #CFFBEE;
-  --mint-deep: #7BE8CB;
+  --mint-deep: #7cd4bd;
   --green:   #DFF7CF;
-  --green-deep: #A9E084;
+  --green-deep: #9dcd7e;
   --yellow:  #feedad;
-  --yellow-deep: #FFDD73;
+  --yellow-deep: #ebc961;
+
+  /* --- Pale variants (section backgrounds) --- */
+  --pink-pale:   #feebf1;
+  --purple-pale: #ede9f9;
+  --blue-pale:   #e7f0fa;
+  --mint-pale:   #e3f7f0;
+  --yellow-pale: #FFF8DE;
+  --green-pale:  #e9f7dd;
 
   /* --- Neutrals --- */
   --white: #FFFFFF;
@@ -53,7 +61,21 @@
    Basic reset
 ========================================================= */
 *, *::before, *::after { box-sizing: border-box; }
-html, body { height: 100%; }
+/* CATATAN: `html, body { height: 100% }` sengaja TIDAK dipakai.
+   Dikombinasikan dengan `overflow-x: hidden` di bawah, itu bikin <body>
+   jadi scroll container-nya sendiri (tingginya terkunci 1 layar), padahal
+   `document.scrollingElement` tetap <html>. Akibatnya `window.scrollTo(0, 0)`
+   di showSection() tidak mereset scroll yang sebenarnya, jadi section yang
+   isinya lebih tinggi dari layar terbuka dalam keadaan setengah ter-scroll
+   dan judulnya kelihatan "kepotong". Tinggi auto bikin scroll balik normal
+   ke halaman. */
+/* NOTE: `html, body { height: 100% }` is deliberately omitted. Combined with
+   the `overflow-x: hidden` below it turned <body> into its own scroll
+   container (locked to one screen tall) while `document.scrollingElement`
+   stayed <html>, so `window.scrollTo(0, 0)` in showSection() never reset the
+   real scroll position — sections taller than the viewport opened partly
+   scrolled with their heading clipped. Auto height restores normal page
+   scrolling. */
 html {
   overflow-x: hidden;
 }
@@ -123,7 +145,7 @@ p  { line-height: 1.65; }
   height: var(--header-h);
   display: flex;
   align-items: center;
-  background: rgba(255, 251, 246, 0.92);
+  background: rgba(255, 255, 255, 0.549);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
@@ -179,7 +201,7 @@ p  { line-height: 1.65; }
   transition: color 0.2s ease, background 0.2s ease, transform 0.15s ease;
 }
 .primary-nav a .icon { width: 19px; height: 19px; }
-.primary-nav a:hover { background: var(--pink); color: var(--ink); }
+.primary-nav a:hover { background: var(--pink-pale); color: var(--ink); }
 .primary-nav a.is-active {
   color: var(--ink);
   background: linear-gradient(90deg, var(--pink), var(--purple));
@@ -347,13 +369,13 @@ main {
 .section-nav--single { justify-content: center; }
 .section--projects .section-nav--single { justify-content: flex-start; }
 
-.section--home     { background: var(--cream); }
-.section--profile   { background: linear-gradient(180deg, var(--purple) 0%, var(--cream) 100%); }
+.section--home     { background: linear-gradient(180deg, var(--purple-pale) 0%, var(--cream) 100%); }
+.section--profile   { background: linear-gradient(180deg, var(--pink-pale) 0%, var(--cream) 100%); }
 .section--contact   { background: linear-gradient(180deg, var(--blue) 0%, var(--cream) 100%); }
-.section--education { background: linear-gradient(180deg, var(--yellow) 0%, var(--cream) 100%); }
-.section--skills    { background: linear-gradient(180deg, var(--pink) 0%, var(--cream) 100%); }
-.section--hobbies   { background: linear-gradient(180deg, var(--mint) 0%, var(--cream) 100%); }
-.section--projects  { background: var(--cream); }
+.section--education { background: linear-gradient(180deg, var(--yellow-pale) 0%, var(--cream) 100%); }
+.section--skills    { background: linear-gradient(180deg, var(--green-pale) 0%, var(--cream) 100%); }
+.section--hobbies   { background: linear-gradient(180deg, var(--mint-pale) 0%, var(--cream) 100%); }
+.section--projects  { background: linear-gradient(180deg, var(--purple-pale) 0%, var(--cream) 100%); }
 
 /* Blob dekoratif / decorative blobs */
 .blob {
@@ -364,13 +386,13 @@ main {
   opacity: 0.55;
   pointer-events: none;
 }
-.blob--1 { width: 220px; height: 220px; top: -60px; right: -60px; background: var(--purple); }
-.blob--2 { width: 160px; height: 160px; bottom: 10%; left: -50px; background: var(--pink); }
-.blob--3 { width: 200px; height: 200px; top: -40px; left: -70px; background: var(--pink); }
+.blob--1 { width: 220px; height: 220px; top: -60px; right: -60px; background: var(--pink); }
+.blob--2 { width: 160px; height: 160px; bottom: 10%; left: -50px; background: var(--purple); }
+.blob--3 { width: 200px; height: 200px; top: -40px; left: -70px; background: var(--white); }
 .blob--4 { width: 180px; height: 180px; bottom: -40px; right: -40px; background: var(--purple); }
-.blob--5 { width: 220px; height: 220px; top: -50px; right: -80px; background: var(--mint); }
-.blob--6 { width: 180px; height: 180px; bottom: -30px; left: -60px; background: var(--pink); }
-.blob--7 { width: 200px; height: 200px; top: -30px; right: -60px; background: var(--blue); }
+.blob--5 { width: 220px; height: 220px; top: -50px; right: -80px; background: var(--blue); }
+.blob--6 { width: 180px; height: 180px; bottom: -30px; left: -60px; background: var(--blue); }
+.blob--7 { width: 200px; height: 200px; top: -30px; right: -60px; background: var(--purple); }
 .blob--8 { width: 220px; height: 220px; bottom: -50px; left: -70px; background: var(--purple); }
 
 /* =========================================================
@@ -442,6 +464,38 @@ main {
   margin-bottom: 26px;
 }
 
+.home-quote {
+  color: var(--purple-deep);
+  font-weight: 700;
+  font-style: italic;
+  font-size: 0.95rem;
+  margin: -14px 0 22px;
+}
+
+.typing {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--purple-deep);
+  animation: typing 3s steps(40, end) infinite;
+}
+
+@keyframes typing {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  85% {
+    border-right-color: var(--purple-deep);
+  }
+
+  100% {
+    clip-path: inset(0 0 0 0);
+    border-right-color: transparent;
+  }
+}
+
+
 /* =========================================================
    CARD TEKS (Profile)
 ========================================================= */
@@ -462,7 +516,7 @@ main {
   max-width: 560px;
   margin: 34px auto 0;
   padding: 30px 16px 18px;
-  background: linear-gradient(180deg, var(--mint) 0%, var(--mint-deep) 130%);
+  background: linear-gradient(180deg, var(--ink-soft) 0%, var(--ink) 130%);
   border-radius: var(--r-lg);
   box-shadow: var(--shadow-soft);
   transform: rotate(-1deg);
@@ -519,6 +573,19 @@ main {
   background: linear-gradient(135deg, var(--cream) 50%, rgba(74, 63, 85, 0.14) 51%);
   clip-path: polygon(100% 0, 100% 100%, 0 100%);
   border-radius: 0 0 4px 0;
+}
+.clipboard-paper p > span.is-typing::after {
+  content: "";
+  display: inline-block;
+  width: 2px;
+  height: 0.95em;
+  margin-left: 2px;
+  background: var(--ink);
+  vertical-align: -0.15em;
+  animation: typeCaretBlink 0.75s steps(1) infinite;
+}
+@keyframes typeCaretBlink {
+  50% { opacity: 0; }
 }
 @media (max-width: 380px) {
   .clipboard-clip { width: 78px; height: 28px; }
@@ -646,10 +713,10 @@ main {
   transition: transform 0.2s ease;
 }
 .edu-card:hover { transform: translateY(-4px); }
-.edu-card--pink   { background: rgba(255, 211, 226, 0.6); }
-.edu-card--blue   { background: rgba(210, 231, 255, 0.6); }
-.edu-card--mint   { background: rgba(207, 251, 238, 0.6); }
-.edu-card--yellow { background: rgba(254, 237, 173, 0.6); }
+.edu-card--pink   { background: rgba(255, 211, 225, 0.851); }
+.edu-card--blue   { background: rgba(210, 231, 255, 0.904); }
+.edu-card--mint   { background: rgba(207, 251, 238, 0.815); }
+.edu-card--yellow { background: rgb(255, 235, 165); }
 
 /* Kartu University dibuat lebih 'hidup' — nandain ini yang lagi
    dijalani sekarang, beda dari jenjang lain yang udah kelar. */
@@ -657,8 +724,8 @@ main {
    the one currently in progress, unlike the other finished stages. */
 .edu-card--current {
   background: linear-gradient(135deg, var(--yellow) 0%, var(--yellow-deep) 130%);
-  border: 2px solid var(--yellow-deep);
-  box-shadow: 0 18px 34px -14px rgba(255, 179, 71, 0.55), var(--shadow-soft);
+  border: 3px solid var(--yellow);
+  box-shadow: 0 18px 34px -14px rgba(255, 235, 156, 0.908), var(--shadow-soft);
   animation: eduCardGlow 2.6s ease-in-out infinite;
 }
 .edu-card--current .edu-icon { background: rgba(255, 255, 255, 0.85); }
@@ -680,14 +747,14 @@ main {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #FF9F2E;
+  background: #fce324;
   flex-shrink: 0;
   animation: eduDotPulse 1.6s ease-in-out infinite;
 }
 
 @keyframes eduCardGlow {
-  0%, 100% { box-shadow: 0 18px 34px -14px rgba(255, 179, 71, 0.55), var(--shadow-soft); }
-  50%      { box-shadow: 0 18px 40px -10px rgba(255, 179, 71, 0.8), var(--shadow-soft); }
+  0%, 100% { box-shadow: 0 18px 34px -14px rgba(255, 215, 71, 0.55), var(--shadow-soft); }
+  50%      { box-shadow: 0 18px 40px -10px rgba(255, 215, 71, 0.8), var(--shadow-soft); }
 }
 @keyframes eduDotPulse {
   0%, 100% { transform: scale(1); opacity: 1; }
@@ -827,10 +894,10 @@ main {
   max-width: 280px;
   margin: 36px auto 0;
   padding: 47px 14px 52px;
-  background: var(--ink-soft);
-  border: 1.5px solid rgba(74, 63, 85, 0.08);
+  background: var(--ink);
+  border: 1.5px solid rgba(74, 63, 85, 0.18);
   border-radius: 44px;
-  box-shadow: 0 24px 44px -18px rgba(74, 63, 85, 0.4);
+  box-shadow: 0 28px 46px -18px rgba(74, 63, 85, 0.45), 0 10px 18px -10px rgba(74, 63, 85, 0.3);
 }
 .phone-topbar {
   position: absolute;
@@ -861,7 +928,7 @@ main {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  border: 3px solid rgba(74, 63, 85, 0.28);
+  background: rgb(173, 173, 173);
 }
 .phone-heart {
   position: absolute;
@@ -872,11 +939,17 @@ main {
   border-radius: 50%;
   box-shadow: var(--shadow-soft);
   z-index: 1;
+  animation: heartFloat 3.2s ease-in-out infinite;
 }
 .phone-heart .icon { width: 16px; height: 16px; }
-.phone-heart--mint   { background: var(--pink);   color: var(--pink-deep);   top: 20%;  left: -14px; }
-.phone-heart--purple { background: var(--purple); color: var(--purple-deep); top: 54%;  right: -14px; }
-.phone-heart--green  { background: var(--mint);  color: var(--mint-deep); bottom: 10%; left: -14px; }
+.phone-heart--mint   { background: var(--pink);   color: var(--pink-deep);   top: 20%;  left: -14px; animation-delay: 0s; }
+.phone-heart--purple { background: var(--purple); color: var(--purple-deep); top: 54%;  right: -14px; animation-delay: 0.6s; }
+.phone-heart--green  { background: var(--mint);  color: var(--mint-deep); bottom: 10%; left: -14px; animation-delay: 1.2s; }
+
+@keyframes heartFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
 
 .app-grid {
   width: 100%;
@@ -914,6 +987,122 @@ main {
 
 @media (min-width: 480px) {
   .phone-mock { max-width: 300px; }
+}
+
+/* ============================================================
+   #hobbies — desktop: phone-mock berubah jadi iPad-mock (landscape)
+   #hobbies — desktop: the phone-mock becomes an iPad-mock (landscape)
+
+   Markup-nya TETAP SAMA persis dengan versi mobile (.phone-mock >
+   .phone-screen > .app-grid + .music-widget). Semua perubahan di sini
+   murni CSS, jadi di bawah 860px tampilan HP-nya sama sekali tidak
+   tersentuh. Layout layar: app-icons di kiri, music widget di kanan.
+
+   The markup stays EXACTLY the same as the mobile version; everything
+   below is CSS-only, so under 860px the phone look is untouched.
+   Screen layout: app icons on the left, music widget on the right.
+============================================================ */
+@media (min-width: 860px) {
+
+  /* --- Bodi iPad: lebih lebar, sudut lebih kalem, bezel kiri-kanan tebal --- */
+  .section--hobbies .phone-mock {
+    max-width: 760px;
+    margin-top: 44px;
+    padding: 20px 46px;
+    border-radius: 32px;
+    box-shadow:
+      0 34px 60px -24px rgba(74, 63, 85, 0.5),
+      0 12px 22px -12px rgba(74, 63, 85, 0.3);
+  }
+
+  /* --- Kamera pindah ke bezel kiri (karena orientasinya landscape) --- */
+  .section--hobbies .phone-topbar {
+    top: 50%;
+    left: 19px;
+    transform: translateY(-50%);
+    flex-direction: column;
+  }
+  .section--hobbies .phone-speaker { display: none; } /* iPad tidak punya earpiece di depan */
+
+  /* --- Tombol home pindah ke bezel kanan --- */
+  .section--hobbies .phone-home {
+    top: 50%;
+    bottom: auto;
+    left: auto;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 26px;
+    height: 26px;
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.28);
+  }
+
+  /* --- Hati melayang: disesuaikan ke sisi bodi yang sekarang memanjang --- */
+  .section--hobbies .phone-heart--mint   { top: 12%;    left: -16px;  }
+  .section--hobbies .phone-heart--purple { top: 16%;    right: -16px; }
+  .section--hobbies .phone-heart--green  { bottom: 12%; left: -16px;  }
+
+  /* --- Layar: dua kolom, app di kiri & music widget di kanan --- */
+  .section--hobbies .phone-screen {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+    align-items: center;
+    gap: 30px;
+    min-height: 340px;
+    padding: 30px 28px;
+    border-radius: 6px;
+    /* Wallpaper layar — hapus baris `background:` ini kalau mau layar polos */
+    /* Screen wallpaper — delete this `background:` line for a plain screen */
+    background:
+      linear-gradient(rgba(255, 251, 246, 0.55), rgba(255, 251, 246, 0.55)),
+      url('../assets/hobbies-wallpaper.jpg') center / cover no-repeat,
+      var(--cream);
+  }
+
+  /* --- Grid app: 3 kolom x 2 baris --- */
+  .section--hobbies .app-grid {
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-content: center;
+    gap: 22px 12px;
+    padding-bottom: 0; /* reset ruang kosong yang di mobile dipakai music widget */
+  }
+  .section--hobbies .app-icon-tile {
+    width: 60px;
+    height: 60px;
+    border-radius: 18px;
+  }
+  .section--hobbies .app-icon-tile .icon { width: 28px; height: 28px; }
+  .section--hobbies .app-icon span { font-size: 0.78rem; }
+
+  /* --- Music widget: dari overlay absolute jadi kartu tetap di kolom kanan --- */
+  .section--hobbies .music-widget {
+    position: static;
+    padding: 16px 16px 14px;
+    border-radius: 22px;
+  }
+  .section--hobbies .music-widget-top {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .section--hobbies .music-cover {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    border-radius: 16px;
+  }
+  .section--hobbies .music-info { text-align: center; }
+  .section--hobbies .music-title  { font-size: 0.95rem; }
+  .section--hobbies .music-artist { font-size: 0.8rem; }
+  .section--hobbies .music-time   { font-size: 0.68rem; }
+  .section--hobbies .music-controls { gap: 14px; margin-top: 10px; }
+}
+
+/* Layar sangat lebar: kasih sedikit napas ekstra */
+@media (min-width: 1100px) {
+  .section--hobbies .phone-mock { max-width: 860px; }
+  .section--hobbies .phone-screen { min-height: 380px; gap: 38px; }
+  .section--hobbies .app-grid { gap: 26px 16px; }
 }
 
 /* =========================================================
@@ -1042,14 +1231,15 @@ main {
   border-radius: 6px 22px 22px 22px;
   padding: 20px 20px;
   text-align: center;
-  border: 2px dashed rgba(74, 63, 85, 0.25);
+  border: none;
+  box-shadow: 0 10px 24px -16px rgba(122, 92, 143, 0.5);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
   color: var(--ink-soft);
   font-weight: 600;
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .project-card::before {
   content: "";
@@ -1065,7 +1255,10 @@ main {
   border-bottom: none;
   border-radius: 14px 14px 0 0;
 }
-.project-card:hover { transform: translateY(-4px); border-color: var(--purple-deep); }
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 34px -16px rgba(122, 92, 143, 0.5);
+}
 .project-icon {
   width: 46px;
   height: 46px;
@@ -1076,22 +1269,24 @@ main {
 }
 .project-card--pink    { background: var(--pink); }
 .project-card--blue  { background: var(--blue); }
-.project-card--purple  { background: var(--purple); }
 .project-card--mint    { background: var(--mint); }
-.project-card--green   { background: var(--green); }
-.project-card--yellow  { background: var(--yellow); }
+
+/* Kartu "coming soon" (placeholder) — border tetap garis-garis (dashed),
+   tapi pakai warna '-deep' dari palette-nya sendiri, bukan putih lagi. */
+/* "Coming soon" (placeholder) cards — border stays dashed, but now uses
+   each color's own '-deep' shade instead of white. */
+.project-card--purple  { background: var(--purple); border: 2px dashed var(--purple-deep); }
+.project-card--green   { background: var(--green); border: 2px dashed var(--green-deep); }
+.project-card--yellow  { background: var(--yellow); border: 2px dashed var(--yellow-deep); }
 
 /* Kartu proyek asli (bukan placeholder "coming soon") */
 /* A real, filled-in project card (not a "coming soon" placeholder) */
 .project-card--filled {
-  border-style: solid;
-  border-color: transparent;
   color: var(--ink);
   text-align: left;
   align-items: flex-start;
 }
 .project-card--filled:hover {
-  border-color: transparent;
   box-shadow: 0 18px 34px -14px rgba(122, 92, 143, 0.4);
 }
 .project-title { font-weight: 700; font-size: 1.02rem; color: var(--ink); }
@@ -1283,14 +1478,49 @@ main {
 }
 .lang-toggle:hover { background: var(--purple-deep, #7c5cff); color: #fff; transform: translateY(-1px); }
 
-/* Education timeline */
-.edu-timeline { display: flex; flex-direction: column; gap: 32px; }
-.edu-step { position: relative; display: flex; flex-direction: row; align-items: flex-start; gap: 14px; }
-.edu-step-dot {
-  flex-shrink: 0; width: 14px; height: 14px; margin-top: 6px;
-  border-radius: 50%; background: #fff; border: 3px solid var(--purple-deep);
-  position: relative; z-index: 2;
+/* Education timeline — garis vertikal di tengah, edu-card selang-seling
+   kiri/kanan dari garis itu. Di mobile, edu-card cuma di-narrow-in
+   (dipersempit + padding/font dikecilkan) supaya tetap muat di kedua sisi,
+   bukan ditumpuk jadi satu kolom. */
+/* Education timeline — a centered vertical line, edu-cards alternating
+   left/right of it. On mobile, edu-cards are simply narrowed-in (tighter
+   padding/font) to keep fitting on both sides, instead of stacking into a
+   single column. */
+.edu-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-top: 28px;
 }
+.edu-timeline::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 50%;
+  width: 3px;
+  transform: translateX(-50%);
+  background: var(--ink);
+  opacity: 0.3;
+  z-index: 1;
+}
+.edu-step {
+  position: relative;
+  width: 50%;
+  z-index: 2;
+}
+.edu-step:nth-child(odd)  { left: 0;    padding-right: 14px; }
+.edu-step:nth-child(even) { left: 50%; padding-left: 14px; }
+.edu-step-dot {
+  position: absolute;
+  top: 4px;
+  width: 14px; height: 14px;
+  border-radius: 50%; background: #fff; border: 3px solid var(--ink);
+  z-index: 3;
+}
+.edu-step:nth-child(odd)  .edu-step-dot { right: -7px; }
+.edu-step:nth-child(even) .edu-step-dot { left: -7px; }
 .edu-step-dot--current {
   background: #FF9F2E;
   border-color: #FF9F2E;
@@ -1301,17 +1531,23 @@ main {
   0%, 100% { box-shadow: 0 0 0 4px rgba(255, 159, 46, 0.3); }
   50%      { box-shadow: 0 0 0 8px rgba(255, 159, 46, 0.12); }
 }
-.edu-step .edu-card { flex: 1; }
-.edu-step:not(:last-child)::after {
-  content: ''; position: absolute; left: 6px; top: 13px;
-  width: 3px; height: calc(100% + 32px);
-  background: var(--purple-deep); opacity: 0.35; z-index: 1;
+.edu-step .edu-card { width: 100%; }
+
+/* Narrow-in: kartu makin sempit (padding, ikon, font dikecilkan) di layar
+   kecil supaya kedua sisi kiri/kanan garis tengah tetap muat. */
+@media (max-width: 640px) {
+  .edu-timeline { gap: 16px; }
+  .edu-step:nth-child(odd)  { padding-right: 10px; }
+  .edu-step:nth-child(even) { padding-left: 10px; }
+  .edu-card { padding: 12px; border-radius: var(--r-sm); }
+  .edu-icon { width: 30px; height: 30px; margin-bottom: 6px; }
+  .edu-icon .icon { width: 15px; height: 15px; }
+  .edu-level { font-size: 0.66rem; margin-bottom: 2px; }
+  .edu-name { font-size: 0.72rem; line-height: 1.25; margin-bottom: 2px; }
+  .edu-year { font-size: 0.66rem; }
 }
 
-@media (min-width: 860px) {
-  .edu-timeline { flex-direction: row; gap: 0; }
-  .edu-step { flex: 1; flex-direction: column; align-items: center; gap: 0; padding: 0 10px; }
-  .edu-step-dot { margin-top: 0; margin-bottom: 16px; }
-  .edu-step .edu-card { width: 100%; }
-  .edu-step:not(:last-child)::after { left: 50%; top: 7px; width: 100%; height: 3px; }
+@media (min-width: 640px) and (max-width: 859px) {
+  .edu-step:nth-child(odd)  { padding-right: 20px; }
+  .edu-step:nth-child(even) { padding-left: 20px; }
 }

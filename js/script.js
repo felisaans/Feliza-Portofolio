@@ -43,6 +43,66 @@ document.addEventListener('DOMContentLoaded', () => {
     new ResizeObserver(syncChromeHeight).observe(header);
   }
 
+  // --- Animasi ngetik cepat buat isi clipboard-paper di #profile ---
+  // Tiap kali #profile ditampilkan, teks di clipboard-paper "diketik ulang"
+  // paragraf demi paragraf, dengan cursor berkedip di karakter terakhir.
+  // --- Fast typewriter effect for the clipboard-paper content in #profile ---
+  // Every time #profile is shown, the clipboard-paper text is "retyped"
+  // paragraph by paragraph, with a blinking cursor after the last character.
+  let clipboardTypeToken = 0;
+  const TYPE_SPEED_MS = 6; // cepat / fast
+
+  function typeClipboardParagraphs() {
+    const paperSpans = document.querySelectorAll('.clipboard-paper > p > span[data-i18n]');
+    if (!paperSpans.length) return;
+
+    clipboardTypeToken += 1;
+    const myToken = clipboardTypeToken;
+
+    const fullTexts = Array.from(paperSpans).map((span) => span.textContent);
+    paperSpans.forEach((span) => {
+      span.textContent = '';
+      span.classList.remove('is-typing');
+    });
+
+    function typeNext(pIndex, cIndex) {
+      if (myToken !== clipboardTypeToken) return; // dibatalkan oleh trigger baru / cancelled by a newer trigger
+      if (pIndex >= paperSpans.length) return;
+
+      const span = paperSpans[pIndex];
+      const text = fullTexts[pIndex];
+
+      if (cIndex === 0) span.classList.add('is-typing');
+
+      if (cIndex < text.length) {
+        span.textContent = text.slice(0, cIndex + 1);
+        setTimeout(() => typeNext(pIndex, cIndex + 1), TYPE_SPEED_MS);
+      } else {
+        span.classList.remove('is-typing');
+        typeNext(pIndex + 1, 0);
+      }
+    }
+
+    typeNext(0, 0);
+  }
+
+  // Dipakai oleh blok EN/ID di bawah: kalau bahasa diganti saat teks masih
+  // "diketik", animasinya dibatalkan dulu supaya tidak menimpa teks baru.
+  // Used by the EN/ID block below: if the language is switched mid-typing,
+  // cancel the animation first so it doesn't overwrite the new text.
+  window.cancelClipboardTyping = () => {
+    clipboardTypeToken += 1;
+    document.querySelectorAll('.clipboard-paper > p > span[data-i18n]')
+      .forEach((span) => span.classList.remove('is-typing'));
+  };
+
+  // Dipakai oleh blok EN/ID: setelah teks diganti ke bahasa baru, animasi
+  // ketiknya diulang dari awal (bukan langsung nongol full text).
+  // Used by the EN/ID block: after the text is swapped to the new language,
+  // the typing animation restarts from scratch (instead of just appearing
+  // as full text instantly).
+  window.typeClipboardParagraphs = typeClipboardParagraphs;
+
   function showSection(id, { focus = false } = {}) {
     const target = document.getElementById(id);
     if (!target || !target.classList.contains('section')) return;
@@ -56,6 +116,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     history.replaceState(null, '', '#' + id);
+
+    if (id === 'profile') {
+      typeClipboardParagraphs();
+    }
 
     if (focus) {
       target.setAttribute('tabindex', '-1');
@@ -72,7 +136,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // the browser finishes re-layout & focusing the new element — some
     // browsers (Safari on mobile especially) nudge the scroll position on
     // focus even with preventScroll:true.
-    const resetScroll = () => window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    // Reset ke <html> DAN <body>: tergantung kombinasi overflow/height, salah
+    // satu dari keduanya bisa jadi scroll container yang sebenarnya.
+    // Reset both <html> and <body>: depending on the overflow/height combo,
+    // either one can end up being the real scroll container.
+    const resetScroll = () => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    };
     requestAnimationFrame(() => requestAnimationFrame(resetScroll));
   }
 
@@ -104,6 +176,7 @@ const i18n = {
   "home-cta": "Lihat Profil", "home-caption": "it's me!",
   "home-major": "Mahasiswi Teknik Informatika",
   "home-univ": "Universitas Jabal Ghafur (UNIGHA)",
+  "home-quote": "\"Kamu itu CSS buat HTML-ku 👉🏻👈🏻\"",
   "profile-kicker": "Profil", "profile-h2": "Tentang Saya",
   "profile-p1": "Hai, saya Feliza!",
   "profile-p2": "Saya mahasiswa Informatika semester 5 di Universitas Jabal Ghafur. Saya suka mengeksplorasi teknologi, mempelajari hal baru, dan mengubah ide-ide acak menjadi sesuatu yang nyata.",
@@ -143,24 +216,55 @@ const i18n = {
   "footer-name": "Portofolio Feliza.", "footer-copy": "Portofolio Pribadi."
 };
 
+// Teks asli (EN) direkam LANGSUNG saat script di-parse, bukan di dalam
+// DOMContentLoaded. Alasannya: listener navigasi di atas juga jalan saat
+// DOMContentLoaded, dan kalau halaman dibuka di #profile listener itu memulai
+// efek ketik yang langsung mengosongkan isi <span> — kalau perekaman ini
+// menunggu DOMContentLoaded, yang terekam adalah string kosong, sehingga teks
+// profil hilang saat bahasa dikembalikan ke EN. <script> berada di akhir
+// <body>, jadi semua elemen sudah pasti ada di titik ini.
+//
+// The original (EN) text is captured RIGHT as the script is parsed, not inside
+// DOMContentLoaded. The navigation listener above also runs on DOMContentLoaded
+// and, if the page opens on #profile, immediately blanks those <span>s for the
+// typewriter effect — so a deferred capture would record empty strings and the
+// profile text would vanish when switching back to EN. The <script> sits at the
+// end of <body>, so every element already exists here.
+const i18nOriginals = new Map();
+document.querySelectorAll('[data-i18n]').forEach(el => {
+  i18nOriginals.set(el, el.textContent);
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   const toggleBtn = document.getElementById('langToggle');
   if (!toggleBtn) return;
-
-  const originals = new Map();
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    originals.set(el, el.textContent);
-  });
 
   let lang = 'en';
   toggleBtn.addEventListener('click', () => {
     lang = lang === 'en' ? 'id' : 'en';
     document.documentElement.lang = lang;
     toggleBtn.textContent = lang === 'en' ? 'EN' : 'ID';
-    originals.forEach((enText, el) => {
+
+    // Hentikan efek ketik yang mungkin masih jalan di #profile
+    // Stop any typewriter animation still running in #profile
+    if (typeof window.cancelClipboardTyping === 'function') {
+      window.cancelClipboardTyping();
+    }
+
+    i18nOriginals.forEach((enText, el) => {
       const key = el.getAttribute('data-i18n');
       el.textContent = lang === 'en' ? enText : (i18n[key] || enText);
     });
+
+    // Kalau lagi di #profile, teks clipboard-paper yang baru saja diganti
+    // bahasanya langsung "diketik ulang" dari awal.
+    // If currently on #profile, the clipboard-paper text that was just
+    // swapped to the new language is retyped from the start right away.
+    const profileSection = document.getElementById('profile');
+    if (profileSection && profileSection.classList.contains('is-active') &&
+        typeof window.typeClipboardParagraphs === 'function') {
+      window.typeClipboardParagraphs();
+    }
   });
 });
 
