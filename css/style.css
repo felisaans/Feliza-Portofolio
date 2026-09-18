@@ -23,7 +23,7 @@
   --white: #FFFFFF;
   --cream: #FFFBF6;
   --ink:   #4A3F55;      /* teks utama, bukan hitam pekat */
-  --ink-soft: #837792;   /* teks sekunder */
+  --ink-soft: #969399;   /* teks sekunder */
   --line:  #ECE3F5;
 
   /* --- Accent gradient (tombol utama) --- */
@@ -827,7 +827,7 @@ main {
   max-width: 280px;
   margin: 36px auto 0;
   padding: 47px 14px 52px;
-  background: var(--ink);
+  background: var(--ink-soft);
   border: 1.5px solid rgba(74, 63, 85, 0.08);
   border-radius: 44px;
   box-shadow: 0 24px 44px -18px rgba(74, 63, 85, 0.4);
@@ -841,8 +841,8 @@ main {
   align-items: center;
   gap: 8px;
 }
-.phone-cam { width: 8px; height: 8px; border-radius: 50%; background: rgba(74, 63, 85, 0.35); }
-.phone-speaker { width: 48px; height: 5px; border-radius: 4px; background: rgba(74, 63, 85, 0.28); }
+.phone-cam { width: 8px; height: 8px; border-radius: 50%; background: rgb(196, 196, 196); }
+.phone-speaker { width: 48px; height: 5px; border-radius: 4px; background: rgb(173, 173, 173); }
 .phone-screen {
   position: relative;
   background: var(--cream);
@@ -874,9 +874,9 @@ main {
   z-index: 1;
 }
 .phone-heart .icon { width: 16px; height: 16px; }
-.phone-heart--mint   { background: var(--mint);   color: var(--mint-deep);   top: 20%;  left: -14px; }
+.phone-heart--mint   { background: var(--pink);   color: var(--pink-deep);   top: 20%;  left: -14px; }
 .phone-heart--purple { background: var(--purple); color: var(--purple-deep); top: 54%;  right: -14px; }
-.phone-heart--green  { background: var(--green);  color: var(--green-deep); bottom: 10%; left: -14px; }
+.phone-heart--green  { background: var(--mint);  color: var(--mint-deep); bottom: 10%; left: -14px; }
 
 .app-grid {
   width: 100%;
