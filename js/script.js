@@ -102,7 +102,7 @@ const i18n = {
   "nav-education": "Pendidikan", "nav-skills": "Keahlian", "nav-hobbies": "Hobi", "nav-projects": "Proyek",
   "skip": "Lewati ke konten",
   "home-cta": "Lihat Profil",
-  "home-major": "Program Studi Teknik Informatika",
+  "home-major": "Mahasiswi Teknik Informatika",
   "home-univ": "Universitas Jabal Ghafur (UNIGHA)",
   "profile-kicker": "Profil", "profile-h2": "Tentang Saya",
   "profile-p1": "Hai, saya Feliza!",
