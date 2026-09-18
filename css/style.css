@@ -127,7 +127,7 @@ button:focus-visible {
 }
 
 h1, h2 { font-weight: 700; line-height: 1.15; }
-h1 { font-size: clamp(2.1rem, 7vw, 3.2rem); }
+h1 { font-size: clamp(1.80rem, 7vw, 3.2rem); }
 h2 { font-size: clamp(1.6rem, 5vw, 2.2rem); }
 p  { line-height: 1.65; }
 
