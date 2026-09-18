@@ -845,7 +845,7 @@ main {
 .phone-speaker { width: 44px; height: 5px; border-radius: 4px; background: rgba(74, 63, 85, 0.28); }
 .phone-screen {
   position: relative;
-  background: var(--white) url("../assets/hobbies-wallpaper.jpg") center top / cover no-repeat;
+  background: var(--white);
   border-radius: 1px;
   min-height: 300px;
   padding: 26px 16px;
