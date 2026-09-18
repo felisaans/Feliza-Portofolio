@@ -845,7 +845,7 @@ main {
 .phone-speaker { width: 44px; height: 5px; border-radius: 4px; background: rgba(74, 63, 85, 0.28); }
 .phone-screen {
   position: relative;
-  background: var(--white);
+  background: var(--cream);
   border-radius: 1px;
   min-height: 300px;
   padding: 26px 16px;
@@ -925,7 +925,7 @@ main {
   left: 22px;
   right: 22px;
   bottom: 32px;
-  background: var(--blue);
+  background: var(--white);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 20px;
