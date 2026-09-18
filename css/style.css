@@ -409,7 +409,7 @@ main {
 .polaroid {
   background: var(--white);
   padding: 8px 8px 22px;
-  border-radius: 10px;
+  border-radius: 1px;
   box-shadow: 0 20px 40px -16px rgba(122, 92, 143, 0.35);
   transform: rotate(-4deg);
   animation: float 5s ease-in-out infinite;
