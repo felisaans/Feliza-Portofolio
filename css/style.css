@@ -932,16 +932,16 @@ main {
 }
 .phone-heart {
   position: absolute;
-  width: 32px;
-  height: 32px;
+  width: 35px;
+  height: 35px;
   display: grid;
   place-items: center;
   border-radius: 50%;
   box-shadow: var(--shadow-soft);
   z-index: 1;
-  animation: heartFloat 3.2s ease-in-out infinite;
+  animation: heartFloat 2.2s ease-in-out infinite;
 }
-.phone-heart .icon { width: 16px; height: 16px; }
+.phone-heart .icon { width: 25px; height: 25px; }
 .phone-heart--mint   { background: var(--pink);   color: var(--pink-deep);   top: 20%;  left: -14px; animation-delay: 0s; }
 .phone-heart--purple { background: var(--purple); color: var(--purple-deep); top: 54%;  right: -14px; animation-delay: 0.6s; }
 .phone-heart--green  { background: var(--mint);  color: var(--mint-deep); bottom: 10%; left: -14px; animation-delay: 1.2s; }
@@ -1053,7 +1053,7 @@ main {
     /* Wallpaper layar — hapus baris `background:` ini kalau mau layar polos */
     /* Screen wallpaper — delete this `background:` line for a plain screen */
     background:
-      linear-gradient(rgba(255, 251, 246, 0.55), rgba(255, 251, 246, 0.55)),
+      linear-gradient(rgba(255, 251, 246, 0), rgba(255, 251, 246, 0)),
       url('../assets/hobbies-wallpaper.jpg') center / cover no-repeat,
       var(--cream);
   }
@@ -1543,8 +1543,9 @@ main {
   .edu-icon { width: 30px; height: 30px; margin-bottom: 6px; }
   .edu-icon .icon { width: 15px; height: 15px; }
   .edu-level { font-size: 0.66rem; margin-bottom: 2px; }
-  .edu-name { font-size: 0.72rem; line-height: 1.25; margin-bottom: 2px; }
+  .edu-name { font-size: 0.99rem; line-height: 1.25; margin-bottom: 2px; }
   .edu-year { font-size: 0.66rem; }
+  .edu-location { font-size: 0.66rem; }
 }
 
 @media (min-width: 640px) and (max-width: 859px) {
