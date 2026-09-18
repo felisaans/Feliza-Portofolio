@@ -462,7 +462,7 @@ main {
   max-width: 560px;
   margin: 34px auto 0;
   padding: 30px 16px 18px;
-  background: linear-gradient(180deg, var(--pink) 0%, var(--pink-deep) 130%);
+  background: linear-gradient(180deg, var(--mint) 0%, var(--mint-deep) 130%);
   border-radius: var(--r-lg);
   box-shadow: var(--shadow-soft);
   transform: rotate(-1deg);
@@ -827,7 +827,7 @@ main {
   max-width: 280px;
   margin: 36px auto 0;
   padding: 47px 14px 52px;
-  background: var(--pink);
+  background: var(--ink);
   border: 1.5px solid rgba(74, 63, 85, 0.08);
   border-radius: 44px;
   box-shadow: 0 24px 44px -18px rgba(74, 63, 85, 0.4);
@@ -842,7 +842,7 @@ main {
   gap: 8px;
 }
 .phone-cam { width: 8px; height: 8px; border-radius: 50%; background: rgba(74, 63, 85, 0.35); }
-.phone-speaker { width: 44px; height: 5px; border-radius: 4px; background: rgba(74, 63, 85, 0.28); }
+.phone-speaker { width: 48px; height: 5px; border-radius: 4px; background: rgba(74, 63, 85, 0.28); }
 .phone-screen {
   position: relative;
   background: var(--cream);
