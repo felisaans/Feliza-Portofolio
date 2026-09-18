@@ -350,9 +350,9 @@ main {
 .section--home     { background: var(--cream); }
 .section--profile   { background: linear-gradient(180deg, var(--purple) 0%, var(--cream) 100%); }
 .section--contact   { background: linear-gradient(180deg, var(--blue) 0%, var(--cream) 100%); }
-.section--education { background: var(--cream); }
-.section--skills    { background: var(--cream); }
-.section--hobbies   { background: var(--cream); }
+.section--education { background: linear-gradient(180deg, var(--yellow) 0%, var(--cream) 100%); }
+.section--skills    { background: linear-gradient(180deg, var(--pink) 0%, var(--cream) 100%); }
+.section--hobbies   { background: linear-gradient(180deg, var(--mint) 0%, var(--cream) 100%); }
 .section--projects  { background: var(--cream); }
 
 /* Blob dekoratif / decorative blobs */
@@ -546,12 +546,19 @@ main {
   background: var(--white);
   padding: 14px 18px;
   border-radius: 22px;
+  border: 3px solid transparent;
   box-shadow: var(--shadow-soft);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
 }
+.contact-list li:nth-child(odd)  .contact-card:hover { transform: translateY(-6px) scale(1.035) rotate(-1.5deg); }
+.contact-list li:nth-child(even) .contact-card:hover { transform: translateY(-6px) scale(1.035) rotate(1.5deg); }
 .contact-card:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 18px 34px -14px rgba(122, 92, 143, 0.4);
+  box-shadow: 0 20px 36px -14px rgba(122, 92, 143, 0.45);
+}
+.contact-card:hover .contact-icon {
+  transform: scale(1.15) rotate(-10deg);
 }
 /* Speech-bubble tail, colored to match each bubble's own background */
 .contact-card::after {
@@ -579,10 +586,10 @@ main {
 }
 .contact-list li:nth-child(even) .contact-text { align-items: flex-end; text-align: right; }
 
-.contact-card--pink,
-.contact-card--purple,
-.contact-card--mint,
-.contact-card--slate  { background: var(--cream); }
+.contact-card--pink   { background: var(--cream); border-color: var(--pink); }
+.contact-card--purple { background: var(--cream); border-color: var(--purple); }
+.contact-card--mint   { background: var(--cream); border-color: var(--green); }
+.contact-card--slate  { background: var(--cream); border-color: #C7C1D1; }
 
 .contact-icon {
   width: 46px;
@@ -592,6 +599,7 @@ main {
   place-items: center;
   flex-shrink: 0;
   background: rgba(255, 255, 255, 0.7);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 .contact-icon--pink   { color: #C43F72; background: var(--pink); }
 .contact-icon--purple { color: #6C46C9; background: var(--purple); }
@@ -642,6 +650,49 @@ main {
 .edu-card--blue   { background: rgba(210, 231, 255, 0.6); }
 .edu-card--mint   { background: rgba(207, 251, 238, 0.6); }
 .edu-card--yellow { background: rgba(254, 237, 173, 0.6); }
+
+/* Kartu University dibuat lebih 'hidup' — nandain ini yang lagi
+   dijalani sekarang, beda dari jenjang lain yang udah kelar. */
+/* University card is made more vibrant/alive — signaling this is
+   the one currently in progress, unlike the other finished stages. */
+.edu-card--current {
+  background: linear-gradient(135deg, var(--yellow) 0%, var(--yellow-deep) 130%);
+  border: 2px solid var(--yellow-deep);
+  box-shadow: 0 18px 34px -14px rgba(255, 179, 71, 0.55), var(--shadow-soft);
+  animation: eduCardGlow 2.6s ease-in-out infinite;
+}
+.edu-card--current .edu-icon { background: rgba(255, 255, 255, 0.85); }
+.edu-card--current .edu-level { opacity: 0.85; }
+.edu-card--current .edu-year {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--white);
+  color: var(--ink);
+  font-weight: 700;
+  padding: 5px 13px;
+  border-radius: 999px;
+  margin-top: 6px;
+  box-shadow: 0 4px 10px -4px rgba(74, 63, 85, 0.3);
+}
+.edu-card--current .edu-year::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #FF9F2E;
+  flex-shrink: 0;
+  animation: eduDotPulse 1.6s ease-in-out infinite;
+}
+
+@keyframes eduCardGlow {
+  0%, 100% { box-shadow: 0 18px 34px -14px rgba(255, 179, 71, 0.55), var(--shadow-soft); }
+  50%      { box-shadow: 0 18px 40px -10px rgba(255, 179, 71, 0.8), var(--shadow-soft); }
+}
+@keyframes eduDotPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.4); opacity: 0.6; }
+}
 
 .edu-icon {
   display: inline-grid;
@@ -775,10 +826,11 @@ main {
   width: 100%;
   max-width: 280px;
   margin: 36px auto 0;
-  padding: 34px 14px 46px;
-  background: linear-gradient(180deg, var(--pink) 0%, var(--pink-deep) 130%);
+  padding: 47px 14px 52px;
+  background: var(--pink);
+  border: 1.5px solid rgba(74, 63, 85, 0.08);
   border-radius: 44px;
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 24px 44px -18px rgba(74, 63, 85, 0.4);
 }
 .phone-topbar {
   position: absolute;
@@ -792,8 +844,9 @@ main {
 .phone-cam { width: 8px; height: 8px; border-radius: 50%; background: rgba(74, 63, 85, 0.35); }
 .phone-speaker { width: 44px; height: 5px; border-radius: 4px; background: rgba(74, 63, 85, 0.28); }
 .phone-screen {
+  position: relative;
   background: var(--white) url("../assets/hobbies-wallpaper.jpg") center top / cover no-repeat;
-  border-radius: 28px;
+  border-radius: 1px;
   min-height: 300px;
   padding: 26px 16px;
   display: flex;
@@ -805,8 +858,8 @@ main {
   bottom: 12px;
   left: 50%;
   transform: translateX(-50%);
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   border: 3px solid rgba(74, 63, 85, 0.28);
 }
@@ -862,6 +915,117 @@ main {
 @media (min-width: 480px) {
   .phone-mock { max-width: 300px; }
 }
+
+/* =========================================================
+   MUSIC WIDGET — mini music player di dalam phone mock
+   MUSIC WIDGET — mini music player inside the phone mock
+========================================================= */
+.music-widget {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 32px;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 12px 14px 10px;
+  box-shadow: 0 10px 24px -12px rgba(74, 63, 85, 0.35);
+}
+.music-widget-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.music-cover {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px -4px rgba(74, 63, 85, 0.35);
+}
+.music-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.music-cover-placeholder {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--purple), var(--pink));
+  color: var(--white);
+}
+.music-cover-placeholder .icon { width: 20px; height: 20px; }
+.music-info { min-width: 0; flex: 1; }
+.music-title {
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.music-artist {
+  font-size: 0.7rem;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.music-progress {
+  margin-top: 10px;
+  width: 100%;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--line);
+  cursor: pointer;
+  overflow: hidden;
+}
+.music-progress-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+  transition: width 0.1s linear;
+}
+.music-time {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3px;
+  font-size: 0.62rem;
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+
+.music-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 8px;
+}
+.music-btn {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: transparent;
+  color: var(--ink);
+  border-radius: 50%;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.music-btn .icon { width: 16px; height: 16px; }
+.music-btn:hover { background: var(--pink); transform: translateY(-2px); }
+.music-btn--play {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--accent-a), var(--accent-b));
+  color: var(--white);
+  box-shadow: 0 8px 16px -6px rgba(183, 156, 255, 0.7);
+}
+.music-btn--play .icon { width: 18px; height: 18px; }
+.music-btn--play:hover { background: linear-gradient(135deg, var(--accent-a), var(--accent-b)); transform: translateY(-2px) scale(1.06); }
 
 /* =========================================================
    7. PROJECTS
@@ -1070,6 +1234,25 @@ main {
   .skills-grid { grid-template-columns: repeat(3, 1fr); }
   .projects-grid { grid-template-columns: repeat(3, 1fr); }
 
+  /* Contact card sedikit lebih besar & lega di desktop — di mobile ukurannya
+     sudah pas, jadi ini cuma berlaku mulai breakpoint ini ke atas. */
+  /* Contact card is a bit bigger & roomier on desktop — mobile sizing is
+     already fine, so this only kicks in from this breakpoint up. */
+  .contact-card {
+    gap: 20px;
+    max-width: 420px;
+    padding: 22px 30px;
+    border-radius: 28px;
+  }
+  .contact-icon { width: 58px; height: 58px; }
+  .contact-icon .icon { width: 26px; height: 26px; }
+  .contact-text strong { font-size: 1.08rem; }
+  .contact-text span { font-size: 1rem; }
+
+  .contact-card::after { width: 20px; height: 18px; bottom: 14px; }
+  .contact-list li:nth-child(odd) .contact-card::after { left: -8px; }
+  .contact-list li:nth-child(even) .contact-card::after { right: -8px; }
+
   .section-inner { max-width: 860px; }
   .section-nav { max-width: 860px; }
 }
@@ -1107,6 +1290,16 @@ main {
   flex-shrink: 0; width: 14px; height: 14px; margin-top: 6px;
   border-radius: 50%; background: #fff; border: 3px solid var(--purple-deep);
   position: relative; z-index: 2;
+}
+.edu-step-dot--current {
+  background: #FF9F2E;
+  border-color: #FF9F2E;
+  box-shadow: 0 0 0 4px rgba(255, 159, 46, 0.3);
+  animation: eduStepDotPulse 1.8s ease-in-out infinite;
+}
+@keyframes eduStepDotPulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(255, 159, 46, 0.3); }
+  50%      { box-shadow: 0 0 0 8px rgba(255, 159, 46, 0.12); }
 }
 .edu-step .edu-card { flex: 1; }
 .edu-step:not(:last-child)::after {

@@ -101,7 +101,7 @@ const i18n = {
   "nav-home": "Beranda", "nav-profile": "Profil", "nav-contact": "Kontak",
   "nav-education": "Pendidikan", "nav-skills": "Keahlian", "nav-hobbies": "Hobi", "nav-projects": "Proyek",
   "skip": "Lewati ke konten",
-  "home-cta": "Lihat Profil",
+  "home-cta": "Lihat Profil", "home-caption": "it's me!",
   "home-major": "Mahasiswi Teknik Informatika",
   "home-univ": "Universitas Jabal Ghafur (UNIGHA)",
   "profile-kicker": "Profil", "profile-h2": "Tentang Saya",
@@ -161,5 +161,84 @@ document.addEventListener('DOMContentLoaded', () => {
       const key = el.getAttribute('data-i18n');
       el.textContent = lang === 'en' ? enText : (i18n[key] || enText);
     });
+  });
+});
+
+// =========================================================
+// MUSIC WIDGET — play/pause, progress bar, skip ±10 detik
+// MUSIC WIDGET — play/pause, progress bar, ±10s skip
+// =========================================================
+document.addEventListener('DOMContentLoaded', () => {
+  const audio = document.getElementById('musicAudio');
+  const playBtn = document.getElementById('musicPlayPause');
+  const prevBtn = document.getElementById('musicPrev');
+  const nextBtn = document.getElementById('musicNext');
+  const progress = document.getElementById('musicProgress');
+  const progressFill = document.getElementById('musicProgressFill');
+  const currentTimeEl = document.getElementById('musicCurrentTime');
+  const durationEl = document.getElementById('musicDuration');
+  if (!audio || !playBtn) return;
+
+  const iconPlay = playBtn.querySelector('.icon-play');
+  const iconPause = playBtn.querySelector('.icon-pause');
+
+  function formatTime(sec) {
+    if (!isFinite(sec) || sec < 0) sec = 0;
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60).toString().padStart(2, '0');
+    return `${m}:${s}`;
+  }
+
+  function seekTo(ratio) {
+    if (!audio.duration) return;
+    audio.currentTime = Math.min(Math.max(ratio, 0), 1) * audio.duration;
+  }
+
+  function skip(seconds) {
+    if (!audio.duration) return;
+    audio.currentTime = Math.min(Math.max(audio.currentTime + seconds, 0), audio.duration);
+  }
+
+  playBtn.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play().catch(() => {}); // browser bisa nolak autoplay tanpa interaksi — aman diabaikan di sini karena ini sudah dari klik user
+    } else {
+      audio.pause();
+    }
+  });
+
+  audio.addEventListener('play', () => {
+    iconPlay.style.display = 'none';
+    iconPause.style.display = '';
+  });
+  audio.addEventListener('pause', () => {
+    iconPlay.style.display = '';
+    iconPause.style.display = 'none';
+  });
+
+  audio.addEventListener('loadedmetadata', () => {
+    durationEl.textContent = formatTime(audio.duration);
+  });
+  audio.addEventListener('timeupdate', () => {
+    currentTimeEl.textContent = formatTime(audio.currentTime);
+    if (audio.duration) {
+      const pct = (audio.currentTime / audio.duration) * 100;
+      progressFill.style.width = pct + '%';
+      progress.setAttribute('aria-valuenow', Math.round(pct));
+    }
+  });
+
+  prevBtn.addEventListener('click', () => skip(-10));
+  nextBtn.addEventListener('click', () => skip(10));
+
+  progress.addEventListener('click', (e) => {
+    const rect = progress.getBoundingClientRect();
+    seekTo((e.clientX - rect.left) / rect.width);
+  });
+  // Aksesibilitas: bisa digeser pakai keyboard (panah kiri/kanan) saat progress bar di-fokus
+  // Accessibility: seekable via keyboard (left/right arrows) when the progress bar is focused
+  progress.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') { skip(5); e.preventDefault(); }
+    if (e.key === 'ArrowLeft')  { skip(-5); e.preventDefault(); }
   });
 });
