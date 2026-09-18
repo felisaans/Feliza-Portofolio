@@ -418,7 +418,7 @@ main {
 .polaroid-photo {
   width: 100%;
   aspect-ratio: 1 / 1.05;
-  border-radius: 4px;
+  border-radius: 1px;
   overflow: hidden;
   background: var(--blue);
 }
@@ -430,7 +430,7 @@ main {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  border: 2px dashed var(--blue-deep);
+  border: 1px dashed var(--blue-deep);
   color: var(--ink-soft);
   font-size: 0.85rem;
   font-weight: 600;
@@ -465,7 +465,7 @@ main {
 }
 
 .home-quote {
-  color: var(--purple-deep);
+  color: var(--pink-deep);
   font-weight: 700;
   font-style: italic;
   font-size: 0.95rem;
@@ -491,7 +491,7 @@ main {
 
   100% {
     clip-path: inset(0 0 0 0);
-    border-right-color: transparent;
+    border-right-color: var(--purple-deep);
   }
 }
 
