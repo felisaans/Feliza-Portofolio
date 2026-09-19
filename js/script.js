@@ -176,7 +176,7 @@ const i18n = {
   "home-cta": "Lihat Profil", "home-caption": "it's me!",
   "home-major": "Mahasiswi Teknik Informatika",
   "home-univ": "Universitas Jabal Ghafur (UNIGHA)",
-  "home-quote": "\"Kamu itu CSS buat HTML-ku ><\"",
+  "home-quote": "\"kamu itu CSS buat HTML-ku ><\"",
   "profile-kicker": "Profil", "profile-h2": "Tentang Saya",
   "profile-p1": "Hai, saya Feliza!",
   "profile-p2": "Saya mahasiswa Informatika semester 5 di Universitas Jabal Ghafur. Saya suka mengeksplorasi teknologi, mempelajari hal baru, dan mengubah ide-ide acak menjadi sesuatu yang nyata.",
