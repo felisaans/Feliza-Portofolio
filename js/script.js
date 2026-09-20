@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Every time #profile is shown, the clipboard-paper text is "retyped"
   // paragraph by paragraph, with a blinking cursor after the last character.
   let clipboardTypeToken = 0;
-  const TYPE_SPEED_MS = 6; // cepat / fast
+  const TYPE_SPEED_MS = 45; // per kata / per word
 
   function typeClipboardParagraphs() {
     const paperSpans = document.querySelectorAll('.clipboard-paper > p > span[data-i18n]');
@@ -59,24 +59,31 @@ document.addEventListener('DOMContentLoaded', () => {
     clipboardTypeToken += 1;
     const myToken = clipboardTypeToken;
 
-    const fullTexts = Array.from(paperSpans).map((span) => span.textContent);
+    // Pecah tiap paragraf jadi array "kata" (kata + spasi setelahnya digabung
+    // jadi satu potongan), supaya animasi maju per-kata, bukan per-huruf.
+    // Split each paragraph into an array of "words" (each word plus its
+    // trailing whitespace bundled together), so the animation advances
+    // word-by-word instead of character-by-character.
+    const fullWordChunks = Array.from(paperSpans).map((span) =>
+      span.textContent.match(/\S+\s*/g) || []
+    );
     paperSpans.forEach((span) => {
       span.textContent = '';
       span.classList.remove('is-typing');
     });
 
-    function typeNext(pIndex, cIndex) {
+    function typeNext(pIndex, wIndex) {
       if (myToken !== clipboardTypeToken) return; // dibatalkan oleh trigger baru / cancelled by a newer trigger
       if (pIndex >= paperSpans.length) return;
 
       const span = paperSpans[pIndex];
-      const text = fullTexts[pIndex];
+      const chunks = fullWordChunks[pIndex];
 
-      if (cIndex === 0) span.classList.add('is-typing');
+      if (wIndex === 0) span.classList.add('is-typing');
 
-      if (cIndex < text.length) {
-        span.textContent = text.slice(0, cIndex + 1);
-        setTimeout(() => typeNext(pIndex, cIndex + 1), TYPE_SPEED_MS);
+      if (wIndex < chunks.length) {
+        span.textContent = chunks.slice(0, wIndex + 1).join('');
+        setTimeout(() => typeNext(pIndex, wIndex + 1), TYPE_SPEED_MS);
       } else {
         span.classList.remove('is-typing');
         typeNext(pIndex + 1, 0);
@@ -314,10 +321,12 @@ document.addEventListener('DOMContentLoaded', () => {
   audio.addEventListener('play', () => {
     iconPlay.style.display = 'none';
     iconPause.style.display = '';
+    playBtn.setAttribute('aria-label', 'Pause music / Jeda musik');
   });
   audio.addEventListener('pause', () => {
     iconPlay.style.display = '';
     iconPause.style.display = 'none';
+    playBtn.setAttribute('aria-label', 'Play music / Putar musik');
   });
 
   audio.addEventListener('loadedmetadata', () => {
