@@ -184,6 +184,7 @@ const i18n = {
   "home-cta": "Lihat Profil", "home-caption": "it's me!",
   "home-major": "Mahasiswi Teknik Informatika",
   "home-univ": "Universitas Jabal Ghafur (UNIGHA)",
+  "home-quote": "\"kamu itu CSS buat HTML-ku ><\"",
   "profile-kicker": "Profil", "profile-h2": "Tentang Saya",
   "profile-p1": "Hai, saya Feliza!",
   "profile-p2": "Saya mahasiswa Informatika semester 5 di Universitas Jabal Ghafur. Saya suka mengeksplorasi teknologi, mempelajari hal baru, dan mengubah ide-ide acak menjadi sesuatu yang nyata.",
@@ -304,24 +305,26 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================================================
   const tracks = [
     {
-      src: audio.getAttribute('src'),
+      src: 'assets/track.mp3',
       title: titleEl ? titleEl.textContent : '',
       artist: artistEl ? artistEl.textContent : '',
       cover: coverImg ? coverImg.getAttribute('src') : '',
     },
     {
-      src: 'assets/track2.mp3',       // GANTI DI SINI / REPLACE HERE
-      title: 'NOT CUTE ANYMORE',          // GANTI DI SINI / REPLACE HERE
-      artist: 'ILLIT',             // GANTI DI SINI / REPLACE HERE
-      cover: 'assets/music-cover2.jpg', // GANTI DI SINI / REPLACE HERE
+      src: 'assets/track2.mp3',
+      title: 'Song Title 2',          // GANTI DI SINI / REPLACE HERE
+      artist: 'ILLIT',
+      cover: 'assets/music-cover2.jpg',
     },
   ];
   let trackIndex = 0;
+  let audioLoaded = false; // baru download beneran pas user klik Play / Next Track
 
   function loadTrack(index, { autoplay = false } = {}) {
     trackIndex = (index + tracks.length) % tracks.length;
     const track = tracks[trackIndex];
 
+    audioLoaded = true;
     audio.src = track.src;
     if (titleEl) titleEl.textContent = track.title;
     if (artistEl) artistEl.textContent = track.artist;
@@ -355,6 +358,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   playBtn.addEventListener('click', () => {
+    if (!audioLoaded) {
+      loadTrack(trackIndex, { autoplay: true }); // baru di sini file mp3-nya kedownload
+      return;
+    }
     if (audio.paused) {
       audio.play().catch(() => {}); // browser bisa nolak autoplay tanpa interaksi — aman diabaikan di sini karena ini sudah dari klik user
     } else {
@@ -386,36 +393,15 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   prevBtn.addEventListener('click', () => skip(-10));
+  nextBtn.addEventListener('click', () => skip(10));
 
-  // Tombol Next: tap singkat = tetap maju 10 detik (fitur lama, tidak
-  // berubah). Tahan sebentar (long-press) = pindah ke lagu berikutnya.
-  // Next button: a quick tap still skips +10s (old behavior, unchanged).
-  // Press and hold = switch to the next track in the playlist.
-  const NEXT_LONG_PRESS_MS = 450;
-  let nextPressTimer = null;
-  let nextIsLongPress = false;
-
-  function nextPressStart() {
-    nextIsLongPress = false;
-    nextPressTimer = setTimeout(() => {
-      nextIsLongPress = true;
+  const nextTrackBtn = document.getElementById('musicNextTrack');
+  if (nextTrackBtn) {
+    nextTrackBtn.addEventListener('click', () => {
       const wasPlaying = !audio.paused;
       loadTrack(trackIndex + 1, { autoplay: wasPlaying });
-    }, NEXT_LONG_PRESS_MS);
+    });
   }
-  function nextPressEnd() {
-    clearTimeout(nextPressTimer);
-    if (!nextIsLongPress) skip(10);
-  }
-  function nextPressCancel() {
-    clearTimeout(nextPressTimer);
-  }
-
-  nextBtn.addEventListener('pointerdown', nextPressStart);
-  nextBtn.addEventListener('pointerup', nextPressEnd);
-  nextBtn.addEventListener('pointerleave', nextPressCancel);
-  nextBtn.addEventListener('pointercancel', nextPressCancel);
-  nextBtn.addEventListener('contextmenu', (e) => e.preventDefault()); // biar gak muncul menu HP pas ditahan
 
   progress.addEventListener('click', (e) => {
     const rect = progress.getBoundingClientRect();

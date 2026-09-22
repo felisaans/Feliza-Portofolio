@@ -229,14 +229,19 @@
                   <svg class="icon icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5.5v13l12-6.5-12-6.5Z"/></svg>
                   <svg class="icon icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:none"><rect x="6" y="5" width="4.5" height="14" rx="1.2"/><rect x="13.5" y="5" width="4.5" height="14" rx="1.2"/></svg>
                 </button>
-                <button type="button" class="music-btn" id="musicNext" aria-label="Tap: forward 10s. Hold: next song / Tap: maju 10 detik. Tahan: lagu berikutnya">
+                <button type="button" class="music-btn" id="musicNext" aria-label="Forward 10 seconds / Maju 10 detik">
                   <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 6v12l8.5-6L13 6Z"/><path d="M3 6v12l8.5-6L3 6Z"/></svg>
+                </button>
+                <button type="button" class="music-btn" id="musicNextTrack" aria-label="Next song / Lagu berikutnya">
+                  <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 6v12l8.5-6L5 6Z"/><rect x="16" y="6" width="2.6" height="12"/></svg>
                 </button>
               </div>
 
-              <!-- GANTI DI SINI: ganti src ini dengan file lagu mp3 favoritmu sendiri (taruh di folder assets/) -->
-              <!-- REPLACE HERE: swap this src for your own favorite mp3 file (put it inside the assets/ folder) -->
-              <audio id="musicAudio" src="assets/track.mp3" preload="metadata" loop></audio>
+              <!-- src sengaja dikosongin di sini biar file mp3-nya BARU kedownload pas -->
+              <!-- guest beneran klik Play atau Next Track (loadTrack() di script.js yang isi src-nya). -->
+              <!-- src is intentionally left empty here so the mp3 is only downloaded once -->
+              <!-- a guest actually clicks Play or Next Track (loadTrack() in script.js fills the src). -->
+              <audio id="musicAudio" preload="none" loop></audio>
             </div>
         </div>
 
@@ -265,7 +270,6 @@
       <div class="section-inner">
         <p class="section-kicker" data-i18n="edu-kicker">Education</p>
         <h2 data-i18n="edu-h2">My Studying Journey</h2>
-        <p class="section-lead" data-i18n="projects-lead">I'm a #SchoolTransferFinalBoss</p>
 
         <div class="edu-grid edu-timeline">
           <div class="edu-step pop-in">
