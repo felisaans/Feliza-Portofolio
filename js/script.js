@@ -180,11 +180,10 @@ const i18n = {
   "nav-home": "Beranda", "nav-profile": "Profil", "nav-contact": "Kontak",
   "nav-education": "Pendidikan", "nav-skills": "Keahlian", "nav-hobbies": "Hobi", "nav-projects": "Proyek",
   "skip": "Lewati ke konten",
-  "lang-hint": "Klik untuk ganti bahasa :D",
+  "lang-hint": "click to switch to Indonesian :D",
   "home-cta": "Lihat Profil", "home-caption": "it's me!",
   "home-major": "Mahasiswi Teknik Informatika",
   "home-univ": "Universitas Jabal Ghafur (UNIGHA)",
-  "home-quote": "\"kamu itu CSS buat HTML-ku ><\"",
   "profile-kicker": "Profil", "profile-h2": "Tentang Saya",
   "profile-p1": "Hai, saya Feliza!",
   "profile-p2": "Saya mahasiswa Informatika semester 5 di Universitas Jabal Ghafur. Saya suka mengeksplorasi teknologi, mempelajari hal baru, dan mengubah ide-ide acak menjadi sesuatu yang nyata.",
@@ -312,7 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       src: 'assets/track2.mp3',
-      title: 'Song Title 2',          // GANTI DI SINI / REPLACE HERE
+      title: 'NOT CUTE ANYMORE',          // GANTI DI SINI / REPLACE HERE
       artist: 'ILLIT',
       cover: 'assets/music-cover2.jpg',
     },
@@ -395,7 +394,14 @@ document.addEventListener('DOMContentLoaded', () => {
   prevBtn.addEventListener('click', () => skip(-10));
   nextBtn.addEventListener('click', () => skip(10));
 
+  const prevTrackBtn = document.getElementById('musicPrevTrack');
   const nextTrackBtn = document.getElementById('musicNextTrack');
+  if (prevTrackBtn) {
+    prevTrackBtn.addEventListener('click', () => {
+      const wasPlaying = !audio.paused;
+      loadTrack(trackIndex - 1, { autoplay: wasPlaying });
+    });
+  }
   if (nextTrackBtn) {
     nextTrackBtn.addEventListener('click', () => {
       const wasPlaying = !audio.paused;

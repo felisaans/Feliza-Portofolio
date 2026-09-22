@@ -43,7 +43,7 @@
   <!-- Banner sapaan buat tamu, di luar navbar, mengarah ke tombol ganti bahasa -->
   <!-- Guest-greeting banner, outside the navbar, pointing at the language-switch button -->
   <button type="button" class="lang-hint" id="langHint" aria-label="Dismiss / Tutup">
-    <span data-i18n="lang-hint">Click to switch language :D</span>
+    <span data-i18n="lang-hint">klik untuk ganti bahasa :D</span>
   </button>
 
   <main>
@@ -222,6 +222,9 @@
               </div>
 
               <div class="music-controls">
+                <button type="button" class="music-btn" id="musicPrevTrack" aria-label="Previous song / Lagu sebelumnya">
+                  <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="5" y="6" width="2.6" height="12"/><path d="M19 6v12l-8.5-6L19 6Z"/></svg>
+                </button>
                 <button type="button" class="music-btn" id="musicPrev" aria-label="Back 10 seconds / Mundur 10 detik">
                   <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11 18V6l-8.5 6L11 18Z"/><path d="M21 18V6l-8.5 6L21 18Z"/></svg>
                 </button>
@@ -270,6 +273,7 @@
       <div class="section-inner">
         <p class="section-kicker" data-i18n="edu-kicker">Education</p>
         <h2 data-i18n="edu-h2">My Studying Journey</h2>
+        <p class="section-lead" data-i18n="projects-lead">#SchoolTransferFinalBoss — life just kept moving me around.</p>
 
         <div class="edu-grid edu-timeline">
           <div class="edu-step pop-in">
