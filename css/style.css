@@ -1166,7 +1166,30 @@ main {
   color: var(--ink);
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  /* judul yang kepanjangan (ex: judul track2) ditangani lewat marquee di .music-title-inner, */
+  /* jadi bukan lewat text-overflow: ellipsis lagi */
+  /* an overly long title (e.g. track2's) is handled via the .music-title-inner marquee below, */
+  /* not via text-overflow: ellipsis anymore */
+  position: relative;
+}
+.music-title-inner {
+  display: inline-block;
+  white-space: nowrap;
+  /* --marquee-shift di-set lewat JS (updateMarquee() di script.js) = seberapa jauh teks kepotong */
+  /* --marquee-shift is set via JS (updateMarquee() in script.js) = how far the text overflows */
+}
+/* Kelas .is-marquee cuma ditambahin JS pas judulnya beneran kepotong (ex: judul track2 yang panjang) */
+/* .is-marquee is only added by JS when the title actually overflows (e.g. track2's long title) */
+.music-title.is-marquee .music-title-inner {
+  animation: music-title-marquee 6.5s ease-in-out infinite;
+}
+@keyframes music-title-marquee {
+  0%, 18%   { transform: translateX(0); }
+  50%, 68%  { transform: translateX(var(--marquee-shift, 0px)); }
+  100%      { transform: translateX(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .music-title.is-marquee .music-title-inner { animation: none; }
 }
 .music-artist {
   font-size: 0.7rem;

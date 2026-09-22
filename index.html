@@ -208,7 +208,7 @@
                 <div class="music-info">
                   <!-- GANTI DI SINI: judul lagu & nama artis favoritmu -->
                   <!-- REPLACE HERE: your own favorite song title & artist -->
-                  <p class="music-title">Supernatural</p>
+                  <p class="music-title"><span class="music-title-inner">Supernatural</span></p>
                   <p class="music-artist">Newjeans</p>
                 </div>
               </div>
@@ -240,11 +240,20 @@
                 </button>
               </div>
 
-              <!-- src sengaja dikosongin di sini biar file mp3-nya BARU kedownload pas -->
-              <!-- guest beneran klik Play atau Next Track (loadTrack() di script.js yang isi src-nya). -->
-              <!-- src is intentionally left empty here so the mp3 is only downloaded once -->
-              <!-- a guest actually clicks Play or Next Track (loadTrack() in script.js fills the src). -->
-              <audio id="musicAudio" preload="none" loop></audio>
+              <!-- Setiap lagu punya <audio> sendiri dengan <source> statis di HTML -->
+              <!-- (bukan diisi lewat JS/audio.src) — ini yang bikin Safari/iOS mau -->
+              <!-- putar audio-nya. GANTI DI SINI kalau mau tambah/ganti lagu: -->
+              <!-- tambah <audio> baru + baris "tracks" yang sesuai di script.js. -->
+              <!-- Each song gets its own <audio> with a static <source> in HTML -->
+              <!-- (not set via JS/audio.src) — this is what makes Safari/iOS -->
+              <!-- actually play it. REPLACE HERE if you add/change songs: -->
+              <!-- add a new <audio> + the matching "tracks" entry in script.js. -->
+              <audio id="musicAudioTrack0" preload="none" loop>
+                <source src="assets/track.mp3" type="audio/mpeg">
+              </audio>
+              <audio id="musicAudioTrack1" preload="none" loop>
+                <source src="assets/track2.mp3" type="audio/mpeg">
+              </audio>
             </div>
         </div>
 

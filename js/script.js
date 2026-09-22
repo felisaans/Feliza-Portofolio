@@ -280,7 +280,16 @@ document.addEventListener('DOMContentLoaded', () => {
 // MUSIC WIDGET — play/pause, progress bar, ±10s skip
 // =========================================================
 document.addEventListener('DOMContentLoaded', () => {
-  const audio = document.getElementById('musicAudio');
+  // Setiap track punya elemen <audio> sendiri di HTML (lihat index.html,
+  // id="musicAudioTrack0" / "musicAudioTrack1"), src-nya statis lewat
+  // <source> — TIDAK di-assign lewat JS. audio.src yang di-set dari JS
+  // itu yang bikin Safari/iOS suka nolak play(), jadi di sini script.js
+  // cuma pindah-pindah "elemen aktif", bukan ganti src-nya.
+  // Each track has its own <audio> element in HTML (see index.html,
+  // id="musicAudioTrack0" / "musicAudioTrack1") with a static <source> —
+  // NOT assigned via JS. Setting audio.src from JS is exactly what makes
+  // Safari/iOS refuse to play(), so this script only switches which
+  // element is "active" instead of rewriting its src.
   const playBtn = document.getElementById('musicPlayPause');
   const prevBtn = document.getElementById('musicPrev');
   const nextBtn = document.getElementById('musicNext');
@@ -288,63 +297,99 @@ document.addEventListener('DOMContentLoaded', () => {
   const progressFill = document.getElementById('musicProgressFill');
   const currentTimeEl = document.getElementById('musicCurrentTime');
   const durationEl = document.getElementById('musicDuration');
-  if (!audio || !playBtn) return;
+  if (!playBtn) return;
 
   const iconPlay = playBtn.querySelector('.icon-play');
   const iconPause = playBtn.querySelector('.icon-pause');
   const coverImg = document.querySelector('.music-cover img');
   const titleEl = document.querySelector('.music-title');
+  const titleInner = document.querySelector('.music-title-inner');
   const artistEl = document.querySelector('.music-artist');
 
+  // Kalau judul lagu kepanjangan & kepotong (ex: judul track2 yang lebih panjang
+  // dari track1), teksnya digeser bolak-balik (marquee) biar kebaca lengkap.
+  // Kalau muat, animasinya nggak dinyalain sama sekali.
+  // When a track title is too long and gets cut off (e.g. track2's title being
+  // longer than track1's), the text scrolls back and forth (marquee) so it can
+  // be read in full. If it already fits, the animation is never turned on.
+  function updateTitleMarquee() {
+    if (!titleEl || !titleInner) return;
+    titleEl.classList.remove('is-marquee');
+    titleEl.style.removeProperty('--marquee-shift');
+    // paksa reflow dulu biar ukurannya kebaca ulang & animasinya mulai dari awal lagi
+    // force a reflow first so the size is re-read & the animation restarts cleanly
+    void titleInner.offsetWidth;
+    const overflow = titleInner.scrollWidth - titleEl.clientWidth;
+    if (overflow > 2) {
+      titleEl.style.setProperty('--marquee-shift', `-${overflow + 6}px`);
+      titleEl.classList.add('is-marquee');
+    }
+  }
+  window.addEventListener('resize', updateTitleMarquee);
+
   // =========================================================
-  // Playlist: lagu ke-2 tinggal diganti di sini (file, judul, artis,
-  // sampul). File audionya sendiri taruh di folder assets/ ya.
-  // Playlist: edit track #2 right here (file, title, artist, cover).
-  // Drop the actual audio file into the assets/ folder yourself.
+  // Playlist: lagu ke-2 tinggal diganti di sini (judul, artis, sampul).
+  // Kalau mau tambah lagu ke-3 dst: tambah <audio id="musicAudioTrackN">
+  // baru di index.html, terus tambahin entry-nya di sini juga.
+  // Playlist: edit track #2 right here (title, artist, cover). To add a
+  // 3rd+ song: add a new <audio id="musicAudioTrackN"> in index.html,
+  // then add its matching entry here too.
   // =========================================================
   const tracks = [
     {
-      src: 'assets/track.mp3',
-      title: titleEl ? titleEl.textContent : '',
+      audioEl: document.getElementById('musicAudioTrack0'),
+      title: titleInner ? titleInner.textContent : '',
       artist: artistEl ? artistEl.textContent : '',
       cover: coverImg ? coverImg.getAttribute('src') : '',
     },
     {
-      src: 'assets/track2.mp3',
+      audioEl: document.getElementById('musicAudioTrack1'),
       title: 'NOT CUTE ANYMORE',          // GANTI DI SINI / REPLACE HERE
       artist: 'ILLIT',
       cover: 'assets/music-cover2.jpg',
     },
-  ];
+  ].filter(t => t.audioEl); // jaga-jaga kalau salah satu <audio> belum ada di HTML
+
+  if (!tracks.length) return;
+
   let trackIndex = 0;
-  let audioLoaded = true;
-
-  function loadTrack(index, { autoplay = false } = {}) {
-    trackIndex = (index + tracks.length) % tracks.length;
-    const track = tracks[trackIndex];
-
-    audioLoaded = true;
-    audio.src = track.src;
-    audio.load(); // wajib di Safari/iOS — tanpa ini, ganti src kadang gagal diputar
-    if (titleEl) titleEl.textContent = track.title;
-    if (artistEl) artistEl.textContent = track.artist;
-    if (coverImg) coverImg.src = track.cover;
-
-    currentTimeEl.textContent = '0:00';
-    durationEl.textContent = '0:00';
-    progressFill.style.width = '0%';
-    progress.setAttribute('aria-valuenow', 0);
-
-    if (autoplay) {
-      audio.play().catch(() => {});
-    }
-  }
+  let audio = tracks[trackIndex].audioEl; // referensi ke elemen <audio> yang lagi aktif
+  updateTitleMarquee(); // cek judul track pertama juga, siapa tau kepotong di layar sempit
 
   function formatTime(sec) {
     if (!isFinite(sec) || sec < 0) sec = 0;
     const m = Math.floor(sec / 60);
     const s = Math.floor(sec % 60).toString().padStart(2, '0');
     return `${m}:${s}`;
+  }
+
+  function updateProgressUI() {
+    currentTimeEl.textContent = formatTime(audio.currentTime);
+    durationEl.textContent = audio.duration ? formatTime(audio.duration) : '0:00';
+    const pct = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+    progressFill.style.width = pct + '%';
+    progress.setAttribute('aria-valuenow', Math.round(pct));
+  }
+
+  function switchTrack(index, { autoplay = false } = {}) {
+    const prevAudio = audio;
+    prevAudio.pause();
+    prevAudio.currentTime = 0;
+
+    trackIndex = (index + tracks.length) % tracks.length;
+    const track = tracks[trackIndex];
+    audio = track.audioEl; // tinggal ganti elemen aktifnya, src-nya sendiri sudah ada dari HTML
+
+    if (titleInner) titleInner.textContent = track.title;
+    if (artistEl) artistEl.textContent = track.artist;
+    if (coverImg) coverImg.src = track.cover;
+    updateTitleMarquee();
+
+    updateProgressUI();
+
+    if (autoplay) {
+      audio.play().catch(() => {});
+    }
   }
 
   function seekTo(ratio) {
@@ -358,10 +403,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   playBtn.addEventListener('click', () => {
-    if (!audioLoaded) {
-      loadTrack(trackIndex, { autoplay: true }); // baru di sini file mp3-nya kedownload
-      return;
-    }
     if (audio.paused) {
       audio.play().catch(() => {}); // browser bisa nolak autoplay tanpa interaksi — aman diabaikan di sini karena ini sudah dari klik user
     } else {
@@ -369,27 +410,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  audio.addEventListener('play', () => {
-    iconPlay.style.display = 'none';
-    iconPause.style.display = '';
-    playBtn.setAttribute('aria-label', 'Pause music / Jeda musik');
-  });
-  audio.addEventListener('pause', () => {
-    iconPlay.style.display = '';
-    iconPause.style.display = 'none';
-    playBtn.setAttribute('aria-label', 'Play music / Putar musik');
-  });
-
-  audio.addEventListener('loadedmetadata', () => {
-    durationEl.textContent = formatTime(audio.duration);
-  });
-  audio.addEventListener('timeupdate', () => {
-    currentTimeEl.textContent = formatTime(audio.currentTime);
-    if (audio.duration) {
-      const pct = (audio.currentTime / audio.duration) * 100;
-      progressFill.style.width = pct + '%';
-      progress.setAttribute('aria-valuenow', Math.round(pct));
-    }
+  // Listener dipasang ke SETIAP elemen <audio>, terus difilter biar cuma
+  // yang lagi aktif yang update tampilan (elemen non-aktif tetap diam).
+  // Listeners are attached to EVERY <audio> element, then filtered so
+  // only the currently active one updates the UI (inactive ones stay put).
+  tracks.forEach((track) => {
+    const el = track.audioEl;
+    el.addEventListener('play', () => {
+      if (el !== audio) return;
+      iconPlay.style.display = 'none';
+      iconPause.style.display = '';
+      playBtn.setAttribute('aria-label', 'Pause music / Jeda musik');
+    });
+    el.addEventListener('pause', () => {
+      if (el !== audio) return;
+      iconPlay.style.display = '';
+      iconPause.style.display = 'none';
+      playBtn.setAttribute('aria-label', 'Play music / Putar musik');
+    });
+    el.addEventListener('loadedmetadata', () => {
+      if (el !== audio) return;
+      durationEl.textContent = formatTime(el.duration);
+    });
+    el.addEventListener('timeupdate', () => {
+      if (el !== audio) return;
+      updateProgressUI();
+    });
   });
 
   prevBtn.addEventListener('click', () => skip(-10));
@@ -400,13 +446,13 @@ document.addEventListener('DOMContentLoaded', () => {
   if (prevTrackBtn) {
     prevTrackBtn.addEventListener('click', () => {
       const wasPlaying = !audio.paused;
-      loadTrack(trackIndex - 1, { autoplay: wasPlaying });
+      switchTrack(trackIndex - 1, { autoplay: wasPlaying });
     });
   }
   if (nextTrackBtn) {
     nextTrackBtn.addEventListener('click', () => {
       const wasPlaying = !audio.paused;
-      loadTrack(trackIndex + 1, { autoplay: wasPlaying });
+      switchTrack(trackIndex + 1, { autoplay: wasPlaying });
     });
   }
 
