@@ -1565,11 +1565,11 @@ main {
   visibility: visible;
   pointer-events: auto;
   transform: translateY(0);
-  animation: langHintBounce 30.6s ease-in-out 1s 2;
+  animation: langHintBounce 2.5s ease-in-out infinite;
 }
 @keyframes langHintBounce {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
+  50% { transform: translateY(-6px); }
 }
 
 /* Education timeline — garis vertikal di tengah, edu-card selang-seling
