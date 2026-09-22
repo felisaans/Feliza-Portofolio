@@ -293,6 +293,50 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const iconPlay = playBtn.querySelector('.icon-play');
   const iconPause = playBtn.querySelector('.icon-pause');
+  const coverImg = document.querySelector('.music-cover img');
+  const titleEl = document.querySelector('.music-title');
+  const artistEl = document.querySelector('.music-artist');
+
+  // =========================================================
+  // Playlist: lagu ke-2 tinggal diganti di sini (file, judul, artis,
+  // sampul). File audionya sendiri taruh di folder assets/ ya.
+  // Playlist: edit track #2 right here (file, title, artist, cover).
+  // Drop the actual audio file into the assets/ folder yourself.
+  // =========================================================
+  const tracks = [
+    {
+      src: audio.getAttribute('src'),
+      title: titleEl ? titleEl.textContent : '',
+      artist: artistEl ? artistEl.textContent : '',
+      cover: coverImg ? coverImg.getAttribute('src') : '',
+    },
+    {
+      src: 'assets/track2.mp3',       // GANTI DI SINI / REPLACE HERE
+      title: 'Song Title 2',          // GANTI DI SINI / REPLACE HERE
+      artist: 'Artist 2',             // GANTI DI SINI / REPLACE HERE
+      cover: 'assets/music-cover-2.jpg', // GANTI DI SINI / REPLACE HERE
+    },
+  ];
+  let trackIndex = 0;
+
+  function loadTrack(index, { autoplay = false } = {}) {
+    trackIndex = (index + tracks.length) % tracks.length;
+    const track = tracks[trackIndex];
+
+    audio.src = track.src;
+    if (titleEl) titleEl.textContent = track.title;
+    if (artistEl) artistEl.textContent = track.artist;
+    if (coverImg) coverImg.src = track.cover;
+
+    currentTimeEl.textContent = '0:00';
+    durationEl.textContent = '0:00';
+    progressFill.style.width = '0%';
+    progress.setAttribute('aria-valuenow', 0);
+
+    if (autoplay) {
+      audio.play().catch(() => {});
+    }
+  }
 
   function formatTime(sec) {
     if (!isFinite(sec) || sec < 0) sec = 0;
@@ -343,7 +387,36 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   prevBtn.addEventListener('click', () => skip(-10));
-  nextBtn.addEventListener('click', () => skip(10));
+
+  // Tombol Next: tap singkat = tetap maju 10 detik (fitur lama, tidak
+  // berubah). Tahan sebentar (long-press) = pindah ke lagu berikutnya.
+  // Next button: a quick tap still skips +10s (old behavior, unchanged).
+  // Press and hold = switch to the next track in the playlist.
+  const NEXT_LONG_PRESS_MS = 450;
+  let nextPressTimer = null;
+  let nextIsLongPress = false;
+
+  function nextPressStart() {
+    nextIsLongPress = false;
+    nextPressTimer = setTimeout(() => {
+      nextIsLongPress = true;
+      const wasPlaying = !audio.paused;
+      loadTrack(trackIndex + 1, { autoplay: wasPlaying });
+    }, NEXT_LONG_PRESS_MS);
+  }
+  function nextPressEnd() {
+    clearTimeout(nextPressTimer);
+    if (!nextIsLongPress) skip(10);
+  }
+  function nextPressCancel() {
+    clearTimeout(nextPressTimer);
+  }
+
+  nextBtn.addEventListener('pointerdown', nextPressStart);
+  nextBtn.addEventListener('pointerup', nextPressEnd);
+  nextBtn.addEventListener('pointerleave', nextPressCancel);
+  nextBtn.addEventListener('pointercancel', nextPressCancel);
+  nextBtn.addEventListener('contextmenu', (e) => e.preventDefault()); // biar gak muncul menu HP pas ditahan
 
   progress.addEventListener('click', (e) => {
     const rect = progress.getBoundingClientRect();
@@ -372,8 +445,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function positionHint() {
     const rect = langToggle.getBoundingClientRect();
-    langHint.style.left = (rect.left + rect.width / 2) + 'px';
+    const buttonCenterX = rect.left + rect.width / 2;
+    const margin = 12; // jarak minimum ke tepi layar / min gap from the screen edge
+
+    // Reset dulu biar lebar bubble kebaca apa adanya (mengikuti max-width di
+    // CSS), baru dihitung ulang posisinya — supaya di layar sempit teksnya
+    // wrap dan bubble-nya tidak nongol keluar viewport.
+    // Reset first so the bubble's width reads naturally (per the CSS
+    // max-width), then recompute its position — so on narrow screens the
+    // text wraps and the bubble never pokes outside the viewport.
+    langHint.style.left = '0px';
+    const hintWidth = langHint.getBoundingClientRect().width;
+
+    const maxLeft = Math.max(margin, window.innerWidth - hintWidth - margin);
+    const clampedLeft = Math.min(Math.max(buttonCenterX - hintWidth / 2, margin), maxLeft);
+
+    langHint.style.left = clampedLeft + 'px';
     langHint.style.top = (rect.bottom + 12) + 'px';
+
+    // Panah tetap mengarah persis ke tengah tombol, walau bubble-nya
+    // sendiri harus digeser biar tidak kepotong di tepi layar.
+    // The arrow still points exactly at the button's center, even when the
+    // bubble itself had to shift to avoid being clipped by the edge.
+    const arrowLeft = Math.min(Math.max(buttonCenterX - clampedLeft, 16), hintWidth - 16);
+    langHint.style.setProperty('--arrow-left', arrowLeft + 'px');
   }
 
   function refreshHintVisibility() {
