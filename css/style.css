@@ -78,7 +78,10 @@
    scrolling. */
 html {
   overflow-x: hidden;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Edge lama / old Edge */
 }
+html::-webkit-scrollbar { display: none; } /* Chrome, Safari, Edge Chromium */
 body, h1, h2, h3, p, ul, figure { margin: 0; }
 ul { padding: 0; list-style: none; }
 img { max-width: 100%; display: block; }
@@ -1050,11 +1053,10 @@ main {
     min-height: 340px;
     padding: 30px 28px;
     border-radius: 6px;
-    /* Wallpaper layar — hapus baris `background:` ini kalau mau layar polos */
-    /* Screen wallpaper — delete this `background:` line for a plain screen */
+    /* Wallpaper layar sudah dihapus — layar polos pakai warna cream */
+    /* Screen wallpaper removed — plain screen using the cream color */
     background:
       linear-gradient(rgba(255, 251, 246, 0), rgba(255, 251, 246, 0)),
-      url('../assets/hobbies-wallpaper.jpg') center / cover no-repeat,
       var(--cream);
   }
 
@@ -1067,12 +1069,12 @@ main {
     padding-bottom: 0; /* reset ruang kosong yang di mobile dipakai music widget */
   }
   .section--hobbies .app-icon-tile {
-    width: 60px;
-    height: 60px;
-    border-radius: 18px;
+    width: 120px;
+    height: 120px;
+    border-radius: 36px;
   }
-  .section--hobbies .app-icon-tile .icon { width: 28px; height: 28px; }
-  .section--hobbies .app-icon span { font-size: 0.78rem; }
+  .section--hobbies .app-icon-tile .icon { width: 56px; height: 56px; }
+  .section--hobbies .app-icon span { font-size: 1.56rem; }
 
   /* --- Music widget: dari overlay absolute jadi kartu tetap di kolom kanan --- */
   .section--hobbies .music-widget {
@@ -1477,6 +1479,46 @@ main {
   transition: background 0.15s ease, transform 0.15s ease;
 }
 .lang-toggle:hover { background: var(--purple-deep, #7c5cff); color: #fff; transform: translateY(-1px); }
+
+/* Banner/tooltip penunjuk buat tamu baru, mengarah ke tombol EN/ID */
+/* Guest-greeting tooltip banner pointing at the EN/ID toggle button */
+.lang-toggle-wrap { position: relative; }
+.lang-hint {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  white-space: nowrap;
+  background: var(--purple-deep, #7c5cff);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 7px 14px;
+  border-radius: 999px;
+  box-shadow: 0 10px 20px -8px rgba(74, 63, 85, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 20;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.lang-hint::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-bottom-color: var(--purple-deep, #7c5cff);
+}
+.lang-hint.is-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  animation: langHintBounce 1.6s ease-in-out 0.4s 2;
+}
+@keyframes langHintBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-4px); }
+}
 
 /* Education timeline — garis vertikal di tengah, edu-card selang-seling
    kiri/kanan dari garis itu. Di mobile, edu-card cuma di-narrow-in

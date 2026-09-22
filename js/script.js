@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Every time #profile is shown, the clipboard-paper text is "retyped"
   // paragraph by paragraph, with a blinking cursor after the last character.
   let clipboardTypeToken = 0;
-  const TYPE_SPEED_MS = 45; // per kata / per word
+  const TYPE_SPEED_MS = 22; // per kata / per word (2x lebih cepat)
 
   function typeClipboardParagraphs() {
     const paperSpans = document.querySelectorAll('.clipboard-paper > p > span[data-i18n]');
@@ -180,6 +180,7 @@ const i18n = {
   "nav-home": "Beranda", "nav-profile": "Profil", "nav-contact": "Kontak",
   "nav-education": "Pendidikan", "nav-skills": "Keahlian", "nav-hobbies": "Hobi", "nav-projects": "Proyek",
   "skip": "Lewati ke konten",
+  "lang-hint": "Klik untuk ganti bahasa :D",
   "home-cta": "Lihat Profil", "home-caption": "it's me!",
   "home-major": "Mahasiswi Teknik Informatika",
   "home-univ": "Universitas Jabal Ghafur (UNIGHA)",
@@ -354,4 +355,25 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'ArrowRight') { skip(5); e.preventDefault(); }
     if (e.key === 'ArrowLeft')  { skip(-5); e.preventDefault(); }
   });
+});
+
+// =========================================================
+// Banner sapaan buat tamu, menunjuk ke tombol ganti bahasa
+// Guest-greeting banner pointing at the language-switch button
+// =========================================================
+document.addEventListener('DOMContentLoaded', () => {
+  const langToggle = document.getElementById('langToggle');
+  const langHint = document.getElementById('langHint');
+  if (!langToggle || !langHint) return;
+
+  const showTimer = setTimeout(() => langHint.classList.add('is-visible'), 500);
+  const hideTimer = setTimeout(() => langHint.classList.remove('is-visible'), 6500);
+
+  function dismissHint() {
+    clearTimeout(showTimer);
+    clearTimeout(hideTimer);
+    langHint.classList.remove('is-visible');
+  }
+
+  langToggle.addEventListener('click', dismissHint, { once: true });
 });
