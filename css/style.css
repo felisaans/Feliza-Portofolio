@@ -1069,12 +1069,12 @@ main {
     padding-bottom: 0; /* reset ruang kosong yang di mobile dipakai music widget */
   }
   .section--hobbies .app-icon-tile {
-    width: 120px;
-    height: 120px;
-    border-radius: 36px;
+    width: 60px;
+    height: 60px;
+    border-radius: 18px;
   }
-  .section--hobbies .app-icon-tile .icon { width: 56px; height: 56px; }
-  .section--hobbies .app-icon span { font-size: 1.56rem; }
+  .section--hobbies .app-icon-tile .icon { width: 28px; height: 28px; }
+  .section--hobbies .app-icon span { font-size: 0.78rem; }
 
   /* --- Music widget: dari overlay absolute jadi kartu tetap di kolom kanan --- */
   .section--hobbies .music-widget {
@@ -1480,25 +1480,35 @@ main {
 }
 .lang-toggle:hover { background: var(--purple-deep, #7c5cff); color: #fff; transform: translateY(-1px); }
 
-/* Banner/tooltip penunjuk buat tamu baru, mengarah ke tombol EN/ID */
-/* Guest-greeting tooltip banner pointing at the EN/ID toggle button */
-.lang-toggle-wrap { position: relative; }
+/* Banner/tooltip penunjuk buat tamu baru, mengarah ke tombol EN/ID.
+   Elemennya sengaja diletakkan di luar <header>/navbar di HTML, lalu posisinya
+   dihitung lewat JS (position: fixed) supaya tetap presisi menunjuk ke tombol
+   di breakpoint manapun, dan tidak ikut terpotong overflow milik navbar. */
+/* Guest-greeting tooltip banner pointing at the EN/ID toggle button.
+   The element deliberately lives outside <header>/the navbar in the HTML;
+   its position is computed via JS (position: fixed) so it still points
+   precisely at the button at any breakpoint, and never gets clipped by the
+   navbar's own overflow. */
 .lang-hint {
-  position: absolute;
-  top: calc(100% + 12px);
-  left: 50%;
-  transform: translateX(-50%) translateY(-6px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -6px);
   white-space: nowrap;
   background: var(--purple-deep, #7c5cff);
   color: #fff;
+  font-family: inherit;
   font-size: 0.78rem;
   font-weight: 700;
+  border: none;
   padding: 7px 14px;
   border-radius: 999px;
   box-shadow: 0 10px 20px -8px rgba(74, 63, 85, 0.45);
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  z-index: 20;
+  cursor: pointer;
+  z-index: 500;
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 .lang-hint::before {
@@ -1512,12 +1522,14 @@ main {
 }
 .lang-hint.is-visible {
   opacity: 1;
-  transform: translateX(-50%) translateY(0);
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
   animation: langHintBounce 1.6s ease-in-out 0.4s 2;
 }
 @keyframes langHintBounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(-4px); }
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -4px); }
 }
 
 /* Education timeline — garis vertikal di tengah, edu-card selang-seling

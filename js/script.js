@@ -358,22 +358,57 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // =========================================================
-// Banner sapaan buat tamu, menunjuk ke tombol ganti bahasa
-// Guest-greeting banner pointing at the language-switch button
+// Banner sapaan buat tamu, menunjuk ke tombol ganti bahasa.
+// Cuma tampil di #home, dan tetap ada sampai diklik (tidak ada auto-hide).
+// Guest-greeting banner pointing at the language-switch button.
+// Only shown on #home, and stays until clicked (no auto-hide timer).
 // =========================================================
 document.addEventListener('DOMContentLoaded', () => {
   const langToggle = document.getElementById('langToggle');
   const langHint = document.getElementById('langHint');
   if (!langToggle || !langHint) return;
 
-  const showTimer = setTimeout(() => langHint.classList.add('is-visible'), 500);
-  const hideTimer = setTimeout(() => langHint.classList.remove('is-visible'), 6500);
+  let dismissed = false;
+
+  function positionHint() {
+    const rect = langToggle.getBoundingClientRect();
+    langHint.style.left = (rect.left + rect.width / 2) + 'px';
+    langHint.style.top = (rect.bottom + 12) + 'px';
+  }
+
+  function refreshHintVisibility() {
+    if (dismissed) return;
+    const home = document.getElementById('home');
+    const onHome = home && home.classList.contains('is-active');
+    if (onHome) {
+      positionHint();
+      langHint.classList.add('is-visible');
+    } else {
+      langHint.classList.remove('is-visible');
+    }
+  }
 
   function dismissHint() {
-    clearTimeout(showTimer);
-    clearTimeout(hideTimer);
+    dismissed = true;
     langHint.classList.remove('is-visible');
   }
 
-  langToggle.addEventListener('click', dismissHint, { once: true });
+  langHint.addEventListener('click', dismissHint);
+  window.addEventListener('resize', () => { if (langHint.classList.contains('is-visible')) positionHint(); });
+
+  // showSection() (didefinisikan lebih atas) ganti class is-active tiap
+  // navigasi; kita cukup cek ulang tiap ada perubahan section lewat
+  // MutationObserver, biar tidak perlu utak-atik fungsi showSection itu sendiri.
+  // showSection() (defined above) toggles the is-active class on every
+  // navigation; we just recheck on every section change via a
+  // MutationObserver, so showSection itself doesn't need to be touched.
+  const homeSection = document.getElementById('home');
+  if (homeSection) {
+    new MutationObserver(refreshHintVisibility).observe(homeSection, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+  }
+
+  refreshHintVisibility();
 });
