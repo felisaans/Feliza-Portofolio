@@ -317,7 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   ];
   let trackIndex = 0;
-  let audioLoaded = false; // baru download beneran pas user klik Play / Next Track
+  let audioLoaded = true;
 
   function loadTrack(index, { autoplay = false } = {}) {
     trackIndex = (index + tracks.length) % tracks.length;
@@ -325,6 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     audioLoaded = true;
     audio.src = track.src;
+    audio.load(); // wajib di Safari/iOS — tanpa ini, ganti src kadang gagal diputar
     if (titleEl) titleEl.textContent = track.title;
     if (artistEl) artistEl.textContent = track.artist;
     if (coverImg) coverImg.src = track.cover;
