@@ -383,7 +383,7 @@ main {
 .section--home     { background: linear-gradient(180deg, var(--purple-pale) 0%, var(--cream) 100%); }
 .section--profile   { background: linear-gradient(180deg, var(--pink-pale) 0%, var(--cream) 100%); }
 .section--contact   { background: linear-gradient(180deg, var(--blue) 0%, var(--cream) 100%); }
-.section--education { background: linear-gradient(180deg, var(--yellow-pale) 0%, var(--cream) 100%); }
+.section--education { background: linear-gradient(180deg, var(--pink-pale) 0%, var(--cream) 100%); }
 .section--skills    { background: linear-gradient(180deg, var(--green-pale) 0%, var(--cream) 100%); }
 .section--hobbies   { background: linear-gradient(180deg, var(--mint-pale) 0%, var(--cream) 100%); }
 .section--projects  { background: linear-gradient(180deg, var(--purple-pale) 0%, var(--cream) 100%); }
@@ -719,57 +719,67 @@ main {
 }
 .edu-card {
   border-radius: var(--r-md);
+  border: 4px solid;
   padding: 22px;
   box-shadow: var(--shadow-soft);
   transition: transform 0.2s ease;
 }
-.edu-card:hover { transform: translateY(-4px); }
-.edu-card--pink   { background: rgba(255, 211, 225, 0.851); }
-.edu-card--blue   { background: rgba(210, 231, 255, 0.904); }
-.edu-card--mint   { background: rgba(207, 251, 238, 0.815); }
-.edu-card--yellow { background: rgb(255, 235, 165); }
 
-/* Kartu University dibuat lebih 'hidup' — nandain ini yang lagi
-   dijalani sekarang, beda dari jenjang lain yang udah kelar. */
-/* University card is made more vibrant/alive — signaling this is
-   the one currently in progress, unlike the other finished stages. */
-.edu-card--current {
-  background: linear-gradient(135deg, var(--yellow) 0%, var(--yellow-deep) 130%);
-  border: 3px solid var(--yellow);
-  box-shadow: 0 18px 34px -14px rgba(255, 235, 156, 0.908), var(--shadow-soft);
-  animation: eduCardGlow 2.6s ease-in-out infinite;
+.edu-card:hover {
+  transform: translateY(-10px);
 }
-.edu-card--current .edu-icon { background: rgba(255, 255, 255, 0.85); }
+
+.edu-card--pink {
+  background: rgb(255 237 241);
+  border-color: var(--pink);
+}
+
+.edu-card--blue {
+  background: #e5edf8;
+  border-color: var(--blue);
+}
+
+.edu-card--mint {
+  background: #e9faf6;
+  border-color: var(--mint);
+}
+
+.edu-card--yellow {
+  background: rgb(237 224 255);
+  border-color: var(--white);
+}
+
+.edu-card--current .edu-icon { background: rgba(255 255 255 / 83%); }
 .edu-card--current .edu-level { opacity: 0.85; }
 .edu-card--current .edu-year {
   display: inline-flex;
   align-items: center;
   gap: 7px;
   background: var(--white);
-  color: var(--ink);
+  color: var(--ink-soft);
   font-weight: 700;
   padding: 5px 13px;
   border-radius: 999px;
   margin-top: 6px;
-  box-shadow: 0 4px 10px -4px rgba(74, 63, 85, 0.3);
+  box-shadow: 0 4px 10px -4px rgb(107 70 158 / 74%);
 }
 .edu-card--current .edu-year::before {
   content: '';
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #fce324;
+  background: #9f88de;
   flex-shrink: 0;
-  animation: eduDotPulse 1.6s ease-in-out infinite;
+  animation: eduDotPulse 1s ease-in-out infinite;
 }
 
 @keyframes eduCardGlow {
-  0%, 100% { box-shadow: 0 18px 34px -14px rgba(255, 215, 71, 0.55), var(--shadow-soft); }
-  50%      { box-shadow: 0 18px 40px -10px rgba(255, 215, 71, 0.8), var(--shadow-soft); }
+  0%, 100% { box-shadow: 0 18px 34px -14px rgb(230 212 255), var(--shadow-soft); }
+  50%      { box-shadow: 0 18px 40px -10px rgb(138 110 177 / 70%), var(--shadow-soft); }
 }
 @keyframes eduDotPulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50%      { transform: scale(1.4); opacity: 0.6; }
+  0%, 100% { transform: scale(1); opacity: 80; }
+  50%      { transform: scale(1.4); opacity: 10; }
 }
 
 .edu-icon {
@@ -778,7 +788,7 @@ main {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.65);
+  background: rgb(255 255 255 / 83%);
   margin-bottom: 12px;
 }
 .edu-level {
@@ -1616,14 +1626,14 @@ main {
 .edu-step:nth-child(odd)  .edu-step-dot { right: -7px; }
 .edu-step:nth-child(even) .edu-step-dot { left: -7px; }
 .edu-step-dot--current {
-  background: #FF9F2E;
-  border-color: #FF9F2E;
-  box-shadow: 0 0 0 4px rgba(255, 159, 46, 0.3);
+  background: #9f88dec4;
+  border-color: var(--ink);
+  box-shadow: 0 0 0 4px #7360a6;
   animation: eduStepDotPulse 1.8s ease-in-out infinite;
 }
 @keyframes eduStepDotPulse {
-  0%, 100% { box-shadow: 0 0 0 4px rgba(255, 159, 46, 0.3); }
-  50%      { box-shadow: 0 0 0 8px rgba(255, 159, 46, 0.12); }
+  0%, 100% { box-shadow: 0 0 0 4px #b297fd; }
+  50%      { box-shadow: 0 0 0 8px #a192cb38; }
 }
 .edu-step .edu-card { width: 100%; }
 
