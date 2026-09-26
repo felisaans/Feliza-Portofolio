@@ -731,17 +731,17 @@ main {
 
 .edu-card--pink {
   background: rgb(255 237 241);
-  border-color: var(--pink);
+  border-color: var(--white);
 }
 
 .edu-card--blue {
   background: #e5edf8;
-  border-color: var(--blue);
+  border-color: var(--white);
 }
 
 .edu-card--mint {
   background: #e9faf6;
-  border-color: var(--mint);
+  border-color: var(--white);
 }
 
 .edu-card--yellow {
