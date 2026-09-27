@@ -1334,6 +1334,8 @@ main {
   color: var(--ink);
   text-align: left;
   align-items: flex-start;
+/* Kartu filled tidak boleh pakai border dashed, apapun warnanya */
+  border: none !important;
 }
 .project-card--filled:hover {
   box-shadow: 0 18px 34px -14px rgba(122, 92, 143, 0.4);
