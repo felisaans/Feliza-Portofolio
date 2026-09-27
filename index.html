@@ -1,500 +1,643 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aceh Discovery — Portal Eksplorasi Kuliner, Warisan Budaya & Destinasi Aceh</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feliza Aziva — Portfolio</title>
+  <meta name="description" content="Personal portfolio of Feliza Aziva — Informatics Engineering student." />
+ 
+  <!-- Google Fonts: Quicksand -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/beranda.css">
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-<body class="aceh-theme">
+<body>
 
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg fixed-top aceh-navbar">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center gap-3" href="index.html">
-                <div class="brand-icon"><i class="fa-solid fa-compass"></i></div>
-                <span class="brand-text">Aceh Discovery</span>
-            </a>
-            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav align-items-lg-center gap-lg-4 mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active" href="index.html">Beranda</a></li>
-                    <li class="nav-item"><a class="nav-link" href="kuliner.html">Kuliner</a></li>
-                    <li class="nav-item"><a class="nav-link" href="budaya.html">Budaya & Tradisi</a></li>
-                    <li class="nav-item"><a class="nav-link" href="destinasi.html">Destinasi Wisata</a></li>
-                    <li class="nav-item ms-lg-2">
-                        <a class="btn btn-aceh-outline text-decoration-none py-2 px-4" href="login.html">
-                            <i class="fa-solid fa-user me-2"></i>Masuk
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+  <!-- ===================================================
+       SKIP LINK (aksesibilitas / accessibility
+  ==================================================== -->
+  <a class="skip-link" href="#home"><span data-i18n="skip">Skip to content</span></a>
 
-    <!-- HERO -->
-    <section class="hero-editorial">
-        <div class="container">
-            <div class="row align-items-center g-5">
-                <div class="col-lg-6">
-                    <div class="hero-tag-pill">
-                        <span class="tag-dot"></span>
-                        <span>Portal Penjelajahan Serambi Mekkah</span>
-                    </div>
-                    <h1 class="hero-heading">
-                        Jelajahi <em>Cita Rasa</em> & Warisan Abadi Tanah Aceh.
-                    </h1>
-                    <p class="hero-description">
-                        Sebuah ruang kurasi untuk menemukan rempah otentik, magisnya tarian tradisi UNESCO, hingga lanskap pesisir dan dataran tinggi nusantara.
-                    </p>
-                    <form action="kuliner.html" method="GET" class="search-box-container mb-4">
-                        <div class="input-group search-box-pill">
-                            <span class="input-group-text bg-transparent border-0 text-teal ps-2">
-                                <i class="fa-solid fa-magnifying-glass"></i>
-                            </span>
-                            <input type="text" name="q" class="form-control" placeholder="Cari Mie Aceh, Tari Saman, Sabang, Gayo...">
-                            <button type="submit" class="btn btn-aceh-primary">Telusuri</button>
-                        </div>
-                    </form>
-                    <div class="d-flex align-items-center gap-4 pt-2">
-                        <div>
-                            <div class="h4 font-editorial fw-bold m-0 text-teal">23+</div>
-                            <small class="text-muted">Kabupaten & Kota</small>
-                        </div>
-                        <div class="vr opacity-25" style="height: 30px;"></div>
-                        <div>
-                            <div class="h4 font-editorial fw-bold m-0 text-teal">100+</div>
-                            <small class="text-muted">Kuliner Otentik</small>
-                        </div>
-                        <div class="vr opacity-25" style="height: 30px;"></div>
-                        <div>
-                            <div class="h4 font-editorial fw-bold m-0 text-teal">UNESCO</div>
-                            <small class="text-muted">Warisan Dunia</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="hero-visual-container">
-                        <div class="hero-main-frame">
-                            <img src="https://www.indonesia.travel/link/96ec3d7ac046474e8c435d03d60887ec.aspx" alt="Masjid Raya Baiturrahman Aceh">
-                        </div>
-                        <div class="hero-badge-top">
-                            <i class="fa-solid fa-location-dot text-teal me-2"></i>Banda Aceh
-                        </div>
-                        <div class="hero-floating-card">
-                            <div class="floating-icon"><i class="fa-solid fa-mug-hot"></i></div>
-                            <div>
-                                <h6 class="fw-bold mb-1">Kopi Gayo & Sanger</h6>
-                                <p class="small text-muted m-0">Aroma komoditas dunia dari dataran tinggi</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CERITA & BERITA TERBARU (dinamis dari Supabase, dipertahankan dari desain lama) -->
-    <section class="section-berita container">
-        <div class="d-flex align-items-center justify-content-between mb-4">
-            <div>
-                <span class="text-uppercase tracking-wider text-teal fw-bold small">Kabar Terkini</span>
-                <h3 class="fw-bold font-editorial m-0 mt-1">Cerita & Berita Terbaru</h3>
-            </div>
-        </div>
-        <div class="row g-4" id="beritaContainer"></div>
-    </section>
-
-    <!-- FEATURED -->
-    <section class="section-featured-stories">
-        <div class="container">
-            <div class="row justify-content-center text-center mb-5">
-                <div class="col-lg-7">
-                    <span class="text-uppercase tracking-wider text-teal fw-bold small">Sorotan Editorial</span>
-                    <h2 class="font-editorial display-6 fw-bold mt-2">Cerita Utama dari Aceh</h2>
-                    <p class="text-muted">Eksplorasi tiga pilar utama yang membentuk identitas dan keharuman Tanah Rencong.</p>
-                </div>
-            </div>
-
-            <div class="featured-block">
-                <div class="row align-items-center g-4">
-                    <div class="col-lg-6">
-                        <div class="featured-img-frame">
-                            <span class="badge-featured-category">Destinasi Ikonik</span>
-                            <img src="https://cdn.ajnn.net/files/images/archives/20230704-danau-laut-tawar-dengan.jpg" alt="Gayo">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 ps-lg-5">
-                        <div class="featured-meta">
-                            <span><i class="fa-solid fa-map-pin text-teal"></i> Aceh Tengah</span>
-                            <span><i class="fa-solid fa-star text-warning"></i> 4.9</span>
-                        </div>
-                        <h3 class="featured-title">Magis Pesona Danau Lut Tawar & Kebun Kopi Dataran Tinggi Gayo</h3>
-                        <p class="featured-excerpt">
-                            Terletak di ketinggian 1.200 mdpl, Gayo menyajikan hamparan danau anggun dikelilingi perbukitan hijau tempat tumbuhnya salah satu varietas kopi Arabika terbaik di dunia.
-                        </p>
-                        <a href="destinasi.html" class="btn btn-aceh-primary">
-                            Jelajahi Gayo <i class="fa-solid fa-arrow-right ms-2"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="featured-block">
-                <div class="row align-items-center g-4 flex-lg-row-reverse">
-                    <div class="col-lg-6">
-                        <div class="featured-img-frame">
-                            <span class="badge-featured-category">Warisan Kuliner</span>
-                            <img src="https://bayoranteknik.co.id/wp-content/uploads/2022/01/165704259_2877835065870314_6503201259488200177_n.jpg" alt="Mie Aceh">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 pe-lg-5">
-                        <div class="featured-meta">
-                            <span><i class="fa-solid fa-utensils text-teal"></i> Banda Aceh</span>
-                            <span><i class="fa-solid fa-fire text-teal"></i> Kaya Rempah</span>
-                        </div>
-                        <h3 class="featured-title">Simfoni 16 Rempah Rahasia dalam Cita Rasa Mie Aceh Otentik</h3>
-                        <p class="featured-excerpt">
-                            Perpaduan mie tebal kenyal berpadu kuah kari pekat bertabur kepiting segar, mencerminkan jejak jalur rempah perdagangan dunia masa lampau.
-                        </p>
-                        <a href="kuliner-detail.html?slug=mie-aceh" class="btn btn-aceh-accent">
-                            Resep & Sejarah <i class="fa-solid fa-arrow-right ms-2"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="featured-block mb-0">
-                <div class="row align-items-center g-4">
-                    <div class="col-lg-6">
-                        <div class="featured-img-frame">
-                            <span class="badge-featured-category accent-sky">UNESCO Heritage</span>
-                            <img src="https://asset.kompas.com/crops/ZDZrVGeJ9FswM70k2Fbn0gW310A=/0x0:780x520/1200x800/data/photo/2021/06/29/60dacbf4238f5.jpg" alt="Tari Saman">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 ps-lg-5">
-                        <div class="featured-meta">
-                            <span><i class="fa-solid fa-masks-theater text-teal"></i> Gayo Lues</span>
-                            <span><i class="fa-solid fa-certificate text-teal"></i> UNESCO</span>
-                        </div>
-                        <h3 class="featured-title">Harmoni Ribuan Tangan dalam Ritme Keagungan Tari Saman</h3>
-                        <p class="featured-excerpt">
-                            Dikenal sebagai "Tari Seribu Tangan", pertunjukan tanpa alat musik ini mengandalkan tepukan dada dan gerakan serentak nan dinamis.
-                        </p>
-                        <a href="budaya.html" class="btn btn-aceh-outline">
-                            Pelajari Filosofi <i class="fa-solid fa-arrow-right ms-2"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- DISCOVER: KULINER POPULER (dinamis dari Supabase) -->
-    <section class="section-discover">
-        <div class="container">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-5 gap-3">
-                <div>
-                    <span class="text-uppercase tracking-wider text-teal fw-bold small">Rasa Otentik</span>
-                    <h2 class="font-editorial display-6 fw-bold m-0">Kuliner Populer Aceh</h2>
-                </div>
-                <a href="kuliner.html" class="btn btn-aceh-outline">Semua Kuliner</a>
-            </div>
-
-            <div class="d-flex flex-wrap gap-2 mb-5" id="filterDaerahChips"></div>
-
-            <div class="row g-4" id="kulinerPopulerContainer"></div>
-        </div>
-    </section>
-
-    <!-- DISCOVER: BUDAYA & TRADISI PILIHAN (dinamis dari Supabase) -->
-    <section class="section-discover-budaya">
-        <div class="container">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-5 gap-3">
-                <div>
-                    <span class="text-uppercase tracking-wider text-teal fw-bold small">Warisan Leluhur</span>
-                    <h2 class="font-editorial display-6 fw-bold m-0">Budaya & Tradisi Pilihan</h2>
-                </div>
-                <a href="budaya.html" class="btn btn-aceh-outline">Semua Budaya</a>
-            </div>
-
-            <div class="row g-4" id="budayaPilihanContainer"></div>
-        </div>
-    </section>
-
-    <!-- EDITORIAL IDENTITY -->
-    <div class="container">
-        <section class="section-editorial-identity">
-            <div class="row align-items-center g-5 px-4 px-md-5">
-                <div class="col-lg-6">
-                    <div class="collage-wrapper">
-                        <div class="collage-main">
-                            <img src="https://posaceh.com/wp-content/uploads/2025/12/Sambut-tamu.jpg" alt="Peumulia jamee">
-                        </div>
-                        <div class="collage-sub">
-                            <img src="https://www.acehtimes.co.id/wp-content/uploads/2025/09/SnapInsta.to_464023795_914088380594254_1616973902015029522_n-1000x600.jpg" alt="Kedai kopi aceh">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <span class="text-uppercase tracking-wider text-meadow fw-bold small">Identitas Kebudayaan</span>
-                    <h2 class="font-editorial display-6 fw-bold text-white mt-2 mb-4">
-                        Lebih dari Sekadar Destinasi Wisata
-                    </h2>
-                    <p class="text-light opacity-75 mb-4">
-                        Aceh adalah ruang perjumpaan nilai-nilai spiritual, keramahan hangat kedai kopi 24 jam, sejarah kejayaan kesultanan, dan ketangguhan masyarakat yang senantiasa menyambut tamu bagaikan keluarga sendiri.
-                    </p>
-                    <div class="identity-bullet">
-                        <div class="identity-bullet-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
-                        <div>
-                            <h6 class="fw-bold mb-1">Mulia Poe Teumpeun (Muliakan Tamu)</h6>
-                            <p class="small text-light opacity-75 m-0">Falsafah adat memuliakan setiap musafir.</p>
-                        </div>
-                    </div>
-                    <div class="identity-bullet">
-                        <div class="identity-bullet-icon"><i class="fa-solid fa-mug-hot"></i></div>
-                        <div>
-                            <h6 class="fw-bold mb-1">Kultur Seribu Kedai Kopi</h6>
-                            <p class="small text-light opacity-75 m-0">Pusat diskusi & kehangatan sosial.</p>
-                        </div>
-                    </div>
-                    <div class="pt-3">
-                        <a href="budaya.html" class="btn btn-aceh-accent">
-                            Jelajahi Kebudayaan <i class="fa-solid fa-arrow-right ms-2"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <!-- ===================================================
+       HEADER / STICKY NAV
+  ==================================================== -->
+  <header class="site-header" id="site-header">
+    <div class="nav-inner">
+      <nav class="primary-nav" id="primaryNav" aria-label="Main navigation / Navigasi utama">
+        <ul>
+          <li><button id="langToggle" class="lang-toggle" type="button" aria-label="Switch language / Ganti bahasa">EN</button></li>
+          <li><a href="#home" data-nav="home"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg><span data-i18n="nav-home">Home</span></a></li>
+          <li><a href="#profile" data-nav="profile"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4.5 5-6 8-6s6.5 1.5 8 6"/></svg><span data-i18n="nav-profile">Profile</span></a></li>
+          <li><a href="#hobbies" data-nav="hobbies"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5S3.5 15.4 3.5 9.7A4.7 4.7 0 0 1 12 6.8a4.7 4.7 0 0 1 8.5 2.9c0 5.7-8.5 10.8-8.5 10.8Z"/></svg><span data-i18n="nav-hobbies">Hobbies</span></a></li>          
+          <li><a href="#education" data-nav="education"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9.5 12 5l10 4.5-10 4.5-10-4.5Z"/><path d="M6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/><path d="M22 9.5V16"/></svg><span data-i18n="nav-education">Education</span></a></li>
+          <li><a href="#skills" data-nav="skills"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L12 16.9 6.4 20l1.4-6.2-4.8-4.3 6.4-.6L12 3Z"/></svg><span data-i18n="nav-skills">Skills</span></a></li>
+          <li><a href="#projects" data-nav="projects"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8Z"/></svg><span data-i18n="nav-projects">Projects</span></a></li>
+          <li><a href="#contact" data-nav="contact"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg><span data-i18n="nav-contact">Contact</span></a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <!-- EXPERIENCE CAROUSEL (Pengalaman Wisatawan, dinamis dari Supabase) -->
-    <section class="section-community">
-        <div class="container">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
-                <div>
-                    <span class="text-uppercase tracking-wider text-teal fw-bold small">Cerita Penjelajah</span>
-                    <h2 class="font-editorial fw-bold m-0 mt-1">Pengalaman Wisatawan</h2>
+  <!-- Banner sapaan buat tamu, di luar navbar, mengarah ke tombol ganti bahasa -->
+  <!-- Guest-greeting banner, outside the navbar, pointing at the language-switch button -->
+  <button type="button" class="lang-hint" id="langHint" aria-label="Dismiss / Tutup">
+    <span data-i18n="lang-hint">klik untuk ganti bahasa :D</span>
+  </button>
+
+  <main>
+
+    <!-- ===================================================
+         1. HOME
+    ==================================================== -->
+    <section class="section section--home is-active" id="home">
+      <div class="blob blob--1" aria-hidden="true"></div>
+      <div class="blob blob--2" aria-hidden="true"></div>
+
+      <div class="section-inner home-inner">
+
+        <div class="pop-in">
+          <div class="polaroid">
+            <div class="polaroid-photo">
+            <img src="assets/photo.png" alt="Feliza Aziva photo">
+            </div>
+            <span class="polaroid-caption" data-i18n="home-caption">It's me! </span>
+          </div>
+        </div>
+
+        <div class="home-text pop-in">
+          <h1>Feliza Aziva Nuraninda S.</h1> 
+          <p class="home-subtitle" data-i18n="home-major">Informatics Engineering Student</p>
+          <p class="home-subtitle" data-i18n="home-univ">Jabal Ghafur University (UNIGHA)</p>
+          <p class="home-quote typing" data-i18n="home-quote">"you're the CSS to my HTML &gt;&lt;"</p>
+          <br>
+          <a href="#profile" class="btn btn-primary">
+            <span data-i18n="home-cta">View Profile</span>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         2. PROFILE
+    ==================================================== -->
+    <section class="section section--profile" id="profile">
+      <div class="blob blob--3" aria-hidden="true"></div>
+
+      <div class="section-inner">
+        <p class="section-kicker" data-i18n="profile-kicker">Profile</p>
+        <h2 data-i18n="profile-h2">About Me</h2>
+
+        <div class="clipboard pop-in">
+          <span class="clipboard-clip" aria-hidden="true"></span>
+          <div class="card card--text clipboard-paper">
+            <p>
+              <span data-i18n="profile-p1">Hi, I'm Feliza!</span>
+            </p>
+            <p>
+              <span data-i18n="profile-p2">I'm a 5th semester Informatics student in the Jabal Ghafur University. I enjoy exploring technology, learning new things, and turning random ideas into something real.</span>
+            </p>
+            <p>
+              <span data-i18n="profile-p3">I’m particularly interested in web development, programming, problem-solving, and the creative side of technology. I enjoy building projects not only to make something that works, but also to understand how things work behind the scenes and how they can be made better. Lately, I’ve been exploring more areas of computing while working on projects of my own and gradually figuring out which parts of technology I enjoy the most.</span>
+            </p>
+            <p>
+             <span data-i18n="profile-p4">I’m also currently working on something that goes beyond coding: improving my English. I’m especially interested in becoming better at listening, speaking, and expressing my thoughts naturally. For me, learning English is not just about grammar or vocabulary — it’s about being able to communicate confidently, access more knowledge, and connect with people beyond my own environment.</span>
+            </p>
+            <p>
+              <span data-i18n="profile-p5">I’m still learning and still discovering where I want to take my skills, but I know that I want to keep creating, improving, and challenging myself.
+              Outside of code, I'm usually learning something new, chasing a good playlist, or planning the next little project to build. This page is a small home for all of that — feel free to look around!</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-nav">
+        <a href="#home" class="btn btn-ghost btn-back">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
+          <span data-i18n="back">Back</span>
+        </a>
+        <a href="#hobbies" class="btn btn-ghost btn-next">
+          <span data-i18n="next">Next</span>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         6. HOBBIES
+    ==================================================== -->
+    <section class="section section--hobbies" id="hobbies">
+      <div class="blob blob--7" aria-hidden="true"></div>
+
+      <div class="section-inner">
+        <p class="section-kicker" data-i18n="hobbies-kicker">Hobbies</p>
+        <h2 data-i18n="hobbies-h2">My Interests</h2>
+
+        <div class="phone-mock pop-in">
+          <span class="phone-heart phone-heart--mint" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 20.5S3.5 15.4 3.5 9.7A4.7 4.7 0 0 1 12 6.8a4.7 4.7 0 0 1 8.5 2.9c0 5.7-8.5 10.8-8.5 10.8Z"/></svg>
+          </span>
+          <span class="phone-heart phone-heart--purple" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 20.5S3.5 15.4 3.5 9.7A4.7 4.7 0 0 1 12 6.8a4.7 4.7 0 0 1 8.5 2.9c0 5.7-8.5 10.8-8.5 10.8Z"/></svg>
+          </span>
+          <span class="phone-heart phone-heart--green" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 20.5S3.5 15.4 3.5 9.7A4.7 4.7 0 0 1 12 6.8a4.7 4.7 0 0 1 8.5 2.9c0 5.7-8.5 10.8-8.5 10.8Z"/></svg>
+          </span>
+
+          <div class="phone-topbar" aria-hidden="true">
+            <span class="phone-cam"></span>
+            <span class="phone-speaker"></span>
+          </div>
+
+          <div class="phone-screen">
+            <div class="app-grid">
+              <div class="app-icon pop-in">
+                <span class="app-icon-tile app-icon-tile--pink">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6a5 5 0 0 0-5-2H3v14h4a5 5 0 0 1 5 2 5 5 0 0 1 5-2h4V4h-4a5 5 0 0 0-5 2Z"/><path d="M12 6v14"/></svg>
+                </span>
+                <span data-i18n="hobby1">Reading</span>
+              </div>
+              <div class="app-icon pop-in">
+                <span class="app-icon-tile app-icon-tile--blue">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                </span>
+                <span data-i18n="hobby2">Music</span>
+              </div>
+              <a href="#projects" aria-label="View projects / Lihat proyek" class="app-icon pop-in">
+                <span class="app-icon-tile app-icon-tile--mint">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="m8 6-6 6 6 6"/>
+                    <path d="m16 6 6 6-6 6"/>
+                  </svg>
+                </span>
+                <span data-i18n="hobby3">Coding Projects</span>
+              </a>
+              <div class="app-icon pop-in">
+                <span class="app-icon-tile app-icon-tile--yellow">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14.5 14.5 0 0 1 0 18 14.5 14.5 0 0 1 0-18Z"/></svg>
+                </span>
+                <span data-i18n="hobby4">English Literature</span>
+              </div>
+              <div class="app-icon pop-in">
+                <span class="app-icon-tile app-icon-tile--purple">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="8" width="20" height="10" rx="5"/><path d="M7 11v4"/><path d="M5 13h4"/><circle cx="16" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg>
+                </span>
+                <span data-i18n="hobby5">Gaming</span>
+              </div>
+              <div class="app-icon pop-in">
+                <span class="app-icon-tile app-icon-tile--green">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h12l4 4v12H4Z"/><path d="M16 4v4h4"/><path d="M8 12h8"/><path d="M8 16h5"/></svg>
+                </span>
+                <span data-i18n="hobby6">Journaling</span>
+              </div>
+            </div>
+
+            <!-- ===============================================
+                 MUSIC WIDGET — mini music player di dalam phone mock
+                 MUSIC WIDGET — mini music player inside the phone mock
+            ================================================ -->
+            <div class="music-widget">
+              <div class="music-widget-top">
+                <div class="music-cover">
+                  <!-- GANTI DI SINI: ganti div ini dengan <img src="assets/music-cover.jpg" alt="Sampul album"> -->
+                  <!-- REPLACE HERE: swap this div for <img src="assets/music-cover.jpg" alt="Album cover"> -->
+                  <img src="assets/music-cover.jpg" alt="Album cover">
                 </div>
-                <button type="button" class="btn btn-aceh-primary" data-bs-toggle="modal" data-bs-target="#modalUnggahPengalaman">
-                    <i class="fa-solid fa-camera me-2"></i>Bagikan Pengalaman Anda
+                <div class="music-info">
+                  <!-- GANTI DI SINI: judul lagu & nama artis favoritmu -->
+                  <!-- REPLACE HERE: your own favorite song title & artist -->
+                  <p class="music-title"><span class="music-title-inner">Supernatural</span></p>
+                  <p class="music-artist">Newjeans</p>
+                </div>
+              </div>
+
+              <div class="music-progress" id="musicProgress" role="slider" aria-label="Track position / Posisi lagu" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <div class="music-progress-fill" id="musicProgressFill"></div>
+              </div>
+              <div class="music-time">
+                <span id="musicCurrentTime">0:00</span>
+                <span id="musicDuration">0:00</span>
+              </div>
+
+              <div class="music-controls">
+                <button type="button" class="music-btn" id="musicPrevTrack" aria-label="Previous song / Lagu sebelumnya">
+                  <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="5" y="6" width="2.6" height="12"/><path d="M19 6v12l-8.5-6L19 6Z"/></svg>
                 </button>
-            </div>
+                <button type="button" class="music-btn" id="musicPrev" aria-label="Back 10 seconds / Mundur 10 detik">
+                  <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11 18V6l-8.5 6L11 18Z"/><path d="M21 18V6l-8.5 6L21 18Z"/></svg>
+                </button>
+                <button type="button" class="music-btn music-btn--play" id="musicPlayPause" aria-label="Play music / Putar musik">
+                  <svg class="icon icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5.5v13l12-6.5-12-6.5Z"/></svg>
+                  <svg class="icon icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:none"><rect x="6" y="5" width="4.5" height="14" rx="1.2"/><rect x="13.5" y="5" width="4.5" height="14" rx="1.2"/></svg>
+                </button>
+                <button type="button" class="music-btn" id="musicNext" aria-label="Forward 10 seconds / Maju 10 detik">
+                  <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 6v12l8.5-6L13 6Z"/><path d="M3 6v12l8.5-6L3 6Z"/></svg>
+                </button>
+                <button type="button" class="music-btn" id="musicNextTrack" aria-label="Next song / Lagu berikutnya">
+                  <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 6v12l8.5-6L5 6Z"/><rect x="16" y="6" width="2.6" height="12"/></svg>
+                </button>
+              </div>
 
-            <div id="carouselPengalaman" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner" id="carouselPengalamanInner"></div>
-
-                <div class="d-flex justify-content-end gap-2 mt-4">
-                    <button class="carousel-nav-btn" type="button" data-bs-target="#carouselPengalaman" data-bs-slide="prev" aria-label="Previous">
-                        <i class="fa-solid fa-chevron-left"></i>
-                    </button>
-                    <button class="carousel-nav-btn" type="button" data-bs-target="#carouselPengalaman" data-bs-slide="next" aria-label="Next">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </button>
-                </div>
+              <!-- Setiap lagu punya <audio> sendiri dengan <source> statis di HTML -->
+              <!-- (bukan diisi lewat JS/audio.src) — ini yang bikin Safari/iOS mau -->
+              <!-- putar audio-nya. GANTI DI SINI kalau mau tambah/ganti lagu: -->
+              <!-- tambah <audio> baru + baris "tracks" yang sesuai di script.js. -->
+              <!-- Each song gets its own <audio> with a static <source> in HTML -->
+              <!-- (not set via JS/audio.src) — this is what makes Safari/iOS -->
+              <!-- actually play it. REPLACE HERE if you add/change songs: -->
+              <!-- add a new <audio> + the matching "tracks" entry in script.js. -->
+              <audio id="musicAudioTrack0" preload="none" loop>
+                <source src="assets/track.mp3" type="audio/mpeg">
+              </audio>
+              <audio id="musicAudioTrack1" preload="none" loop>
+                <source src="assets/track2.mp3" type="audio/mpeg">
+              </audio>
             </div>
         </div>
+
+          <a class="phone-home" href="#home" aria-label="Kembali ke Home / Back to Home"></a>
+        </div>
+      </div>
+
+      <div class="section-nav">
+        <a href="#profile" class="btn btn-ghost btn-back">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
+          <span data-i18n="back">Back</span>
+        </a>
+        <a href="#education" class="btn btn-ghost btn-next">
+          <span data-i18n="next">Next</span>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+        </a>
+      </div>
     </section>
 
-    <!-- CTA -->
-    <section class="section-closing-cta">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <span class="text-uppercase tracking-wider text-meadow fw-bold small">Mulai Petualangan Anda</span>
-                    <h2 class="cta-heading mt-2">Siap untuk Menjelajahi Keajaiban Aceh?</h2>
-                    <p class="lead opacity-90 mb-5 text-light">
-                        Temukan rute perjalanan kuliner terbaik, tempat bersejarah, dan pengalaman kebudayaan otentik bersama Aceh Discovery.
-                    </p>
-                    <div class="d-flex flex-wrap justify-content-center gap-3">
-                        <a href="destinasi.html" class="btn btn-lg btn-aceh-accent px-5 py-3 fs-6">
-                            Mulai Eksplorasi Sekarang
-                        </a>
-                        <a href="kuliner.html" class="btn btn-lg btn-aceh-outline border-white text-white px-5 py-3 fs-6">
-                            Jelajahi Kuliner
-                        </a>
-                    </div>
-                </div>
+    <!-- ===================================================
+         4. EDUCATION
+    ==================================================== -->
+    <section class="section section--education" id="education">
+      <div class="blob blob--5" aria-hidden="true"></div>
+
+      <div class="section-inner">
+        <p class="section-kicker" data-i18n="edu-kicker">Education</p>
+        <h2 data-i18n="edu-h2">My Studying Journey</h2>
+        <p class="section-lead" data-i18n="projects-lead">#SchoolTransferFinalBoss — life just kept moving me around.</p>
+
+        <div class="edu-grid edu-timeline">
+          <div class="edu-step pop-in">
+            <span class="edu-step-dot" aria-hidden="true"></span>
+          <div class="edu-card edu-card--pink">
+            <span class="edu-icon">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 8l10 5 8-4v6"/><path d="M6 10.5V15c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/></svg>
+            </span>
+            <p class="edu-level" data-i18n="edu-elementary">Elementary School</p>
+            <!-- GANTI DI SINI: nama SD dan tahun lulus -->
+            <!-- REPLACE HERE: elementary school name and graduation year -->
+            <p class="edu-name">SDN 028289</p>
+            <p class="edu-location">Kec. Binjai Utara, Kota Binjai, Sumatera Utara.</p>
+            <p class="edu-year">2011 – 2017</p>
             </div>
+          </div>
+
+        <div class="edu-step pop-in">
+            <span class="edu-step-dot" aria-hidden="true"></span>
+          <div class="edu-card edu-card--blue">
+            <span class="edu-icon">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 8l10 5 8-4v6"/><path d="M6 10.5V15c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/></svg>
+            </span>
+            <p class="edu-level" data-i18n="edu-junior">Junior High School</p>
+            <!-- GANTI DI SINI: nama SMP dan tahun lulus -->
+            <!-- REPLACE HERE: junior high school name and graduation year -->
+            <p class="edu-name">SMPN 1 Binjai & SMP MMT MERCUBUANA</p>
+            <p class="edu-location">Kec. Way Kenanga, Kab. Tulang Bawang Barat, Lampung.</p>
+            <p class="edu-year">2017 – 2020</p>
+          </div>
+          </div>
+
+      <div class="edu-step pop-in">
+            <span class="edu-step-dot" aria-hidden="true"></span>
+          <div class="edu-card edu-card--mint">
+            <span class="edu-icon">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 8l10 5 8-4v6"/><path d="M6 10.5V15c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/></svg>
+            </span>
+            <p class="edu-level" data-i18n="edu-vocational">Vocational High School</p>
+            <p class="edu-name">SMK Tri Bhakti Lampung & SMKS PRAYATNA 2 MEDAN — Teknik Komputer dan Jaringan (TKJ)</p>
+            <p class="edu-location">Kec. Medan Tembung, Kota Medan, Sumatera Utara.</p>
+            <p class="edu-year">2020 – 2023</p>
         </div>
+          </div>
+
+      <div class="edu-step pop-in edu-step--current">
+        <span class="edu-step-dot edu-step-dot--current" aria-hidden="true"></span>
+          <div class="edu-card edu-card--yellow edu-card--current">
+            <span class="edu-icon">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9.5 12 5l10 4.5-10 4.5-10-4.5Z"/><path d="M6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/><path d="M22 9.5V16"/></svg>
+            </span>
+            <p class="edu-level" data-i18n="edu-university">University</p>
+            <p class="edu-name">Universitas Jabal Ghafur (UNIGHA) — S1 Teknik Informatika</p>
+            <p class="edu-location">Gle Gapui, Peutoe, Sigli, Kab. Pidie, Aceh.</p>
+            <p class="edu-year" data-i18n="edu-ongoing">5th semester · Ongoing</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-nav">
+        <a href="#hobbies" class="btn btn-ghost btn-back">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
+          <span data-i18n="back">Back</span>
+        </a>
+        <a href="#skills" class="btn btn-ghost btn-next">
+          <span data-i18n="next">Next</span>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+        </a>
+      </div>
     </section>
 
-    <!-- MODAL UNGGAH PENGALAMAN -->
-    <div class="modal fade" id="modalUnggahPengalaman" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
-            <div class="modal-content border-0 rounded-4 p-3">
-                <div class="modal-header border-0">
-                    <div>
-                        <h5 class="modal-title font-editorial fw-bold text-teal mb-1">Bagikan Cerita Wisata Anda</h5>
-                        <p class="small text-muted m-0">Cerita Anda akan muncul di carousel pengalaman wisatawan.</p>
-                    </div>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
+    <!-- ===================================================
+         5. SKILLS
+    ==================================================== -->
+    <section class="section section--skills" id="skills">
+      <div class="blob blob--6" aria-hidden="true"></div>
 
-                    <!-- Kartu info akun (tampil otomatis kalau sudah masuk) -->
-                    <div id="userInfoCard" class="avatar-info-card mb-4 d-none">
-                        <div id="userAvatarWrap"></div>
-                        <div class="flex-grow-1">
-                            <h6 id="userNameDisplay" class="fw-bold mb-0">Pengguna</h6>
-                            <p class="small text-muted mb-0">Nama akan otomatis dipakai sebagai nama pengunggah.</p>
-                        </div>
-                    </div>
+      <div class="section-inner">
+        <p class="section-kicker" data-i18n="skills-kicker">Skills</p>
+        <h2 data-i18n="skills-h2">What I Bring</h2>
 
-                    <form id="formPengalaman" novalidate>
-
-                        <!-- NAMA (hanya tampil kalau belum masuk, karena unggah pengalaman tetap terbuka untuk publik/anonim) -->
-                        <div class="mb-3" id="grupNamaPengalaman">
-                            <label class="form-label small fw-semibold">Nama Anda <span class="text-danger">*</span></label>
-                            <input type="text" id="inputNamaPengalaman" class="form-control rounded-3" placeholder="Nama kamu" required>
-                        </div>
-
-                        <!-- DAERAH, DESTINASI & RATING -->
-                        <div class="row g-3 mb-3">
-                            <div class="col-md-4">
-                                <label class="form-label small fw-semibold">Daerah <span class="text-danger">*</span></label>
-                                <select id="inputDaerahPengalaman" class="form-select rounded-3" required>
-                                    <option value="" selected disabled>Memuat daerah...</option>
-                                </select>
-                            </div>
-                            <div class="col-md-5">
-                                <label class="form-label small fw-semibold">Destinasi yang Dikunjungi <span class="text-danger">*</span></label>
-                                <input type="text" id="inputDestinasiPengalaman" class="form-control rounded-3"
-                                       placeholder="Misal: Danau Lut Tawar, Takengon" required>
-                            </div>
-                            <div class="col-md-3">
-                                <label class="form-label small fw-semibold">Rating <span class="text-danger">*</span></label>
-                                <select id="inputRatingPengalaman" class="form-select rounded-3" required>
-                                    <option value="5" selected>★★★★★ (5.0)</option>
-                                    <option value="4">★★★★☆ (4.0)</option>
-                                    <option value="3">★★★☆☆ (3.0)</option>
-                                    <option value="2">★★☆☆☆ (2.0)</option>
-                                    <option value="1">★☆☆☆☆ (1.0)</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <!-- UPLOAD FOTO DESTINASI -->
-                        <div class="mb-3">
-                            <label class="form-label small fw-semibold">
-                                Foto Destinasi <span class="text-danger">*</span>
-                            </label>
-                            <input type="file" id="inputFotoPengalaman" name="foto_file"
-                                   accept="image/png, image/jpeg, image/webp, image/jpg"
-                                   class="d-none" required>
-
-                            <div id="uploadDropzone" class="upload-dropzone" role="button" tabindex="0">
-                                <i class="fa-solid fa-cloud-arrow-up d-block"></i>
-                                <div class="fw-semibold">Klik untuk pilih foto, atau seret & lepas di sini</div>
-                                <small class="text-muted">Format: JPG, PNG, WEBP — Maks 5MB</small>
-                            </div>
-
-                            <!-- Preview file terpilih -->
-                            <div id="filePreview" class="mt-3 d-none">
-                                <div id="filePreviewBg" class="rounded-3 border overflow-hidden position-relative"
-                                     style="height: 180px; background-size: cover; background-position: center;">
-                                    <button type="button" id="removeFileBtn"
-                                            class="btn btn-sm btn-light position-absolute"
-                                            style="top: 10px; right: 10px; border-radius: 50%; width: 34px; height: 34px; padding: 0;">
-                                        <i class="fa-solid fa-xmark text-danger"></i>
-                                    </button>
-                                </div>
-                                <p class="small text-muted mt-2 mb-0">
-                                    <i class="fa-solid fa-file-image me-1"></i>
-                                    <span id="fileName">foto.jpg</span> —
-                                    <span id="fileSize">0 KB</span>
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- CERITA -->
-                        <div class="mb-3">
-                            <label class="form-label small fw-semibold">Cerita Pengalaman <span class="text-danger">*</span></label>
-                            <textarea id="inputTeksPengalaman" class="form-control rounded-3" rows="4"
-                                      placeholder="Bagikan momen paling berkesan selama di Aceh..." required></textarea>
-                        </div>
-
-                        <!-- PROGRESS UPLOAD -->
-                        <div id="uploadProgress" class="mb-3 d-none">
-                            <div class="d-flex align-items-center gap-2 mb-1">
-                                <i class="fa-solid fa-spinner fa-spin text-teal"></i>
-                                <small class="fw-semibold" id="uploadStatusText">Mengunggah...</small>
-                            </div>
-                            <div class="progress" style="height: 6px;">
-                                <div id="uploadProgressBar" class="progress-bar"
-                                     style="width: 0%; background-color: var(--color-teal);"></div>
-                            </div>
-                        </div>
-
-                        <div class="d-flex gap-2">
-                            <button type="button" class="btn btn-aceh-outline flex-fill rounded-pill py-2" data-bs-dismiss="modal">
-                                Batal
-                            </button>
-                            <button type="submit" id="submitBtn" class="btn btn-aceh-primary flex-fill rounded-pill py-2">
-                                <i class="fa-solid fa-paper-plane me-2"></i>Kirim Cerita
-                            </button>
-                        </div>
-                    </form>
-                </div>
+        <!-- GANTI DI SINI: sesuaikan daftar skill dengan kemampuanmu -->
+        <!-- REPLACE HERE: adjust this skill list to match your own skills -->
+        <div class="skills-grid">
+          <div class="pop-in">
+  <div class="skill-card skill-card--pink">
+              <span class="skill-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 6-6 6 6 6"/><path d="m16 6 6 6-6 6"/></svg></span>
+              <h3 data-i18n="skill1-t">Web Development</h3>
+              <p data-i18n="skill1-d">Basic knowledge of HTML, CSS, and JavaScript for building simple, responsive, and interactive web pages.</p>
             </div>
+          </div>
+          <div class="pop-in">
+  <div class="skill-card skill-card--purple">
+              <span class="skill-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14.5 14.5 0 0 1 0 18 14.5 14.5 0 0 1 0-18Z"/></svg></span>
+              <h3 data-i18n="skill2-t">Communication</h3>
+              <p data-i18n="skill2-d">Basic English communication skills, with the ability to understand technical information and communicate ideas clearly in written and spoken English.</p>
+            </div>
+          </div>
+          <div class="pop-in">
+  <div class="skill-card skill-card--blue">
+              <span class="skill-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Z"/><path d="M14 3v6h6"/><path d="M9 13h6"/><path d="M9 17h6"/></svg></span>
+              <h3 data-i18n="skill3-t">Microsoft Office / Google Workspace</h3>
+              <p data-i18n="skill3-d">Basic proficiency in Microsoft Office and Google Workspace for creating documents, presentations, spreadsheets, and managing files.</p>
+            </div>
+          </div>
+          <div class="pop-in">
+  <div class="skill-card skill-card--mint">
+              <span class="skill-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></span>
+              <h3 data-i18n="skill4-t">Git / Version Control</h3>
+              <p data-i18n="skill4-d">Basic understanding of Git and GitHub for managing project files and tracking changes.</p>
+            </div>
+          </div>
+          <div class="pop-in">
+  <div class="skill-card skill-card--green">
+              <span class="skill-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.6.6 1 1.4 1 2.5h6c0-1.1.4-1.9 1-2.5A6 6 0 0 0 12 3Z"/></svg></span>
+              <h3 data-i18n="skill5-t">Problem Solving</h3>
+              <p data-i18n="skill5-d">Able to analyze problems, think logically, and find practical solutions to challenges.</p>
+            </div>
+          </div>
+          <div class="pop-in">
+  <div class="skill-card skill-card--yellow">
+              <span class="skill-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span>
+              <h3 data-i18n="skill6-t">Adaptability</h3>
+              <p data-i18n="skill6-d">Willing and able to learn new tools, technologies, and approaches when facing new challenges.</p>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <div class="section-nav">
+        <a href="#education" class="btn btn-ghost btn-back">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
+          <span data-i18n="back">Back</span>
+        </a>
+        <a href="#projects" class="btn btn-ghost btn-next">
+          <span data-i18n="next">Next</span>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+        </a>
+      </div>
+    </section> 
+
+    <!-- ===================================================
+         7. PROJECTS
+    ==================================================== -->
+    <section class="section section--projects" id="projects">
+      <div class="blob blob--8" aria-hidden="true"></div>
+
+      <div class="section-inner">
+        <p class="section-kicker" data-i18n="projects-kicker">Projects</p>
+        <h2 data-i18n="projects-h2">Things I've Built</h2>
+        <p class="section-lead" data-i18n="projects-lead">Here's a peek at something I've built — more coming soon!</p>
+
+        <!-- GANTI DI SINI: ganti tiap .project-card placeholder dengan proyek asli (gambar, judul, deskripsi, link) -->
+        <!-- REPLACE HERE: swap each placeholder .project-card with a real project (image, title, description, link) -->
+        <div class="projects-grid">
+          <div class="pop-in">
+  <div class="project-card project-card--pink project-card--filled">
+              <span class="project-icon">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5S3.5 15.4 3.5 9.7A4.7 4.7 0 0 1 12 6.8a4.7 4.7 0 0 1 8.5 2.9c0 5.7-8.5 10.8-8.5 10.8Z"/></svg>
+              </span>
+              <p class="project-title">Birthday Surprise Site💌</p>
+              <p class="project-desc" data-i18n="proj1-d">A cute, interactive birthday website template — photo gallery, love letter, reason list, and confetti!</p>
+              <div class="project-card-links">
+                <a class="project-link" href="https://felisaans.github.io/cute-birthday-website/" target="_blank" rel="noopener noreferrer">
+                  <span data-i18n="view-project">Live Demo</span>
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                </a>
+                <a class="github-link" href="https://github.com/felisaans/cute-birthday-website" target="_blank" rel="noopener noreferrer">
+                  <span data-i18n="visit-github">Repository</span>
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                </a>
+              </div>
+          </div>
+          </div>
+          
+          <div class="pop-in">
+  <div class="project-card project-card--mint project-card--filled">
+              <span class="project-icon">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="3.2"/><circle cx="7" cy="10.5" r="3.2"/><circle cx="17" cy="10.5" r="3.2"/><circle cx="9" cy="15" r="3.2"/><circle cx="15" cy="15" r="3.2"/><circle cx="12" cy="11.5" r="1.8" fill="currentColor" stroke="none"/><path d="M12 17.5V22"/><path d="M12 20c-1.8 0-3-1.2-3-1.2"/></svg>
+              </span>
+              <p class="project-title">Moment & Co.🌹</p>
+                <p class="project-desc" data-i18n="proj2-d">Custom acrylic greeting board rental website. Customers can select a design, customize the wording with a live preview, and instantly book their rental via WhatsApp.</p>
+              <div class="project-card-links">
+                <a class="project-link" href="https://felisaans.github.io/Moment-and-Co./" target="_blank" rel="noopener noreferrer">
+                  <span data-i18n="view-project">Live Demo</span>
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                </a>
+                <a class="github-link" href="https://github.com/felisaans/Moment-and-Co." target="_blank" rel="noopener noreferrer">
+                  <span data-i18n="visit-github">Repository</span>
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                </a>
+              </div>
+          </div>
+          </div>
+          <div class="pop-in">
+  <div class="project-card project-card--blue project-card--filled">
+              <span class="project-icon">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg>
+              </span>
+              <p class="project-title">SIMAG - Internship Management System✅</p>
+              <p class="project-desc" data-i18n="proj3-d">Web-based internship application system for students and campus admins, covering everything from submission to document verification, powered by Google Sheets as the database.</p>
+              <div class="project-card-links">
+                <a class="project-link" href="https://felisaans.github.io/SIMAG/" target="_blank" rel="noopener noreferrer">
+                  <span data-i18n="view-project">Live Demo</span>
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                </a>
+                <a class="github-link" href="https://github.com/felisaans/SIMAG" target="_blank" rel="noopener noreferrer">
+                  <span data-i18n="visit-github">Repository</span>
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                </a>
+              </div>
+          </div>
+          </div>
+        <div class="pop-in">
+  <div class="project-card project-card--green project-card--filled">
+              <span class="project-icon">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg>
+              </span>
+              <p class="project-title">Aceh Discovery🧭</p>
+              <p class="project-desc" data-i18n="proj3-d">A tourism and cultural exploration website for Aceh that provides information about **culinary delights, culture, tourist destinations, and news and stories about Aceh**. It features search and filtering by region and category, detailed information pages, culinary ratings and reviews, user favorites, and a platform for travelers to share their experiences.
+</p>
+              <div class="project-card-links">
+                <a class="project-link" href="https://felisaans.github.io/aceh-discovery/" target="_blank" rel="noopener noreferrer">
+                  <span data-i18n="view-project">Live Demo</span>
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                </a>
+                <a class="github-link" href="https://github.com/felisaans/aceh-discovery/" target="_blank" rel="noopener noreferrer">
+                  <span data-i18n="visit-github">Repository</span>
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                </a>
+              </div>
+          </div>
+          </div>
+          <div class="pop-in">
+  <div class="project-card project-card--purple">
+              <span class="project-icon">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+              <p data-i18n="proj-soon">Project coming soon</p>
+            </div>
+          </div>
+          <div class="pop-in">
+  <div class="project-card project-card--yellow">
+              <span class="project-icon">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+              <p data-i18n="proj-soon">Project coming soon</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="section-nav">
+        <a href="#skills" class="btn btn-ghost btn-back">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
+          <span data-i18n="back">Back</span>
+        </a>
+        <a href="#contact" class="btn btn-ghost btn-next">
+          <span data-i18n="next">Next</span>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         3. CONTACT
+    ==================================================== -->
+    <section class="section section--contact" id="contact">
+      <div class="blob blob--4" aria-hidden="true"></div>
+
+      <div class="section-inner">
+        <p class="section-kicker" data-i18n="contact-kicker">Contact</p>
+        <h2 data-i18n="contact-h2">Let's Connect!</h2>
+        <p class="section-lead" data-i18n="contact-lead">Got a question, a project idea, or just want to say hi? Reach me here:</p>
+
+        <ul class="contact-list">
+          <li>
+            <a class="contact-card contact-card--pink" href="mailto:felisaans@gmail.com">
+              <span class="contact-icon contact-icon--pink">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+              </span>
+              <span class="contact-text">
+                <strong>Email</strong>
+                <span>felisaans@gmail.com</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="contact-card contact-card--purple" href="https://instagram.com/felisazv" target="_blank" rel="noopener noreferrer">
+              <span class="contact-icon contact-icon--purple">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+              </span>
+              <span class="contact-text">
+                <strong>Instagram</strong>
+                <span>@felisazv</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="contact-card contact-card--slate" href="https://github.com/felisaans" target="_blank" rel="noopener noreferrer">
+              <span class="contact-icon contact-icon--slate">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.5c.5.1.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.9-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.35 4.68-4.58 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+              </span>
+              <span class="contact-text">
+                <strong>GitHub</strong>
+              <span>@felisaans</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="contact-card contact-card--mint" href="https://wa.me/6285839807758" target="_blank" rel="noopener noreferrer">
+              <span class="contact-icon contact-icon--green">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 20l1.1-5.4A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8.5 10.5c.3 2 2 3.7 4 4"/></svg>
+              </span>
+              <span class="contact-text">
+                <strong>WhatsApp</strong>
+                <span>0858-3980-7758</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="section-nav">
+        <a href="#projects" class="btn btn-ghost btn-back">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
+          <span data-i18n="back">Back</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================================================
+       FOOTER
+  ==================================================== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-name" data-i18n="footer-name">Feliza's Portfolio.</p>
+      <p class="footer-copy">© <span id="year"></span> <span data-i18n="footer-copy">Personal Portfolio.</span></p>
+      <div class="footer-socials">
+        <a href="mailto:felisaans@gmail.com" aria-label="Email">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+        </a>
+        <a href="https://instagram.com/felisazv" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+        </a>
+        <a href="https://wa.me/6285839807758" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 20l1.1-5.4A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8.5 10.5c.3 2 2 3.7 4 4"/></svg>
+        </a>
+      </div>
     </div>
+  </footer>
 
-    <!-- FOOTER -->
-    <footer class="aceh-footer">
-        <div class="container">
-            <div class="row g-5 mb-5">
-                <div class="col-lg-4">
-                    <div class="d-flex align-items-center gap-3 mb-3">
-                        <div class="brand-icon"><i class="fa-solid fa-compass"></i></div>
-                        <span class="brand-text text-white">Aceh Discovery</span>
-                    </div>
-                    <p class="small opacity-75">
-                        Platform media digital eksplorasi pariwisata, seni kebudayaan, dan kekayaan tradisi kuliner Serambi Mekkah.
-                    </p>
-                </div>
-                <div class="col-6 col-lg-2">
-                    <h6 class="footer-heading">Navigasi</h6>
-                    <ul class="list-unstyled footer-links">
-                        <li><a href="index.html">Beranda</a></li>
-                        <li><a href="kuliner.html">Kuliner Otentik</a></li>
-                        <li><a href="budaya.html">Budaya & Tradisi</a></li>
-                        <li><a href="destinasi.html">Destinasi Wisata</a></li>
-                    </ul>
-                </div>
-                <div class="col-6 col-lg-3">
-                    <h6 class="footer-heading">Fitur Utama</h6>
-                    <ul class="list-unstyled footer-links">
-                        <li><a href="login.html">Masuk / Daftar</a></li>
-                        <li><a href="admin/index.html">Dashboard Admin</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3">
-                    <h6 class="footer-heading">Media Sosial</h6>
-                    <div class="d-flex gap-3 fs-5">
-                        <a href="#" class="text-white opacity-75"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" class="text-white opacity-75"><i class="fa-brands fa-youtube"></i></a>
-                        <a href="#" class="text-white opacity-75"><i class="fa-brands fa-tiktok"></i></a>
-                        <a href="#" class="text-white opacity-75"><i class="fa-brands fa-facebook"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="border-top border-secondary border-opacity-25 pt-4 text-center small opacity-50">
-                &copy; 2026 Bit2Bit. RPL Studio.
-            </div>
-        </div>
-    </footer>
-
-    <!-- Bootstrap 5 JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="module" src="assets/js/pages/beranda.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
