@@ -217,9 +217,9 @@ const i18n = {
   "projects-lead": "Ini sekilas dari sesuatu yang telah saya buat — lebih banyak lagi akan datang!",
   "proj1-d": "Template website ulang tahun yang lucu dan interaktif — galeri foto, surat cinta, daftar alasan, dan confetti!",
   "proj2-d": "Website rental papan ucapan akrilik custom — pelanggan bisa memilih desain, mengubah tulisan dengan live preview, dan langsung booking lewat WhatsApp.",
-  "proj3-d": "Sistem informasi pengajuan magang berbasis web untuk mahasiswa dan admin kampus, dari pengajuan sampai verifikasi dokumen, dengan Google Sheets sebagai database.",
+  "proj3-d": "Sistem informasi pengajuan magang berbasis web untuk mahasiswa dan admin kampus, dari pengajuan sampai verifikasi dokumen.",
   "proj4-d": "Website eksplorasi pariwisata dan budaya Aceh yang menyediakan informasi tentang kuliner, budaya, destinasi wisata, serta berita dan cerita seputar Aceh.",
-  "proj5-d": "Aplikasi presensi berbasis QR untuk perkuliahan. Frontend di GitHub Pages, backend di Google Apps Script, database di Google Sheets.",
+  "proj5-d": "Aplikasi presensi perkuliahan berbasis QR untuk Dosen dan Mahasiswa.",
   "view-project": "Demo Live", "visit-github": "Repositori",
   "proj-soon": "Proyek segera hadir",
   "footer-name": "Portofolio Feliza.", "footer-copy": "Portofolio Pribadi."
