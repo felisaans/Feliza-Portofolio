@@ -278,34 +278,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // =========================================================
-// MUSIC WIDGET — Spotify Embed (iframe) di index.html.
-// JS di sini cuma satu tugas: mengecilkan embed secara proporsional kalau
-// kolomnya sempit, supaya tata letak Spotify tidak terpotong / berantakan.
-// MUSIC WIDGET — Spotify Embed (iframe) in index.html.
-// The JS here does one job only: proportionally scale the embed down when
-// its column is narrow, so Spotify's layout is not clipped / cramped.
+// MUSIC WIDGET — Spotify Embed (iframe) di index.html. Tidak ada JS di sini:
+// play/pause, next/prev, progress, judul & artis semuanya dikelola Spotify.
+// MUSIC WIDGET — Spotify Embed (iframe) in index.html. No JS here:
+// play/pause, next/prev, progress, title & artist are all handled by Spotify.
 // =========================================================
-document.addEventListener('DOMContentLoaded', () => {
-  const frame = document.querySelector('.music-embed-frame');
-  if (!frame) return;
-
-  const BASE_WIDTH = 340;  // lebar ideal embed Spotify / ideal Spotify embed width (px)
-  const MIN_SCALE  = 0.6;  // batas terkecil biar teks tetap terbaca / smallest scale to keep text readable
-
-  function fit() {
-    const w = frame.clientWidth;
-    if (!w) return;
-    const scale = Math.max(MIN_SCALE, Math.min(1, w / BASE_WIDTH));
-    frame.style.setProperty('--embed-scale', scale.toFixed(3));
-  }
-
-  fit();
-  if ('ResizeObserver' in window) {
-    new ResizeObserver(fit).observe(frame);
-  } else {
-    window.addEventListener('resize', fit);
-  }
-});
 
 // =========================================================
 // Banner sapaan buat tamu, menunjuk ke tombol ganti bahasa.
