@@ -195,65 +195,45 @@
             </div>
 
             <!-- ===============================================
-                 MUSIC WIDGET — mini music player di dalam phone mock
-                 MUSIC WIDGET — mini music player inside the phone mock
+                 MUSIC WIDGET — cover 1 gambar + Spotify Embed (streaming online)
+                 MUSIC WIDGET — single cover image + Spotify Embed (online streaming)
             ================================================ -->
             <div class="music-widget">
-              <div class="music-widget-top">
-                <div class="music-cover">
-                  <!-- GANTI DI SINI: ganti div ini dengan <img src="assets/music-cover.jpg" alt="Sampul album"> -->
-                  <!-- REPLACE HERE: swap this div for <img src="assets/music-cover.jpg" alt="Album cover"> -->
-                  <img src="assets/music-cover.jpg" alt="Album cover">
-                </div>
-                <div class="music-info">
-                  <!-- GANTI DI SINI: judul lagu & nama artis favoritmu -->
-                  <!-- REPLACE HERE: your own favorite song title & artist -->
-                  <p class="music-title"><span class="music-title-inner">Supernatural</span></p>
-                  <p class="music-artist">Newjeans</p>
-                </div>
+              <!-- Cover: 1 gambar saja, tidak berganti per lagu / One static image, does not change per song -->
+              <div class="music-cover">
+                <!-- GANTI DI SINI (opsional): timpa assets/music-cover.jpg kalau mau ganti cover (nama file tetap sama) -->
+                <!-- REPLACE HERE (optional): overwrite assets/music-cover.jpg to change the cover (keep the same file name) -->
+                <img src="assets/music-cover.jpg" alt="Sampul felisa's playlist / felisa's playlist cover">
+                <!-- Nama playlist: teks tetap / Fixed playlist name -->
+                <span class="music-cover-label">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                  felisa's playlist
+                </span>
               </div>
 
-              <div class="music-progress" id="musicProgress" role="slider" aria-label="Track position / Posisi lagu" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                <div class="music-progress-fill" id="musicProgressFill"></div>
+              <!-- Player: Spotify Embed resmi (mode compact, tinggi 152). Judul, artis, play/pause,
+                   next/prev & progress semuanya ditangani Spotify di dalam iframe ini. -->
+              <!-- Player: official Spotify Embed (compact mode, height 152). Title, artist, play/pause,
+                   next/prev & progress are all handled by Spotify inside this iframe. -->
+              <div class="music-embed">
+                <!-- GANTI DI SINI (opsional, kalau mau ganti playlist): ganti ID playlist di bawah (sekarang: 7BCrAs8kfcKpOREwlf1o0x).
+                     Cara ambil: Spotify > klik kanan playlist > Share > Copy link to playlist,
+                     contoh link: https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M?si=abc
+                     -> ID-nya = bagian setelah /playlist/ dan sebelum tanda "?"  (37i9dQZF1DXcBWIGoYBM5M)
+                     Playlist harus berstatus PUBLIC. -->
+                <!-- REPLACE HERE (optional, only to change playlist): swap the playlist ID below (currently 7BCrAs8kfcKpOREwlf1o0x).
+                     How: Spotify > right-click playlist > Share > Copy link to playlist; the ID is the part
+                     after /playlist/ and before "?". The playlist must be PUBLIC. -->
+                <iframe
+                  id="musicSpotifyEmbed"
+                  src="https://open.spotify.com/embed/playlist/7BCrAs8kfcKpOREwlf1o0x?utm_source=generator"
+                  title="felisa's playlist — Spotify player"
+                  width="100%"
+                  height="152"
+                  frameborder="0"
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"></iframe>
               </div>
-              <div class="music-time">
-                <span id="musicCurrentTime">0:00</span>
-                <span id="musicDuration">0:00</span>
-              </div>
-
-              <div class="music-controls">
-                <button type="button" class="music-btn" id="musicPrevTrack" aria-label="Previous song / Lagu sebelumnya">
-                  <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="5" y="6" width="2.6" height="12"/><path d="M19 6v12l-8.5-6L19 6Z"/></svg>
-                </button>
-                <button type="button" class="music-btn" id="musicPrev" aria-label="Back 10 seconds / Mundur 10 detik">
-                  <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11 18V6l-8.5 6L11 18Z"/><path d="M21 18V6l-8.5 6L21 18Z"/></svg>
-                </button>
-                <button type="button" class="music-btn music-btn--play" id="musicPlayPause" aria-label="Play music / Putar musik">
-                  <svg class="icon icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5.5v13l12-6.5-12-6.5Z"/></svg>
-                  <svg class="icon icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:none"><rect x="6" y="5" width="4.5" height="14" rx="1.2"/><rect x="13.5" y="5" width="4.5" height="14" rx="1.2"/></svg>
-                </button>
-                <button type="button" class="music-btn" id="musicNext" aria-label="Forward 10 seconds / Maju 10 detik">
-                  <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 6v12l8.5-6L13 6Z"/><path d="M3 6v12l8.5-6L3 6Z"/></svg>
-                </button>
-                <button type="button" class="music-btn" id="musicNextTrack" aria-label="Next song / Lagu berikutnya">
-                  <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 6v12l8.5-6L5 6Z"/><rect x="16" y="6" width="2.6" height="12"/></svg>
-                </button>
-              </div>
-
-              <!-- Setiap lagu punya <audio> sendiri dengan <source> statis di HTML -->
-              <!-- (bukan diisi lewat JS/audio.src) — ini yang bikin Safari/iOS mau -->
-              <!-- putar audio-nya. GANTI DI SINI kalau mau tambah/ganti lagu: -->
-              <!-- tambah <audio> baru + baris "tracks" yang sesuai di script.js. -->
-              <!-- Each song gets its own <audio> with a static <source> in HTML -->
-              <!-- (not set via JS/audio.src) — this is what makes Safari/iOS -->
-              <!-- actually play it. REPLACE HERE if you add/change songs: -->
-              <!-- add a new <audio> + the matching "tracks" entry in script.js. -->
-              <audio id="musicAudioTrack0" preload="none" loop>
-                <source src="assets/track.mp3" type="audio/mpeg">
-              </audio>
-              <audio id="musicAudioTrack1" preload="none" loop>
-                <source src="assets/track2.mp3" type="audio/mpeg">
-              </audio>
             </div>
         </div>
 
