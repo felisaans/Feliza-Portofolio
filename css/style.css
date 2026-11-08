@@ -1068,7 +1068,7 @@ main {
     display: grid;
     /* Kolom kanan lebar tetap ~340px: embed Spotify tampil di ukuran aslinya (tidak di-scale) → teks tajam */
     /* Right column fixed ~340px wide: the Spotify embed renders at native size (no scaling) → crisp text */
-    grid-template-columns: minmax(0, 1fr) minmax(240px, 272px);
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 340px);
     align-items: center;
     gap: 30px;
     min-height: 340px;
@@ -1155,7 +1155,7 @@ main {
 .music-embed-frame {
   border-radius: 14px;
   overflow: hidden;
-  height: 282px;
+  height: 352px;
 }
 .music-embed-frame iframe {
   display: block;
@@ -1166,7 +1166,7 @@ main {
 }
 @media (min-width: 860px) {
   .section--hobbies .music-embed { padding: 8px 12px 14px; }
-  .section--hobbies .music-embed-frame { height: 304px; }
+  .section--hobbies .music-embed-frame { height: 380px; }
 }
 
 /* =========================================================
