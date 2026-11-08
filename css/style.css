@@ -1094,17 +1094,6 @@ main {
   }
   .section--hobbies .app-icon-tile .icon { width: 28px; height: 28px; }
   .section--hobbies .app-icon span { font-size: 0.9rem; }
-
-  /* --- Music widget: kartu di kolom kanan (cover persegi + embed Spotify) --- */
-  /* --- Music widget: card in the right column (square cover + Spotify embed) --- */
-  .section--hobbies .music-widget {
-    padding: 14px;
-    border-radius: 22px;
-  }
-  .section--hobbies .music-cover {
-    aspect-ratio: 1 / 1;
-    border-radius: 16px;
-  }
 }
 
 /* Layar sangat lebar: kasih sedikit napas ekstra */
@@ -1115,8 +1104,8 @@ main {
 }
 
 /* =========================================================
-   MUSIC WIDGET — cover 1 gambar + Spotify Embed di dalam phone mock
-   MUSIC WIDGET — single cover image + Spotify Embed inside the phone mock
+   MUSIC WIDGET — satu kartu: nama playlist + Spotify Embed
+   MUSIC WIDGET — one card: playlist name + Spotify Embed
 ========================================================= */
 
 /* Mobile (< 860px): layar HP jadi kolom — app-grid di atas, widget musik di bawah */
@@ -1135,79 +1124,45 @@ main {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: 12px;
+  overflow: hidden;            /* cover & embed ikut sudut membulat kartu / cover & embed follow the card radius */
   background: var(--white);
   border-radius: 22px;
   box-shadow: 0 10px 24px -12px rgba(74, 63, 85, 0.35);
 }
 
-/* Cover: 1 gambar saja (tidak berganti per lagu) */
-/* Cover: one image only (does not change per song) */
-.music-cover {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 12px 22px -12px rgba(107, 97, 134, 0.6);
-}
-.music-cover img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.6s ease;
-}
-.music-widget:hover .music-cover img { transform: scale(1.05); }
-
-/* Kilau lembut di atas cover biar terasa seperti sampul album */
-/* Soft sheen over the cover so it feels like album art */
-.music-cover::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0) 45%);
-  pointer-events: none;
-}
-
-/* Label nama playlist (tetap) di bawah cover — pil putih agar terbaca di gambar hitam-putih */
-/* Fixed playlist-name label at the cover bottom — white pill so it stays readable on the B&W image */
-.music-cover-label {
-  position: absolute;
-  left: 10px;
-  bottom: 10px;
-  z-index: 1;
-  display: inline-flex;
+/* Header kecil: nama playlist (teks tetap) */
+/* Small header: playlist name (fixed text) */
+.music-widget-head {
+  display: flex;
   align-items: center;
-  gap: 6px;
-  max-width: calc(100% - 20px);
-  padding: 6px 12px 6px 9px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.9);
+  gap: 8px;
+  padding: 14px 16px 2px;
   color: var(--purple-deep);
-  font-size: 0.8rem;
   font-weight: 700;
-  line-height: 1;
-  white-space: nowrap;
-  box-shadow: 0 4px 10px -4px rgba(74, 63, 85, 0.4);
+  font-size: 0.95rem;
+  line-height: 1.2;
 }
-.music-cover-label .icon { width: 14px; height: 14px; flex: none; }
+.music-widget-head .icon { width: 18px; height: 18px; flex: none; }
 
-/* Embed Spotify (compact, tinggi 152px) */
-/* Spotify embed (compact, 152px tall) */
-.music-embed iframe {
-  display: block;
-  width: 100%;
-  height: 152px;
-  border: 0;
+/* Embed Spotify (tema gelap, theme=0).
+   Skala otomatis lewat --embed-scale (diatur JS) supaya tidak terpotong di kolom sempit. */
+/* Spotify embed (dark theme, theme=0).
+   Auto-scaled via --embed-scale (set by JS) so it never gets clipped in a narrow column. */
+.music-embed { padding: 10px 12px 12px; }
+.music-embed-frame {
+  position: relative;
+  overflow: hidden;
   border-radius: 14px;
-  color-scheme: normal; /* cegah kotak putih/hitam aneh di dark mode / avoids odd box in dark mode */
+  height: calc(352px * var(--embed-scale, 1));
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .music-cover img { transition: none; }
-  .music-widget:hover .music-cover img { transform: none; }
+.music-embed-frame iframe {
+  display: block;
+  width: calc(100% / var(--embed-scale, 1));
+  height: 352px;
+  border: 0;
+  transform: scale(var(--embed-scale, 1));
+  transform-origin: 0 0;
+  color-scheme: normal; /* cegah kotak putih/hitam aneh di dark mode / avoids odd box in dark mode */
 }
 
 /* =========================================================
