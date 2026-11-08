@@ -987,11 +987,11 @@ main {
   gap: 8px;
   text-align: center;
 }
-.app-icon span { font-size: 0.8rem; font-weight: 700; color: var(--ink); line-height: 1.25; }
+.app-icon span { font-size: 0.92rem; font-weight: 700; color: var(--ink); line-height: 1.25; }
 .app-icon-tile {
-  width: 56px;
-  height: 56px;
-  border-radius: 16px;
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
   display: grid;
   place-items: center;
   box-shadow: var(--shadow-soft);
@@ -999,7 +999,7 @@ main {
 }
 .app-icon:hover .app-icon-tile,
 .app-icon:focus-visible .app-icon-tile { transform: translateY(-4px) scale(1.06); }
-.app-icon-tile .icon { width: 26px; height: 26px; color: var(--ink); }
+.app-icon-tile .icon { width: 33px; height: 33px; color: var(--ink); }
 .app-icon-tile--pink   { background: var(--pink); }
 .app-icon-tile--blue   { background: var(--blue); }
 .app-icon-tile--mint   { background: var(--mint); }
@@ -1081,28 +1081,35 @@ main {
       var(--purple-pale);
   }
 
-  /* --- Grid app: 3 kolom x 2 baris --- */
+  /* --- Grid app: 2 kolom x 3 baris --- */
   .section--hobbies .app-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     justify-items: center;
-    align-content: center;
-    gap: 22px 12px;
+    /* Grid ikut setinggi music widget & barisnya dibagi rata → kiri-kanan terasa seimbang */
+    /* Grid matches the music widget's height & rows are spread evenly → left/right feel balanced */
+    align-self: stretch;
+    align-content: space-evenly;
+    gap: 16px 20px;
     padding-bottom: 0; /* reset ruang kosong yang di mobile dipakai music widget */
   }
+  .section--hobbies .app-icon { gap: 10px; }
   .section--hobbies .app-icon-tile {
-    width: 70px;
-    height: 70px;
-    border-radius: 18px;
+    width: 100px;
+    height: 100px;
+    border-radius: 26px;
   }
-  .section--hobbies .app-icon-tile .icon { width: 28px; height: 28px; }
-  .section--hobbies .app-icon span { font-size: 0.9rem; }
+  .section--hobbies .app-icon-tile .icon { width: 42px; height: 42px; }
+  .section--hobbies .app-icon span { font-size: 1.05rem; }
 }
 
 /* Layar sangat lebar: kasih sedikit napas ekstra */
 @media (min-width: 1100px) {
   .section--hobbies .phone-mock { max-width: 920px; }
   .section--hobbies .phone-screen { min-height: 380px; gap: 38px; }
-  .section--hobbies .app-grid { gap: 26px 16px; }
+  .section--hobbies .app-grid { gap: 20px 24px; }
+  .section--hobbies .app-icon-tile { width: 108px; height: 108px; border-radius: 28px; }
+  .section--hobbies .app-icon-tile .icon { width: 46px; height: 46px; }
+  .section--hobbies .app-icon span { font-size: 1.1rem; }
 }
 
 /* =========================================================
