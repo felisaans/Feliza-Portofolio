@@ -696,8 +696,8 @@ main {
   border-radius: var(--r-lg) var(--r-lg) 0 0;
   background: linear-gradient(120deg, var(--pink) 0%, var(--purple) 100%);
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  align-items: flex-start;   /* label di ATAS pita, di bawah lubang kartu, supaya tidak tertutup foto */
+  justify-content: center;   /* label at the TOP of the band, below the punch hole, so the photo doesn't cover it */
   padding-top: 30px;
 }
 .id-card-tag {
@@ -722,11 +722,16 @@ main {
   border: 5px solid var(--white);
   box-shadow: 0 8px 18px -8px rgba(122, 92, 143, 0.5);
   background-color: var(--blue);
-  /* GANTI DI SINI: posisi crop foto (x% y%) & zoom (230%) / photo crop position & zoom */
-  background-image: url("../assets/photo.png");
-  background-size: 230% auto;
-  background-position: 61% 35%;
-  background-repeat: no-repeat;
+}
+/* Foto terpisah (assets/biodata-photo.jpg); GANTI DI SINI object-position kalau wajah kurang pas */
+/* Separate photo (assets/biodata-photo.jpg); CHANGE object-position here if the face is off-center */
+.id-card-photo img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 25%;
+  display: block;
 }
 .id-card-sticker {
   position: absolute;
@@ -1202,11 +1207,11 @@ main {
   gap: 8px;
   text-align: center;
 }
-.app-icon span { font-size: 0.92rem; font-weight: 700; color: var(--ink); line-height: 1.25; }
+.app-icon span { font-size: 0.8rem; font-weight: 700; color: var(--ink); line-height: 1.25; }
 .app-icon-tile {
-  width: 72px;
-  height: 72px;
-  border-radius: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
   display: grid;
   place-items: center;
   box-shadow: var(--shadow-soft);
@@ -1214,7 +1219,7 @@ main {
 }
 .app-icon:hover .app-icon-tile,
 .app-icon:focus-visible .app-icon-tile { transform: translateY(-4px) scale(1.06); }
-.app-icon-tile .icon { width: 33px; height: 33px; color: var(--ink); }
+.app-icon-tile .icon { width: 26px; height: 26px; color: var(--ink); }
 .app-icon-tile--pink   { background: var(--pink); }
 .app-icon-tile--blue   { background: var(--blue); }
 .app-icon-tile--mint   { background: var(--mint); }
@@ -1223,7 +1228,7 @@ main {
 .app-icon-tile--green  { background: var(--green); }
 
 @media (min-width: 480px) {
-  .phone-mock { max-width: 340px; }
+  .phone-mock { max-width: 300px; }
 }
 
 /* ============================================================
@@ -1339,8 +1344,16 @@ main {
     flex-direction: column;
     align-items: stretch;
     gap: 22px;
-    padding: 22px 12px 38px; /* samping dirapatkan biar embed lebih lebar; bawah = ruang tombol home */
-                             /* tighter sides so the embed gets wider; bottom = room for the home button */
+    /* padding layar = ukuran asli (26px 19px), sama seperti sebelum perombakan */
+    /* screen padding = original size (26px 19px), same as before the redesign */
+    padding: 26px 19px;
+  }
+  /* Widget musik sedikit "keluar" dari padding layar supaya embed Spotify tetap lega (tidak mengubah ukuran ikon) */
+  /* Music widget slightly "bleeds" past the screen padding so the Spotify embed keeps its width (icon sizes untouched) */
+  .section--hobbies .music-widget {
+    width: auto;
+    margin-left: -7px;
+    margin-right: -7px;
   }
 }
 
@@ -1369,15 +1382,17 @@ main {
 }
 .music-widget-head .icon { width: 18px; height: 18px; flex: none; }
 
-/* Embed Spotify (mode besar, tema gelap theme=0). Ditampilkan di ukuran ASLI (tanpa transform/scale)
-   supaya teks & gambar tetap tajam. Tinggi: 352px di HP, 380px di iPad-mock (supaya kartu mengisi layar).
-   Spotify embed (large mode, dark theme=0). Rendered at NATIVE size (no transform/scale) so text and
-   images stay crisp. Height: 352px on phone, 380px in the iPad mock (so the card fills the screen). */
-.music-embed { padding: 8px 10px 12px; }
+/* Embed Spotify (tema gelap theme=0). Ditampilkan di ukuran ASLI (tanpa transform/scale) supaya tajam.
+   Mode PENDEK / compact, tinggi 152px di semua ukuran layar (cover lagu + judul + artis + kontrol).
+   GANTI DI SINI: ubah angka tinggi di bawah kalau mau (352 = mode besar dengan daftar lagu).
+   Spotify embed (dark theme=0). Rendered at NATIVE size (no transform/scale) so it stays crisp.
+   SHORT / compact mode, 152px tall on every screen size (track art + title + artist + controls).
+   CHANGE the height below if you like (352 = large mode with the track list). */
+.music-embed { padding: 8px 8px 10px; }
 .music-embed-frame {
   border-radius: 14px;
   overflow: hidden;
-  height: 352px;
+  height: 152px;
 }
 .music-embed-frame iframe {
   display: block;
@@ -1388,7 +1403,76 @@ main {
 }
 @media (min-width: 860px) {
   .section--hobbies .music-embed { padding: 8px 12px 14px; }
-  .section--hobbies .music-embed-frame { height: 380px; }
+}
+
+/* =========================================================
+   PHONE WIDGETS — kolom widget (music widget + photo widget)
+   PHONE WIDGETS — widgets column (music widget + photo widget)
+========================================================= */
+.phone-widgets {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+/* Photo widget: disembunyikan di HP supaya mock tetap pendek; tampil di iPad-mock */
+/* Photo widget: hidden on phones to keep the mock short; shown in the iPad mock */
+.photo-widget { display: none; }
+
+@media (min-width: 860px) {
+  .phone-widgets { gap: 16px; align-self: center; }
+
+  .photo-widget {
+    display: block;
+    padding: 8px;
+    background: var(--white);
+    border-radius: 22px;
+    box-shadow: 0 10px 24px -12px rgba(74, 63, 85, 0.35);
+  }
+  .photo-widget-frame {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .photo-widget-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+  .photo-widget:hover .photo-widget-frame img { transform: scale(1.05); }
+
+  /* Kilau lembut seperti widget foto di iOS / Soft sheen like an iOS photo widget */
+  .photo-widget-frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 40%);
+    pointer-events: none;
+  }
+  /* Lencana hati kecil di pojok / Small heart badge in the corner */
+  .photo-widget-badge {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    z-index: 1;
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.88);
+    color: var(--pink-deep);
+    box-shadow: 0 4px 10px -4px rgba(74, 63, 85, 0.4);
+  }
+  .photo-widget-badge svg { width: 14px; height: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .photo-widget-frame img { transition: none; }
+  .photo-widget:hover .photo-widget-frame img { transform: none; }
 }
 
 /* =========================================================

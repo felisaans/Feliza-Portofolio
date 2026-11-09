@@ -106,7 +106,10 @@
                 <span class="id-card-tag" data-i18n="bio-tag">Bio Data</span>
               </div>
 
-              <div class="id-card-photo" role="img" aria-label="Feliza Aziva photo">
+              <div class="id-card-photo">
+                <!-- GANTI DI SINI: foto ID card. Timpa file assets/biodata-photo.jpg dengan fotomu (disarankan persegi, min. 400x400px, wajah di tengah-atas) -->
+                <!-- REPLACE HERE: ID card photo. Overwrite assets/biodata-photo.jpg with your own (square recommended, min. 400x400px, face centered-upper) -->
+                <img src="assets/biodata-photo.jpg" alt="Feliza Aziva" loading="lazy" />
                 <!-- Stiker hati kecil di pojok foto / Small heart sticker on the photo corner -->
                 <span class="id-card-sticker" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-10A4.2 4.2 0 0 1 12 7.6 4.2 4.2 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10Z"/></svg>
@@ -265,6 +268,8 @@
               </div>
             </div>
 
+            <!-- Kolom widget: music widget + photo widget / Widgets column: music widget + photo widget -->
+            <div class="phone-widgets">
             <!-- ===============================================
                  MUSIC WIDGET — nama playlist + Spotify Embed (streaming online)
                  MUSIC WIDGET — playlist name + Spotify Embed (online streaming)
@@ -276,9 +281,9 @@
                 <span>felisa's playlist</span>
               </div>
 
-              <!-- Player: Spotify Embed resmi (mode besar, tinggi 352 — tampil cover & nama playlist + daftar lagu). Judul, artis, play/pause,
+              <!-- Player: Spotify Embed resmi (mode pendek / compact, tinggi 152 — diatur di css/style.css). Judul, artis, play/pause,
                    next/prev & progress semuanya ditangani Spotify di dalam iframe ini. -->
-              <!-- Player: official Spotify Embed (large mode, height 352 — shows playlist cover & name + track list). Title, artist, play/pause,
+              <!-- Player: official Spotify Embed (short / compact mode, height 152 — set in css/style.css). Title, artist, play/pause,
                    next/prev & progress are all handled by Spotify inside this iframe. -->
               <div class="music-embed">
                 <!-- REPLACE HERE (optional, only to change playlist): swap the playlist ID below (currently 7BCrAs8kfcKpOREwlf1o0x).
@@ -290,12 +295,28 @@
                   src="https://open.spotify.com/embed/playlist/5g0C6GyZJM1Yw7WCERMiye?utm_source=generator&theme=0"
                   title="felisa's playlist — Spotify player"
                   width="100%"
-                  height="352"
+                  height="152"
                   frameborder="0"
                   allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                   loading="lazy"></iframe>
                 </div>
               </div>
+            </div>
+
+            <!-- ===============================================
+                 PHOTO WIDGET — widget foto di bawah music widget (hanya tampil di iPad-mock / desktop)
+                 PHOTO WIDGET — photo widget below the music widget (shown in the iPad mock / desktop only)
+            ================================================ -->
+            <div class="photo-widget">
+              <div class="photo-widget-frame">
+                <!-- GANTI DI SINI: timpa assets/widget.jpg dengan fotomu (disarankan landscape 16:9, mis. 710x400px) -->
+                <!-- REPLACE HERE: overwrite assets/widget.jpg with your own image (landscape 16:9 recommended, e.g. 710x400px) -->
+                <img src="assets/widget.jpg" alt="Widget photo" loading="lazy" />
+                <span class="photo-widget-badge" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-10A4.2 4.2 0 0 1 12 7.6 4.2 4.2 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10Z"/></svg>
+                </span>
+              </div>
+            </div>
             </div>
         </div>
 
