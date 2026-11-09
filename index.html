@@ -90,6 +90,74 @@
         <p class="section-kicker" data-i18n="profile-kicker">Profile</p>
         <h2 data-i18n="profile-h2">About Me</h2>
 
+        <!-- ===============================================
+             GRID 2 KOLOM: kiri = ID card biodata, kanan = clipboard "About Me"
+             2-COLUMN GRID: left = biodata ID card, right = "About Me" clipboard
+             (HP: ditumpuk, ID card di atas / Mobile: stacked, ID card on top)
+        ================================================ -->
+        <div class="profile-grid">
+
+          <!-- ===== KIRI / LEFT: ID card biodata ===== -->
+          <div class="id-card-wrap pop-in">
+            <article class="id-card" aria-label="Biodata">
+              <span class="id-card-hole" aria-hidden="true"></span>
+
+              <div class="id-card-band">
+                <span class="id-card-tag" data-i18n="bio-tag">Bio Data</span>
+              </div>
+
+              <div class="id-card-photo" role="img" aria-label="Feliza Aziva photo">
+                <!-- Stiker hati kecil di pojok foto / Small heart sticker on the photo corner -->
+                <span class="id-card-sticker" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-10A4.2 4.2 0 0 1 12 7.6 4.2 4.2 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10Z"/></svg>
+                </span>
+              </div>
+
+              <!-- GANTI DI SINI: nama lengkap / full name -->
+              <h3 class="id-card-name">Feliza Aziva Nuraninda Simatupang</h3>
+              <p class="id-card-role" data-i18n="home-major">Informatics Engineering Student</p>
+
+              <dl class="id-card-list">
+                <!-- GANTI DI SINI: tempat lahir / place of birth -->
+                <div class="id-row">
+                  <span class="id-ico id-ico--pink" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                  </span>
+                  <div>
+                    <dt data-i18n="bio-pob-l">Place of birth</dt>
+                    <dd>Tandam Hulu II</dd>
+                  </div>
+                </div>
+
+                <!-- GANTI DI SINI: tanggal lahir / date of birth -->
+                <div class="id-row">
+                  <span class="id-ico id-ico--purple" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M8 3v4M16 3v4M3.5 10h17"/></svg>
+                  </span>
+                  <div>
+                    <dt data-i18n="bio-dob-l">Date of birth</dt>
+                    <dd data-i18n="bio-dob">October 17, 2005</dd>
+                  </div>
+                </div>
+
+                <!-- GANTI DI SINI: alamat / address -->
+                <div class="id-row">
+                  <span class="id-ico id-ico--mint" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 9-7.5 9 7.5"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5.5h4V20"/></svg>
+                  </span>
+                  <div>
+                    <dt data-i18n="bio-addr-l">Address</dt>
+                    <dd data-i18n="bio-addr">Jambee Village, Delima District, Pidie Regency, Aceh</dd>
+                  </div>
+                </div>
+              </dl>
+
+              <!-- Barcode dekoratif / Decorative barcode -->
+              <div class="id-card-barcode" aria-hidden="true"></div>
+            </article>
+          </div>
+
+          <!-- ===== KANAN / RIGHT: clipboard About Me ===== -->
         <div class="clipboard pop-in">
           <span class="clipboard-clip" aria-hidden="true"></span>
           <div class="card card--text clipboard-paper">
@@ -111,6 +179,9 @@
             </p>
           </div>
         </div>
+
+        </div>
+        <!-- /.profile-grid -->
       </div>
 
       <div class="section-nav">

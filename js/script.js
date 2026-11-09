@@ -185,6 +185,11 @@ const i18n = {
   "home-major": "Mahasiswi Teknik Informatika",
   "home-univ": "Universitas Jabal Ghafur (UNIGHA)",
   "profile-kicker": "Profil", "profile-h2": "Tentang Saya",
+  // Biodata (ID card di #profile) / Biodata (ID card in #profile)
+  "bio-tag": "Biodata",
+  "bio-pob-l": "Tempat lahir", "bio-dob-l": "Tanggal lahir", "bio-addr-l": "Alamat",
+  "bio-dob": "17 Oktober 2005",
+  "bio-addr": "Desa Jambee, Kec. Delima, Kab. Pidie, Aceh",
   "profile-p1": "Hai, saya Feliza!",
   "profile-p2": "Saya mahasiswa Informatika semester 5 di Universitas Jabal Ghafur. Saya suka mengeksplorasi teknologi, mempelajari hal baru, dan mengubah ide-ide acak menjadi sesuatu yang nyata.",
   "profile-p3": "Saya sangat tertarik pada pengembangan web, pemrograman, pemecahan masalah, dan sisi kreatif dari teknologi. Saya suka membangun proyek bukan cuma agar berfungsi, tapi juga untuk memahami cara kerjanya di balik layar dan bagaimana bisa dibuat lebih baik. Belakangan ini saya mulai menjelajahi lebih banyak bidang komputasi sambil mengerjakan proyek sendiri dan perlahan menemukan bagian teknologi mana yang paling saya sukai.",
