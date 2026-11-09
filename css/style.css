@@ -1356,15 +1356,21 @@ main {
   /* Music widget: tanpa kartu putih, tanpa label — cuma embed Spotify */
   /* Music widget: no white card, no label — just the Spotify embed */
   .section--hobbies .music-widget {
-    width: auto;
+    /* LEBAR EMBED DIKUNCI: layout Spotify berganti mode di sekitar 215-236px, dan di 236px+ isinya terpotong
+       (judul/kontrol hilang, terutama di Android). 215px = ukuran yang terbukti tampil rapi.
+       GANTI DI SINI: ubah 215px kalau mau coba lebar lain.
+       EMBED WIDTH LOCKED: Spotify's layout switches mode around 215-236px, and at 236px+ it gets clipped
+       (title/controls vanish, esp. on Android). 215px is the size known to render cleanly.
+       CHANGE HERE: tweak 215px to try another width. */
+    --music-embed-w: 215px;
+    align-self: center;
+    width: min(var(--music-embed-w), 100%);
+    margin: 0;
     padding: 0;
     background: none;
     box-shadow: none;
     border-radius: 0;
     overflow: visible;
-    /* embed sedikit "keluar" dari padding layar supaya lebih lebar / embed slightly bleeds past the screen padding for more width */
-    margin-left: -10px;
-    margin-right: -10px;
   }
   .section--hobbies .music-widget-head { display: none; }
   .section--hobbies .music-embed { padding: 0; }
