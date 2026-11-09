@@ -1337,23 +1337,39 @@ main {
    MUSIC WIDGET — one card: playlist name + Spotify Embed
 ========================================================= */
 
-/* Mobile (< 860px): layar HP jadi kolom — app-grid di atas, widget musik di bawah */
-/* Mobile (< 860px): the phone screen becomes a column — app-grid on top, music widget below */
+/* Mobile (< 860px): layar HP jadi kolom — app-grid di atas, embed Spotify di bawah.
+   Khusus HP: tanpa kartu putih & tanpa label "felisa's playlist", jarak dirapatkan supaya mock terlihat seperti iPhone.
+   Versi desktop (>= 860px) TIDAK terpengaruh blok ini.
+   Mobile (< 860px): the phone screen becomes a column — app-grid on top, Spotify embed below.
+   Phone only: no white card & no "felisa's playlist" label, tighter spacing so the mock looks like an iPhone.
+   The desktop version (>= 860px) is NOT affected by this block. */
 @media (max-width: 859.98px) {
   .section--hobbies .phone-screen {
     flex-direction: column;
     align-items: stretch;
-    gap: 22px;
-    /* padding layar = ukuran asli (26px 19px), sama seperti sebelum perombakan */
-    /* screen padding = original size (26px 19px), same as before the redesign */
-    padding: 26px 19px;
+    gap: 14px;        /* jarak grid ikon -> embed / gap between icon grid and embed */
+    padding: 22px 19px; /* GANTI DI SINI: padding layar HP / phone screen padding */
   }
-  /* Widget musik sedikit "keluar" dari padding layar supaya embed Spotify tetap lega (tidak mengubah ukuran ikon) */
-  /* Music widget slightly "bleeds" past the screen padding so the Spotify embed keeps its width (icon sizes untouched) */
+  /* Jarak antar baris ikon lebih rapat / Tighter rows between icons */
+  .section--hobbies .app-grid { gap: 12px 30px; }
+
+  /* Music widget: tanpa kartu putih, tanpa label — cuma embed Spotify */
+  /* Music widget: no white card, no label — just the Spotify embed */
   .section--hobbies .music-widget {
     width: auto;
-    margin-left: -7px;
-    margin-right: -7px;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: visible;
+    /* embed sedikit "keluar" dari padding layar supaya lebih lebar / embed slightly bleeds past the screen padding for more width */
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+  .section--hobbies .music-widget-head { display: none; }
+  .section--hobbies .music-embed { padding: 0; }
+  .section--hobbies .music-embed-frame {
+    box-shadow: 0 10px 22px -12px rgba(74, 63, 85, 0.5); /* bayangan lembut pengganti kartu / soft shadow replacing the card */
   }
 }
 
