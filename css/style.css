@@ -1458,14 +1458,25 @@ main {
     border-radius: 16px;
     overflow: hidden;
   }
-  .photo-widget-frame img {
+  /* Slider vertikal: semua foto ditumpuk ke bawah, lalu track digeser oleh JS (tidak berhenti saat di-hover) */
+  /* Vertical slider: all photos are stacked, and the track is moved by JS (does not pause on hover) */
+  .photo-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 100%;
+    height: calc(var(--slides, 1) * 100%); /* --slides diisi JS / set by JS */
+    display: flex;
+    flex-direction: column;
+    will-change: transform;
+  }
+  .photo-slider img {
+    flex: 1 1 0;
+    min-height: 0;
+    width: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.6s ease;
   }
-  .photo-widget:hover .photo-widget-frame img { transform: scale(1.05); }
 
   /* Kilau lembut seperti widget foto di iOS / Soft sheen like an iOS photo widget */
   .photo-widget-frame::after {
@@ -1491,10 +1502,6 @@ main {
     box-shadow: 0 4px 10px -4px rgba(74, 63, 85, 0.4);
   }
   .photo-widget-badge svg { width: 14px; height: 14px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .photo-widget-frame img { transition: none; }
-  .photo-widget:hover .photo-widget-frame img { transform: none; }
 }
 
 /* =========================================================

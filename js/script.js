@@ -290,6 +290,66 @@ document.addEventListener('DOMContentLoaded', () => {
 // =========================================================
 
 // =========================================================
+// PHOTO WIDGET — slider foto vertikal, bergeser ke bawah otomatis & terus-menerus.
+// Tidak berhenti saat di-hover. Jumlah foto = jumlah <img> di #photoSlider (index.html).
+// PHOTO WIDGET — vertical photo slider, slides downward automatically & non-stop.
+// Does not pause on hover. Photo count = number of <img> inside #photoSlider (index.html).
+// =========================================================
+document.addEventListener('DOMContentLoaded', () => {
+  const track = document.getElementById('photoSlider');
+  if (!track) return;
+
+  const HOLD_MS  = 3200;  // GANTI DI SINI: lama tiap foto tampil / how long each photo stays (ms)
+  const SLIDE_MS = 900;   // GANTI DI SINI: lama animasi geser / slide animation duration (ms)
+
+  const photos = Array.from(track.querySelectorAll('img'));
+  const n = photos.length;
+  if (n < 2) return; // 1 foto saja = tidak perlu slider / a single photo needs no slider
+
+  // Susunan dari atas ke bawah: [salinan foto 1, foto n, ..., foto 2, foto 1]
+  // Track digeser ke bawah, jadi foto baru selalu masuk dari atas. Salinan foto 1 dipakai agar loop mulus.
+  // Top-to-bottom order: [copy of photo 1, photo n, ..., photo 2, photo 1]
+  // The track moves downward so a new photo always enters from the top. The copy of photo 1 makes the loop seamless.
+  const first = photos[0].cloneNode(true);
+  first.alt = '';
+  first.setAttribute('aria-hidden', 'true');
+  track.innerHTML = '';
+  track.appendChild(first);
+  for (let i = n - 1; i >= 0; i--) track.appendChild(photos[i]);
+  track.style.setProperty('--slides', n + 1);
+
+  const unit = 100 / (n + 1);  // tinggi satu foto dalam % dari track / one photo's height as % of the track
+  let step = 0;                // 0 = foto 1 ... n = salinan foto 1 / 0 = photo 1 ... n = copy of photo 1
+
+  const place = (animate) => {
+    track.style.transition = animate ? `transform ${SLIDE_MS}ms cubic-bezier(0.65, 0, 0.35, 1)` : 'none';
+    track.style.transform = `translateY(${-(n - step) * unit}%)`;
+  };
+  place(false);
+
+  // Hormati pengaturan "reduce motion" milik pengunjung: tampilkan foto pertama saja
+  // Respect the visitor's "reduce motion" setting: just show the first photo
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  setInterval(() => {
+    // Lewati kalau widget tidak terlihat (mis. tampilan HP) / Skip when the widget is not visible (e.g. phone layout)
+    if (!track.offsetParent) return;
+
+    step += 1;
+    place(true);
+
+    if (step === n) {
+      // Sudah sampai salinan foto 1 -> loncat balik ke foto 1 tanpa animasi (tampilannya identik)
+      // Reached the copy of photo 1 -> jump back to photo 1 without animation (looks identical)
+      setTimeout(() => {
+        step = 0;
+        place(false);
+      }, SLIDE_MS + 60);
+    }
+  }, HOLD_MS + SLIDE_MS);
+});
+
+// =========================================================
 // Banner sapaan buat tamu, menunjuk ke tombol ganti bahasa.
 // Cuma tampil di #home, dan tetap ada sampai diklik (tidak ada auto-hide).
 // Guest-greeting banner pointing at the language-switch button.
